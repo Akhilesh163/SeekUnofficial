@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 
 const footerLinks = {
-  Programs: ["Discovery", "Build", "Track", "Enterprise"],
-  Company: ["About Us", "Careers", "Blog", "Press"],
-  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+  Courses: ["GMAT Quant", "GRE Quant", "Quant Foundations", "Private Tutoring"],
+  Company: ["About Aman", "Success Stories", "Blog", "Contact"],
+  Legal: ["Privacy Policy", "Terms of Service", "Refund Policy"],
 };
 
 export const Footer = () => {
@@ -19,14 +19,17 @@ export const Footer = () => {
                 SeekYourY
               </span>
             </a>
-            <p className="text-primary-foreground/70 mb-6 max-w-sm">
-              Transform your life direction with personalized roadmaps and world-class support.
+            <p className="text-primary-foreground/70 mb-4 max-w-sm">
+              Led by Aman with 8+ years of experience mentoring 10,000+ students to conquer GMAT & GRE Quant.
+            </p>
+            <p className="text-primary-foreground/70 mb-6 max-w-sm italic">
+              "Quant doesn't have to be scary."
             </p>
             <Button
               size="lg"
               className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground"
             >
-              Book Free Call
+              Book Free Demo
             </Button>
           </div>
 
@@ -62,7 +65,7 @@ export const Footer = () => {
               href="#"
               className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
-              Twitter
+              YouTube
             </a>
             <a
               href="#"
