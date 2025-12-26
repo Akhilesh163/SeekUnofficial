@@ -35,8 +35,7 @@ export const ProductJourney = () => {
         <div className="text-center mb-16">
           <span className="pill pill-blue mb-4">JOURNEY</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground max-w-3xl mx-auto">
-            Solutions for every aspect of your{" "}
-            <span className="headline-primary">SeekYourY</span> Journey
+            Solutions for every aspect of your <span className="headline-primary">GRE</span> Journey
           </h2>
         </div>
 
@@ -49,16 +48,12 @@ export const ProductJourney = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
-              <div
-                className={`w-16 h-16 rounded-2xl ${card.iconBg} flex items-center justify-center mb-6`}
-              >
+              <div className={`w-16 h-16 rounded-2xl ${card.iconBg} flex items-center justify-center mb-6`}>
                 <card.icon className={`w-8 h-8 ${card.iconColor}`} />
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-foreground mb-3">
-                {card.title}
-              </h3>
+              <h3 className="text-2xl font-bold text-foreground mb-3">{card.title}</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">{card.desc}</p>
 
               {/* Link */}
