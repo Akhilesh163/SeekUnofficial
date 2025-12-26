@@ -8,38 +8,43 @@ import person5 from "@/assets/person5.jpg";
 
 const successStories = [
   {
-    name: "Rajesh Kumar",
+    name: "Vatsalya",
     image: person1,
-    scoreBefore: 298,
-    scoreAfter: 328,
+    scoreBefore: 302,
+    scoreAfter: 326,
+    exam: "GRE",
     position: "left-far",
   },
   {
-    name: "Priya Sharma",
+    name: "Manya",
     image: person2,
-    scoreBefore: 305,
-    scoreAfter: 332,
+    scoreBefore: 313,
+    scoreAfter: 331,
+    exam: "GRE",
     position: "left",
   },
   {
-    name: "Arjun Menon",
+    name: "Bala",
     image: person3,
-    scoreBefore: 295,
-    scoreAfter: 335,
+    scoreBefore: 298,
+    scoreAfter: 328,
+    exam: "GRE",
     position: "center",
   },
   {
-    name: "Sneha Patel",
+    name: "Priya",
     image: person4,
-    scoreBefore: 302,
-    scoreAfter: 327,
+    scoreBefore: 305,
+    scoreAfter: 325,
+    exam: "GRE",
     position: "right",
   },
   {
-    name: "Vikram Singh",
+    name: "Arjun",
     image: person5,
-    scoreBefore: 308,
-    scoreAfter: 330,
+    scoreBefore: 310,
+    scoreAfter: 332,
+    exam: "GRE",
     position: "right-far",
   },
 ];
@@ -49,26 +54,31 @@ export const Hero = () => {
     <section className="relative pt-28 pb-8 md:pt-36 md:pb-12 overflow-hidden bg-background">
       <div className="container-narrow">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Mentor Introduction */}
+          <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up">
+            Led by <span className="font-semibold text-foreground">Aman</span> • 8+ years mentoring experience • 10,000+ students guided
+          </p>
+
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-[64px] font-bold leading-[1.1] mb-6 animate-fade-up">
-            <span className="headline-primary">Transform Your GRE Score,</span>
+            <span className="headline-primary">Quant Doesn't Have to Be Scary.</span>
             <br />
-            <span className="text-foreground">No Matter Where You Begin!</span>
+            <span className="text-foreground">Master GMAT & GRE Quant!</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-foreground max-w-3xl mx-auto mb-4 animate-fade-up stagger-1">
-            <span className="font-semibold">Starting at 295, 305, or 310? It doesn't matter.</span>
+            <span className="font-semibold">Rebuild your confidence through logic-based learning.</span>
           </p>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up stagger-2">
-            Hundreds of our students have executed their custom study plans to achieve 325+ from various starting points.{" "}
-            <span className="font-semibold text-foreground">You can too!</span>
+            No more formula memorization. Our structured approach bridges the gap between concept problems and test-day execution.{" "}
+            <span className="font-semibold text-foreground">Join 10,000+ students who conquered Quant!</span>
           </p>
 
           {/* CTA Group */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-up stagger-3">
             <Button size="lg" className="rounded-full px-8 h-14 text-base gap-2 group">
-              Try SeekYourY
+              Start Learning Now
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
@@ -77,12 +87,12 @@ export const Hero = () => {
               className="rounded-full px-8 h-14 text-base gap-2"
             >
               <Play className="w-4 h-4" />
-              See How It Works
+              Book Free Demo
             </Button>
           </div>
         </div>
 
-        {/* Success Stories Cards - e-GMAT Style */}
+        {/* Success Stories Cards */}
         <div className="relative w-full max-w-6xl mx-auto animate-fade-up stagger-4">
           <div className="flex items-end justify-center gap-3 md:gap-4 px-4">
             {successStories.map((story, index) => {
@@ -116,8 +126,13 @@ export const Hero = () => {
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-center">
                     {/* Name */}
-                    <p className={`font-medium text-white mb-2 ${isCenter ? "text-sm md:text-base" : "text-xs md:text-sm"}`}>
+                    <p className={`font-medium text-white mb-1 ${isCenter ? "text-sm md:text-base" : "text-xs md:text-sm"}`}>
                       {story.name}
+                    </p>
+                    
+                    {/* Exam badge */}
+                    <p className={`text-white/70 mb-2 ${isCenter ? "text-xs" : "text-[10px]"}`}>
+                      {story.exam} Quant
                     </p>
                     
                     {/* Score improvement badge */}
@@ -142,6 +157,22 @@ export const Hero = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Stats Strip */}
+        <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 animate-fade-up stagger-5">
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-primary">10,000+</p>
+            <p className="text-sm text-muted-foreground">Students Mentored</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-primary">96th</p>
+            <p className="text-sm text-muted-foreground">Percentile Achievers</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-primary">8+</p>
+            <p className="text-sm text-muted-foreground">Years Experience</p>
           </div>
         </div>
       </div>

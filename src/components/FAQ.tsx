@@ -7,56 +7,55 @@ import {
 
 const faqs = [
   {
-    question: "How is SeekYourY different from other coaching programs?",
+    question: "Who is SeekYourY for?",
     answer:
-      "SeekYourY combines personalized AI-driven roadmaps with 1:1 human coaching. Unlike generic courses, we create a custom plan based on your specific situation, goals, and constraints.",
+      "SeekYourY is for anyone preparing for GMAT or GRE Quant—whether you're a complete beginner, someone who struggled with math in school, or a professional looking to improve your score.",
   },
   {
-    question: "How long does it take to see results?",
+    question: "What makes SeekYourY different from other Quant courses?",
     answer:
-      "Most members report clarity within the first 2 weeks and measurable progress within 90 days. Our structured approach ensures you're making consistent progress every week.",
+      "Unlike courses that focus on formula memorization, we teach you the 'why' behind every concept. Our approach builds genuine understanding, which translates to better test-day performance.",
   },
   {
-    question: "What if I'm not sure what I want to achieve?",
+    question: "I'm terrible at math. Can I still improve?",
     answer:
-      "That's exactly why SeekYourY exists! Our Discovery phase helps you identify your strengths, values, and direction before building your roadmap.",
+      "Absolutely! Most of our students came to us believing they were 'bad at math.' With the right approach, anyone can master Quant. We've helped 10,000+ students overcome their math fears.",
   },
   {
-    question: "Can I cancel my subscription anytime?",
+    question: "How long does it take to see improvement?",
     answer:
-      "Yes, you can cancel anytime. We offer a 14-day money-back guarantee if you're not satisfied with the program.",
+      "Most students start seeing noticeable improvement within 4-6 weeks of consistent study. During your free demo, we'll create a personalized timeline for you.",
   },
   {
-    question: "Do you offer team or corporate plans?",
+    question: "How does private tutoring work?",
     answer:
-      "Yes! We have special programs for teams and organizations. Contact us for customized solutions for your team's growth and development.",
+      "Private tutoring is 1-on-1 sessions with Aman. We assess your current level, identify weak areas, and create a customized study plan covering concept building, problem-solving, and pacing.",
   },
 ];
 
 export const FAQ = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-background">
       <div className="container-narrow">
         <div className="max-w-3xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Frequently Asked Questions
+            <span className="pill pill-purple mb-4">FAQ</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+              Frequently Asked <span className="headline-primary">Questions</span>
             </h2>
           </div>
 
-          {/* Accordion */}
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="glass-card px-6 border-0"
+                className="glass-card px-6 border-none"
               >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-base md:text-lg font-medium text-foreground hover:no-underline py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
+                <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

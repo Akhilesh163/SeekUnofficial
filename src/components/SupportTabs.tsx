@@ -1,47 +1,47 @@
 import { useState } from "react";
-import { Users, BookOpen, Video, Rocket, CheckCircle } from "lucide-react";
+import { Users, Brain, Clock, Zap, CheckCircle } from "lucide-react";
 
 const supportTabs = [
   {
-    id: "coach",
-    label: "Dedicated Coach Support",
-    shortLabel: "Coach",
-    icon: Users,
-    content: "1:1 check-ins and weekly plan edits to keep you on track towards your goals.",
-    features: ["Personalized feedback sessions", "Weekly accountability calls", "Real-time goal adjustments"],
+    id: "anxiety",
+    label: "Test Anxiety Support",
+    shortLabel: "Anxiety",
+    icon: Brain,
+    content: "Overcome test-day nerves with our proven mindset coaching and anxiety management techniques.",
+    features: ["Stress management strategies", "Confidence building exercises", "Mock test simulations"],
     color: "from-blue-500/20 to-indigo-500/20",
   },
   {
-    id: "expert",
-    label: "Subject Matter Support",
-    shortLabel: "Experts",
-    icon: BookOpen,
-    content: "Expert guidance on career transitions, productivity systems, and life decisions.",
-    features: ["Career transition playbooks", "Productivity frameworks", "Decision-making tools"],
+    id: "pacing",
+    label: "Pacing Strategies",
+    shortLabel: "Pacing",
+    icon: Clock,
+    content: "Master time management to maximize your score. Learn when to push forward and when to move on.",
+    features: ["Time allocation frameworks", "Question prioritization", "Speed vs accuracy balance"],
     color: "from-emerald-500/20 to-teal-500/20",
   },
   {
-    id: "live",
-    label: "Meet Experts 3X/week",
-    shortLabel: "Live",
-    icon: Video,
-    content: "Live interactive sessions with founders, recruiters, coaches and psychologists.",
-    features: ["Interactive Q&A sessions", "Real-world industry insights", "Networking opportunities"],
+    id: "doubts",
+    label: "Instant Doubt Solving",
+    shortLabel: "Doubts",
+    icon: Zap,
+    content: "Get your doubts resolved quickly with direct access to Aman and our expert support team.",
+    features: ["Quick response time", "Concept clarification", "Problem-solving walkthroughs"],
     color: "from-purple-500/20 to-pink-500/20",
   },
   {
-    id: "sprint",
-    label: "Last Mile Push Included",
-    shortLabel: "Sprint",
-    icon: Rocket,
-    content: "Final 25-day intensive sprint designed to complete your transformation journey.",
-    features: ["Daily accountability check-ins", "Intensive focused coaching", "Final push support system"],
+    id: "tutoring",
+    label: "1-on-1 Tutoring",
+    shortLabel: "1:1",
+    icon: Users,
+    content: "Personalized attention tailored to your specific weaknesses and learning style.",
+    features: ["Customized study plans", "Targeted practice sessions", "Progress tracking"],
     color: "from-orange-500/20 to-red-500/20",
   },
 ];
 
 export const SupportTabs = () => {
-  const [activeTab, setActiveTab] = useState("coach");
+  const [activeTab, setActiveTab] = useState("anxiety");
 
   const activeContent = supportTabs.find((tab) => tab.id === activeTab);
 
@@ -51,12 +51,14 @@ export const SupportTabs = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="pill pill-coral mb-4">
-            WORLD CLASS SUPPORT
+            PRIVATE TUTORING
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground max-w-3xl mx-auto">
-            Support that maximizes your chances of{" "}
-            <span className="headline-primary">success</span>
+            Personalized 1-on-1 <span className="headline-primary">Guidance</span>
           </h2>
+          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+            Get dedicated support from Aman to tackle your specific challenges and maximize your score.
+          </p>
         </div>
 
         {/* Tabs Navigation */}

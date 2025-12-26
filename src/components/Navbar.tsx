@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-const navLinks = ["Home", "Programs", "Pricing", "Success Stories", "Blog"];
+const navLinks = [
+  { label: "Home", href: "#" },
+  { label: "Courses", href: "#programs" },
+  { label: "Tutoring", href: "#book-demo" },
+  { label: "Success Stories", href: "#success-stories" },
+];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,11 +42,11 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase().replace(" ", "-")}`}
+                key={link.label}
+                href={link.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
@@ -52,7 +57,7 @@ export const Navbar = () => {
               Sign In
             </Button>
             <Button className="rounded-full px-6">
-              Try SeekYourY
+              Book Free Demo
             </Button>
           </div>
 
@@ -75,12 +80,12 @@ export const Navbar = () => {
             <div className="container-narrow py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(" ", "-")}`}
+                  key={link.label}
+                  href={link.href}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
@@ -88,7 +93,7 @@ export const Navbar = () => {
                   Sign In
                 </Button>
                 <Button className="rounded-full">
-                  Try SeekYourY
+                  Book Free Demo
                 </Button>
               </div>
             </div>
