@@ -4,7 +4,7 @@ const journeyCards = [
   {
     id: 1,
     title: "Discover",
-    desc: "Find your strengths, values, and direction.",
+    desc: "Find your strengths, values, and direction through our proven assessment framework.",
     icon: Compass,
     iconBg: "bg-pastel-green",
     iconColor: "text-emerald-600",
@@ -12,7 +12,7 @@ const journeyCards = [
   {
     id: 2,
     title: "Build",
-    desc: "Learn skills, habits, and execution systems.",
+    desc: "Learn skills, habits, and execution systems tailored to your unique goals.",
     icon: Hammer,
     iconBg: "bg-pastel-purple",
     iconColor: "text-purple-600",
@@ -20,7 +20,7 @@ const journeyCards = [
   {
     id: 3,
     title: "Track",
-    desc: "See progress weekly with measurable milestones.",
+    desc: "See progress weekly with measurable milestones and expert feedback.",
     icon: BarChart3,
     iconBg: "bg-pastel-red",
     iconColor: "text-rose-600",
@@ -34,7 +34,7 @@ export const ProductJourney = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="pill pill-blue mb-4">JOURNEY</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground max-w-3xl mx-auto">
             Solutions for every aspect of your{" "}
             <span className="headline-primary">SeekYourY</span> Journey
           </h2>
@@ -50,16 +50,16 @@ export const ProductJourney = () => {
             >
               {/* Icon */}
               <div
-                className={`w-14 h-14 rounded-2xl ${card.iconBg} flex items-center justify-center mb-6`}
+                className={`w-16 h-16 rounded-2xl ${card.iconBg} flex items-center justify-center mb-6`}
               >
-                <card.icon className={`w-7 h-7 ${card.iconColor}`} />
+                <card.icon className={`w-8 h-8 ${card.iconColor}`} />
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-foreground mb-3">
+              <h3 className="text-2xl font-bold text-foreground mb-3">
                 {card.title}
               </h3>
-              <p className="text-muted-foreground mb-6">{card.desc}</p>
+              <p className="text-muted-foreground mb-6 leading-relaxed">{card.desc}</p>
 
               {/* Link */}
               <a
