@@ -1,34 +1,35 @@
-import { Star, Quote, ArrowRight } from "lucide-react";
-import person1 from "@/assets/person1.jpg";
-import person2 from "@/assets/person2.jpg";
-import person3 from "@/assets/person3.jpg";
+import { Star, Quote } from "lucide-react";
+
+import praffulImg from "@/assets/student_pics/Prafful.jpeg";
+import balaImg from "@/assets/student_pics/Balagopal Jayakumar.jpeg";
+import manyaImg from "@/assets/student_pics/Manya.jpeg";
 
 const testimonials = [
   {
-    name: "Vatsalya",
-    scoreBefore: 313,
-    scoreAfter: 324,
-    exam: "GRE",
-    image: person1,
-    quote: "The clarity of logic that Aman provides is unmatched. I went from struggling with basic concepts to scoring in the 96th percentile. The customized plan made all the difference.",
+    displayName: "Prafful",
+    image: praffulImg,
+    examLabel: "GRE Student",
+    scoreLabel: "Quant 156 -> 169",
+    quote:
+      "The clarity of logic that Aman provides is unmatched. The customized plan made all the difference on test day.",
     rating: 5,
   },
   {
-    name: "Manya",
-    scoreBefore: 302,
-    scoreAfter: 328,
-    exam: "GRE",
-    image: person2,
-    quote: "I was terrified of Quant before joining SeekYourY. Aman's structured approach helped me see math as logical, not scary. My score improvement speaks for itself!",
+    displayName: "Bala",
+    image: balaImg,
+    examLabel: "GRE Student",
+    scoreLabel: "Quant 158 -> 166",
+    quote:
+      "I was terrified of Quant before joining Seek Your Y. Aman's structured approach helped me see math as logical, not scary.",
     rating: 5,
   },
   {
-    name: "Bala",
-    scoreBefore: 298,
-    scoreAfter: 325,
-    exam: "GRE",
-    image: person3,
-    quote: "From concept problems to test-day execution, every aspect was covered. The 1-on-1 doubt solving sessions were incredibly helpful. Highly recommend!",
+    displayName: "Manya",
+    image: manyaImg,
+    examLabel: "GMAT Student",
+    scoreLabel: "DI 83/90",
+    quote:
+      "From concept problems to test-day execution, every aspect was covered. The doubt-solving sessions were incredibly helpful.",
     rating: 5,
   },
 ];
@@ -37,7 +38,6 @@ export const Testimonials = () => {
   return (
     <section className="section-padding bg-background-alt" id="success-stories">
       <div className="container-narrow">
-        {/* Header */}
         <div className="text-center mb-16">
           <span className="pill pill-green mb-4">SUCCESS STORIES</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground max-w-3xl mx-auto">
@@ -49,35 +49,23 @@ export const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial, index) => (
             <div
-              key={testimonial.name}
+              key={testimonial.displayName}
               className="glass-card p-8 hover-lift"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Score improvement badge */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">
-                  {testimonial.exam}
-                </span>
-                <div className="flex items-center gap-1 text-sm font-bold">
-                  <span className="text-muted-foreground">{testimonial.scoreBefore}</span>
-                  <ArrowRight className="w-3 h-3 text-primary" />
-                  <span className="text-primary">{testimonial.scoreAfter}</span>
-                </div>
-              </div>
+              <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                {testimonial.scoreLabel}
+              </span>
 
-              {/* Quote icon */}
               <Quote className="w-10 h-10 text-primary/20 mb-4" />
-              
-              {/* Quote */}
+
               <p className="text-foreground mb-6 leading-relaxed">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </p>
 
-              {/* Rating */}
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
                   <Star
@@ -87,20 +75,17 @@ export const Testimonials = () => {
                 ))}
               </div>
 
-              {/* Author */}
               <div className="flex items-center gap-4">
                 <img
                   src={testimonial.image}
-                  alt={testimonial.name}
+                  alt={testimonial.displayName}
                   className="w-14 h-14 rounded-full object-cover"
                 />
                 <div>
                   <p className="font-semibold text-foreground">
-                    {testimonial.name}
+                    {testimonial.displayName}
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.exam} Student
-                  </p>
+                  <p className="text-sm text-muted-foreground">{testimonial.examLabel}</p>
                 </div>
               </div>
             </div>

@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { BookSessionDialog } from "@/components/BookSessionDialog";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Courses", href: "#programs" },
-  { label: "Tutoring", href: "#book-demo" },
-  { label: "Success Stories", href: "#success-stories" },
+  { label: "Courses", to: "/programs" },
+  { label: "Tutoring", to: "/tutoring" },
+  { label: "Success Stories", to: "/success-stories" },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isBookSessionOpen, setIsBookSessionOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,32 +35,27 @@ export const Navbar = () => {
       <div className="container-narrow">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-bold text-primary">
-              SeekYourY
-            </span>
-          </a>
+          <Link to="/" className="flex items-center gap-2 isolate">
+            <BrandLogo />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.to}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" className="text-sm font-medium">
-              Sign In
-            </Button>
-            <Button className="rounded-full px-6">
-              Book Free Demo
+            <Button className="rounded-full px-6 font-medium" onClick={() => setIsBookSessionOpen(true)}>
+              Book a session
             </Button>
           </div>
 
@@ -79,27 +77,32 @@ export const Navbar = () => {
           <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border animate-scale-in">
             <div className="container-narrow py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.to}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="ghost" className="justify-start">
-                  Sign In
-                </Button>
-                <Button className="rounded-full">
-                  Book Free Demo
+                <Button
+                  className="rounded-full justify-center"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsBookSessionOpen(true);
+                  }}
+                >
+                  Book a session
                 </Button>
               </div>
             </div>
           </div>
         )}
       </div>
+
+      <BookSessionDialog open={isBookSessionOpen} onOpenChange={setIsBookSessionOpen} />
     </nav>
   );
 };

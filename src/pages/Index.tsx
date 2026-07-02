@@ -7,10 +7,12 @@ import { Testimonials } from "@/components/Testimonials";
 import { BookDemoForm } from "@/components/BookDemoForm";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+import { ScrollToSection } from "@/components/ScrollToSection";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <ScrollToSection />
       <Navbar />
       <main>
         <Hero />

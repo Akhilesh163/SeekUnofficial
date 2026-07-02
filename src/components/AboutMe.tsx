@@ -1,11 +1,11 @@
-import { GraduationCap, Users, Award, Target } from "lucide-react";
+import { GraduationCap, Users, Award, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import amanImage from "@/assets/aman.png";
 
 const stats = [
   { icon: Users, value: "10,000+", label: "Students Mentored" },
-  { icon: GraduationCap, value: "8+", label: "Years Experience" },
-  { icon: Award, value: "96th", label: "Percentile Achievers" },
-  { icon: Target, value: "325+", label: "Avg. Score Improvement" },
+  { icon: GraduationCap, value: "8+ yrs.", label: "Years Experience" },
+  { icon: Award, value: "96th %ile.", label: "Percentile Achievers" },
 ];
 
 export const AboutMe = () => {
@@ -37,7 +37,7 @@ export const AboutMe = () => {
             
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed mb-8">
               <p>
-                For the past 8 years, I've dedicated my life to one mission: 
+                For the past 9 years, I've dedicated my life to one mission: 
                 <span className="text-foreground font-medium"> making Quant accessible and conquerable for everyone.</span>
               </p>
               
@@ -62,7 +62,7 @@ export const AboutMe = () => {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-3 gap-4 mb-8">
               {stats.map((stat) => (
                 <div key={stat.label} className="glass-card p-4 text-center">
                   <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
@@ -71,6 +71,21 @@ export const AboutMe = () => {
                 </div>
               ))}
             </div>
+
+            {/* Book Free Demo Button */}
+            <Button
+              size="lg"
+              className="rounded-full px-8 h-14 text-base gap-2"
+              onClick={() => {
+                const demoSection = document.getElementById("book-demo");
+                if (demoSection) {
+                  demoSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              <Play className="w-4 h-4" />
+              Book Free Demo
+            </Button>
           </div>
         </div>
       </div>

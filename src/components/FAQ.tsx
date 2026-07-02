@@ -7,29 +7,23 @@ import {
 
 const faqs = [
   {
-    question: "Who is SeekYourY for?",
+    question: "What courses do you offer?",
     answer:
-      "SeekYourY is for anyone preparing for GMAT or GRE Quant—whether you're a complete beginner, someone who struggled with math in school, or a professional looking to improve your score.",
+      "We currently provide GRE and GMAT Quant preparation through self-paced courses, one-on-one private tutoring, high-quality GMAT & GRE Quant test series, and live doubt-clearing sessions.",
   },
   {
-    question: "What makes SeekYourY different from other Quant courses?",
-    answer:
-      "Unlike courses that focus on formula memorization, we teach you the 'why' behind every concept. Our approach builds genuine understanding, which translates to better test-day performance.",
+    question: "How do I enroll in a course?",
+    answer: "",
   },
   {
-    question: "I'm terrible at math. Can I still improve?",
+    question: "Are the courses live or recorded?",
     answer:
-      "Absolutely! Most of our students came to us believing they were 'bad at math.' With the right approach, anyone can master Quant. We've helped 10,000+ students overcome their math fears.",
+      "Our core courses are self-paced and recorded so you can study anytime. In addition, we conduct personalized live sessions where you can interact directly with Aman.",
   },
   {
-    question: "How long does it take to see improvement?",
+    question: "How long is the course valid for?",
     answer:
-      "Most students start seeing noticeable improvement within 4-6 weeks of consistent study. During your free demo, we'll create a personalized timeline for you.",
-  },
-  {
-    question: "How does private tutoring work?",
-    answer:
-      "Private tutoring is 1-on-1 sessions with Aman. We assess your current level, identify weak areas, and create a customized study plan covering concept building, problem-solving, and pacing.",
+      "Each self-paced course comes with 6 months validity from the date of purchase, giving you plenty of time to complete the course at your own pace.",
   },
 ];
 
@@ -56,7 +50,24 @@ export const FAQ = () => {
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
-                  {faq.answer}
+                  {index === 1 ? (
+                    <>
+                      You can begin by clicking on &ldquo;Start Learning Free&rdquo; on our website. Explore the
+                      courses and learning experience on our{" "}
+                      <a
+                        href="https://lms.seekyoury.com/learn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary font-medium hover:underline"
+                      >
+                        learn page
+                      </a>
+                      , and once you&apos;re ready, you can sign up and start your preparation journey with Seek
+                      Your Y.
+                    </>
+                  ) : (
+                    faq.answer
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}

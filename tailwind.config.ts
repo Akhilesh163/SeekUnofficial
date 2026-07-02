@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
@@ -14,7 +13,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "system-ui", "sans-serif"],
+        sans: ["Lexend", "system-ui", "sans-serif"],
+        display: ["Manrope", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,19 +51,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        coral: "hsl(var(--coral))",
-        "pastel-green": "hsl(var(--pastel-green))",
-        "pastel-purple": "hsl(var(--pastel-purple))",
-        "pastel-red": "hsl(var(--pastel-red))",
-        "pastel-blue": "hsl(var(--pastel-blue))",
-        "dark-footer": "hsl(var(--dark-footer))",
+        "logic-navy": "hsl(var(--logic-navy))",
+        "success-green": "hsl(var(--success-green))",
+        "exam-gold": "hsl(var(--exam-gold))",
+        "surface-muted": "hsl(var(--surface-muted))",
+        "border-subtle": "hsl(var(--border-subtle))",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-        "2xl": "1rem",
-        "3xl": "1.5rem",
+        sm: "0.25rem",
+        DEFAULT: "0.5rem",
+        md: "0.75rem",
+        lg: "1rem",
+        xl: "1.5rem",
+        full: "9999px",
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
