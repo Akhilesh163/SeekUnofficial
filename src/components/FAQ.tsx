@@ -1,9 +1,13 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { BookSessionDialog } from "@/components/BookSessionDialog";
+import { Play } from "lucide-react";
 
 const faqs = [
   {
@@ -28,13 +32,15 @@ const faqs = [
 ];
 
 export const FAQ = () => {
+  const [isBookDemoOpen, setIsBookDemoOpen] = useState(false);
+
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background" id="faq">
       <div className="container-narrow">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <span className="pill pill-purple mb-4">FAQ</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
               Frequently Asked <span className="headline-primary">Questions</span>
             </h2>
           </div>
@@ -72,7 +78,30 @@ export const FAQ = () => {
               </AccordionItem>
             ))}
           </Accordion>
+
+          {/* Still have questions CTA */}
+          <div className="text-center mt-16 pt-8 border-t border-border/40">
+            <p className="text-muted-foreground mb-4 text-[15px]">
+              Still have questions about our methodology or programs?
+            </p>
+            <Button
+              size="lg"
+              className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground gap-2 shadow-soft hover-lift"
+              onClick={() => setIsBookDemoOpen(true)}
+            >
+              <Play className="w-4 h-4 fill-current" />
+              Book Free Demo
+            </Button>
+          </div>
         </div>
+
+        {/* BOOK DEMO DIALOG */}
+        <BookSessionDialog
+          open={isBookDemoOpen}
+          onOpenChange={setIsBookDemoOpen}
+          title="Book a free demo"
+          description="Share your details and we'll schedule a free 30-minute consultation with Aman."
+        />
       </div>
     </section>
   );

@@ -35,10 +35,10 @@ export const BookDemoForm = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <span className="pill pill-blue mb-4">BOOK A DEMO</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-6">
               Start Your <span className="headline-primary">Quant Journey</span> Today
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
               Book a free 30-minute consultation with Aman to discuss your goals,
               understand your current level, and create a personalized study plan.
             </p>

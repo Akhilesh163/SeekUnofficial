@@ -1,93 +1,235 @@
+import { useState } from "react";
 import { GraduationCap, Users, Award, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import amanImage from "@/assets/aman.png";
-
-const stats = [
-  { icon: Users, value: "10,000+", label: "Students Mentored" },
-  { icon: GraduationCap, value: "8+ yrs.", label: "Years Experience" },
-  { icon: Award, value: "96th %ile.", label: "Percentile Achievers" },
-];
+import { Button } from "@/components/ui/button";
+import { BookSessionDialog } from "@/components/BookSessionDialog";
 
 export const AboutMe = () => {
+  const [isBookDemoOpen, setIsBookDemoOpen] = useState(false);
+  const handleScrollToDemo = () => {
+    const demoSection = document.getElementById("book-demo");
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="section-padding bg-background" id="about">
-      <div className="container-narrow">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image Column */}
-          <div className="relative">
-            <div className="relative z-10">
+    <section className="pt-16 pb-12 px-8 md:px-16 lg:px-24 xl:px-16 bg-background relative overflow-hidden" id="about">
+      {/* Decorative background blobs */}
+      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
+
+      <div className="max-w-[1440px] mx-auto">
+        <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-12 lg:gap-16 items-center">
+          {/* LEFT: Premium Image Container with Floating Cards */}
+          <div className="relative justify-self-center w-full max-w-[420px] aspect-[4/5] scale-[0.85] sm:scale-100 origin-center my-6 sm:my-0">
+            {/* Background decorative solid offset card */}
+            <div className="absolute inset-0 bg-primary/5 rounded-[40px] translate-x-4 translate-y-4 -z-10 border border-primary/10" />
+
+            {/* Main Mentor Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="w-full h-full rounded-[38px] overflow-hidden border-2 border-white shadow-elevated relative group"
+            >
               <img
                 src={amanImage}
                 alt="Aman - Founder of SeekYourY"
-                className="w-full max-w-md mx-auto lg:mx-0 rounded-3xl shadow-elevated object-cover"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
-            <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-accent/10 rounded-full blur-2xl" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl -z-10 scale-105" />
+              {/* Soft overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+            </motion.div>
+
+            {/* FLOATING CARD 1: Students Mentored */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, y: -20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="absolute -top-6 -left-6 z-20"
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-card/90 backdrop-blur-md border border-border/80 rounded-[20px] p-4 flex items-center gap-3.5 shadow-soft max-w-[200px]"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <Users className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div>
+                  <p className="text-[16px] font-black text-foreground leading-none">10,000+</p>
+                  <p className="text-[11px] font-medium text-muted-foreground mt-1">Students Mentored</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* FLOATING CARD 2: Experience */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, y: 20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="absolute -bottom-6 -right-6 z-20"
+            >
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{
+                  duration: 4.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.4,
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-card/90 backdrop-blur-md border border-border/80 rounded-[20px] p-4 flex items-center gap-3.5 shadow-soft max-w-[200px]"
+              >
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
+                  <GraduationCap className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div>
+                  <p className="text-[16px] font-black text-foreground leading-none">8+ Years</p>
+                  <p className="text-[11px] font-medium text-muted-foreground mt-1">Experience</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* FLOATING CARD 3: Percentile Achievers */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, y: 20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="absolute bottom-1/3 -left-10 z-20"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 4.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.2,
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-card/90 backdrop-blur-md border border-border/80 rounded-[20px] p-4 flex items-center gap-3.5 shadow-soft max-w-[200px]"
+              >
+                <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 shrink-0">
+                  <Award className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div>
+                  <p className="text-[16px] font-black text-foreground leading-none">96th %ile</p>
+                  <p className="text-[11px] font-medium text-muted-foreground mt-1">Percentile Achievers</p>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
 
-          {/* Content Column */}
-          <div>
-            <span className="pill pill-blue mb-4">MEET YOUR MENTOR</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Hi, I'm <span className="headline-primary">Aman</span>
-            </h2>
-            
-            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed mb-8">
-              <p>
-                For the past 9 years, I've dedicated my life to one mission: 
-                <span className="text-foreground font-medium"> making Quant accessible and conquerable for everyone.</span>
-              </p>
-              
-              <p>
-                I've mentored over 10,000 students from all backgrounds—engineers, 
-                artists, working professionals, and fresh graduates. Many came to me 
-                believing they were "just not math people." Today, they're in top 
-                business schools and thriving careers.
-              </p>
+          {/* RIGHT: Content Column */}
+          <div className="flex flex-col justify-center">
+            {/* Pill Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center self-start gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-6 text-primary"
+            >
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em]">
+                Meet Your Mentor
+              </span>
+            </motion.div>
 
-              <p>
-                My approach is simple: <span className="text-foreground font-medium">understand the "why" behind every concept.</span> When 
-                you stop memorizing formulas and start seeing patterns, Quant 
-                transforms from a nightmare to an empowering skill.
-              </p>
+            {/* Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.08 }}
+              className="text-[28px] md:text-[42px] font-bold font-display text-foreground leading-[1.05] tracking-tight mb-8"
+            >
+              Hi, I'm <span className="text-primary">Aman</span>
+            </motion.h2>
 
-              <p>
-                I don't just teach test strategies—I rebuild confidence. I help 
-                students bridge the gap between understanding concepts and 
-                executing under pressure on test day.
-              </p>
-            </div>
+            {/* Paragraphs */}
+            <div className="space-y-6 text-[15px] sm:text-[16px] text-muted-foreground leading-relaxed mb-10 max-w-[620px]">
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.14 }}
+              >
+                For the past 9 years, I've dedicated my life to one mission:{" "}
+                <strong className="text-foreground font-semibold">
+                  making Quant accessible and conquerable for everyone.
+                </strong>
+              </motion.p>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="glass-card p-4 text-center">
-                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground">{stat.label}</p>
-                </div>
-              ))}
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                I've mentored over 10,000 students from all backgrounds—engineers, artists, working professionals, and fresh
+                graduates. Many came to me believing they were "just not math people." Today, they're in top business schools
+                and thriving careers.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.26 }}
+              >
+                My approach is simple:{" "}
+                <strong className="text-foreground font-semibold">understand the "why" behind every concept.</strong> When you
+                stop memorizing formulas and start seeing patterns, Quant transforms from a nightmare to an empowering skill.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.32 }}
+              >
+                I don't just teach test strategies—I rebuild confidence. I help students bridge the gap between understanding
+                concepts and executing under pressure on test day.
+              </motion.p>
             </div>
 
             {/* Book Free Demo Button */}
-            <Button
-              size="lg"
-              className="rounded-full px-8 h-14 text-base gap-2"
-              onClick={() => {
-                const demoSection = document.getElementById("book-demo");
-                if (demoSection) {
-                  demoSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.38 }}
             >
-              <Play className="w-4 h-4" />
-              Book Free Demo
-            </Button>
+              <Button
+                size="lg"
+                className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground gap-2 shadow-soft hover-lift"
+                onClick={() => setIsBookDemoOpen(true)}
+              >
+                <Play className="w-4 h-4 fill-current" />
+                Book Free Demo
+              </Button>
+            </motion.div>
           </div>
         </div>
+
+        {/* BOOK DEMO DIALOG */}
+        <BookSessionDialog
+          open={isBookDemoOpen}
+          onOpenChange={setIsBookDemoOpen}
+          title="Book a free demo"
+          description="Share your details and we'll schedule a free 30-minute consultation with Aman."
+        />
       </div>
     </section>
   );

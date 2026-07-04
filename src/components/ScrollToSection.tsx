@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 /** Maps clean URL paths to section element ids on the home page. */
 const PATH_TO_SECTION: Record<string, string> = {
   "/programs": "programs",
-  "/tutoring": "book-demo",
+  "/tutoring": "tutoring",
   "/book-demo": "book-demo",
   "/success-stories": "success-stories",
   "/about": "about",

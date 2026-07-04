@@ -60,10 +60,10 @@ export const ProductJourney = () => {
       <div className="container-narrow">
         <div className="text-center mb-16">
           <span className="pill pill-blue mb-4">COURSES</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground max-w-3xl mx-auto">
-            Choose Your <span className="headline-primary">Quant Journey</span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground max-w-3xl mx-auto">
+            Choose Your <span className="headline-primary">Journey</span>
           </h2>
-          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground mt-4 max-w-2xl mx-auto">
             Whether you're starting from scratch or fine-tuning for test day, we have the right course for you.
           </p>
         </div>

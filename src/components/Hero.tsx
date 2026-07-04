@@ -1,232 +1,326 @@
-import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Calendar, Play, Users, ShieldCheck, GraduationCap, TrendingUp } from "lucide-react";
+import { StatCounter } from "./StatCounter";
 import { BookSessionDialog } from "@/components/BookSessionDialog";
-
-import praffulImg from "@/assets/student_pics/Prafful.jpeg";
-import arjunImg from "@/assets/student_pics/Arjun M S.jpeg";
-import sabhyataImg from "@/assets/student_pics/Sabhyata.jpeg";
-import balaImg from "@/assets/student_pics/Balagopal Jayakumar.jpeg";
-import manyaImg from "@/assets/student_pics/Manya.jpeg";
-
-const LMS_LEARN_URL = "https://lms.seekyoury.com/learn";
-
-/** Praful, Arjun, Sabhyata first so they appear on page load; then remaining students. */
-const successStories = [
-  { displayName: "Praful", image: praffulImg, scoreLabel: "Quant 156 -> 169", examLabel: "GRE" },
-  { displayName: "Arjun", image: arjunImg, scoreLabel: "Quant 160 -> 168", examLabel: "GRE" },
-  { displayName: "Sabhyata", image: sabhyataImg, scoreLabel: "Quant 155 -> 160", examLabel: "GRE" },
-  { displayName: "Bala", image: balaImg, scoreLabel: "Quant 158 -> 166", examLabel: "GRE" },
-  { displayName: "Manya", image: manyaImg, scoreLabel: "DI 83/90", examLabel: "GMAT" },
-];
-
-const studentAvatars = successStories.map((s) => s.image);
+import mentorImage from "@/assets/mentor.webp";
 
 export const Hero = () => {
   const [isBookSessionOpen, setIsBookSessionOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const pausedUntilRef = useRef<number>(0);
-  const dragStartXRef = useRef<number | null>(null);
-  const dragLastXRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    const onVisibilityChange = () => {
-      if (document.hidden) pausedUntilRef.current = Date.now() + 60_000;
-    };
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
-    return () => {
-      document.removeEventListener("visibilitychange", onVisibilityChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      if (Date.now() < pausedUntilRef.current) return;
-      setActiveIndex((i) => (i + 1) % successStories.length);
-    }, 5000);
-
-    return () => {
-      window.clearInterval(id);
-    };
-  }, []);
-
-  const pauseBriefly = () => {
-    pausedUntilRef.current = Date.now() + 1500;
-  };
-
-  const goPrev = () => {
-    pauseBriefly();
-    setActiveIndex((i) => (i - 1 + successStories.length) % successStories.length);
-  };
-
-  const goNext = () => {
-    pauseBriefly();
-    setActiveIndex((i) => (i + 1) % successStories.length);
-  };
-
-  const onPointerDown: React.PointerEventHandler<HTMLDivElement> = (e) => {
-    pauseBriefly();
-    dragStartXRef.current = e.clientX;
-    dragLastXRef.current = e.clientX;
-    (e.currentTarget as HTMLDivElement).setPointerCapture?.(e.pointerId);
-  };
-
-  const onPointerMove: React.PointerEventHandler<HTMLDivElement> = (e) => {
-    if (dragStartXRef.current == null) return;
-    dragLastXRef.current = e.clientX;
-  };
-
-  const onPointerUp: React.PointerEventHandler<HTMLDivElement> = () => {
-    if (dragStartXRef.current == null || dragLastXRef.current == null) return;
-    const dx = dragLastXRef.current - dragStartXRef.current;
-    dragStartXRef.current = null;
-    dragLastXRef.current = null;
-
-    const threshold = 50;
-    if (dx > threshold) goPrev();
-    else if (dx < -threshold) goNext();
-  };
 
   return (
-    <section className="relative pt-28 pb-8 md:pt-36 md:pb-12 overflow-hidden bg-background">
-      <div className="container-narrow">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up">
-            Led by <span className="font-semibold text-foreground">Aman</span> • 8+ years mentoring experience • 10,000+ students guided
-          </p>
+    <section className="pt-0 md:pt-10 min-h-[calc(100vh-92px)] flex flex-col justify-between relative overflow-x-hidden bg-background">
+      {/* Background Radial Glow behind mentor image */}
+      <div
+        className="absolute top-0 right-0 w-full md:w-[70%] h-[100vh] pointer-events-none -z-10"
+        style={{
+          background: `
+            radial-gradient(circle at 68% 38%, rgba(218,230,255,0.8) 0%, rgba(218,230,255,0.3) 45%, rgba(218,230,255,0) 75%),
+            linear-gradient(to bottom, transparent 70%, hsl(var(--background)) 100%)
+          `,
+        }}
+      />
 
-          <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.08] mb-6 animate-fade-up font-display">
-            <span className="headline-primary">Quant doesn't have to be scary.</span>
-            <br />
-            <span className="text-foreground">Master GMAT & GRE quant!</span>
+      {/* Dot Grid - Top Right */}
+      <div className="absolute top-[110px] right-[4%] pointer-events-none -z-10 opacity-30">
+        <svg width="130" height="130" viewBox="0 0 130 130">
+          {Array.from({ length: 5 }).map((_, row) =>
+            Array.from({ length: 5 }).map((_, col) => (
+              <circle
+                key={`${row}-${col}`}
+                cx={col * 26 + 13}
+                cy={row * 26 + 13}
+                r={2.5}
+                fill="hsl(var(--primary) / 0.3)"
+              />
+            ))
+          )}
+        </svg>
+      </div>
+
+      {/* Arc Lines - Right Edge */}
+      <div className="absolute top-[8%] right-0 pointer-events-none -z-10 opacity-20">
+        <svg width="220" height="600" viewBox="0 0 220 600" fill="none">
+          <path d="M 200 0 Q 80 300 200 600" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+          <path d="M 165 0 Q 45 300 165 600" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+          <path d="M 130 0 Q 10 300 130 600" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+        </svg>
+      </div>
+
+      <div className="max-w-[1440px] mx-auto w-full px-8 md:px-16 lg:px-24 xl:px-16 grid grid-cols-1 xl:grid-cols-[1fr_1.3fr] gap-12 xl:gap-6 pt-2 xl:pt-10 pb-16 items-center">
+        {/* LEFT COLUMN: CONTENT */}
+        <div className="max-w-[620px] flex flex-col justify-center order-2 xl:order-1">
+          {/* Headline */}
+          <h1 className="text-[30px] md:text-[45px] font-extrabold font-display text-foreground leading-[1.1] md:leading-[54px] tracking-tight mb-6">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="block"
+            >
+              Prep doesn't
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="block"
+            >
+              have to be scary.
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="block text-primary"
+            >
+              Master GMAT & GRE!
+            </motion.span>
           </h1>
 
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-up stagger-1 leading-relaxed">
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-[14px] md:text-[16px] font-normal text-muted-foreground leading-relaxed md:leading-[26px] max-w-[540px] mb-8"
+          >
             Build confidence with a logic-first approach that translates directly to test-day speed and accuracy.
-          </p>
+          </motion.p>
 
-          <div className="flex items-center justify-center gap-3 mb-10 animate-fade-up stagger-2">
-            <div className="flex items-center">
-              {studentAvatars.map((src, idx) => (
-                <img
-                  key={idx}
-                  src={src}
-                  alt=""
-                  className={`h-9 w-9 rounded-full object-cover border-2 border-background shadow-soft ${
-                    idx === 0 ? "" : "-ml-3"
-                  }`}
-                />
-              ))}
-            </div>
-            <div className="inline-flex items-center rounded-full border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground shadow-soft">
-              Trusted by <span className="mx-1 font-bold text-primary">10,000+</span> Achievers
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center justify-center gap-4 mb-10 animate-fade-up stagger-3">
-            <Button size="lg" className="rounded-full px-10 h-14 text-base gap-2 group" asChild>
-              <a href={LMS_LEARN_URL} target="_blank" rel="noopener noreferrer">
-                Start Learning Free
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-          </div>
-        </div>
-
-        <div className="relative w-full max-w-6xl mx-auto animate-fade-up stagger-5">
-          <div className="relative px-4 sm:px-6">
-            <button
-              type="button"
-              onClick={goPrev}
-              aria-label="Previous"
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 h-11 w-11 rounded-full bg-background/90 backdrop-blur border border-border shadow-soft flex items-center justify-center hover:bg-background"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={goNext}
-              aria-label="Next"
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50 h-11 w-11 rounded-full bg-background/90 backdrop-blur border border-border shadow-soft flex items-center justify-center hover:bg-background"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-
-            <div
-              className="relative mx-auto h-[520px] md:h-[620px] overflow-hidden"
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              onPointerCancel={onPointerUp}
-              style={{
-                ["--centerW" as string]: "clamp(320px, 36vw, 440px)",
-                ["--centerH" as string]: "clamp(480px, 52vw, 620px)",
-                ["--sideW" as string]: "clamp(280px, 30vw, 360px)",
-                ["--sideH" as string]: "clamp(440px, 46vw, 540px)",
-                ["--sidePeek" as string]: "1",
-                ["--gap" as string]: "18px",
-                width:
-                  "min(100%, calc(var(--centerW) + (var(--sideW) * var(--sidePeek) * 2) + (var(--gap) * 2)))",
-                ["--offsetX" as string]: "calc((var(--centerW) / 2) + (var(--sideW) / 2) + var(--gap))",
+          {/* CTA Button Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-12"
+          >
+            {/* Primary button */}
+            <motion.button
+              whileHover={{
+                y: -2,
+                boxShadow: "0 10px 25px rgba(0, 74, 198, 0.3)",
               }}
+              onClick={() => setIsBookSessionOpen(true)}
+              className="h-[60px] px-8 bg-primary hover:bg-primary/95 text-primary-foreground font-bold text-[16px] rounded-[14px] flex items-center justify-center gap-2.5 transition-all duration-200"
             >
-              {successStories.map((story, i) => {
-                const n = successStories.length;
-                const raw = (i - activeIndex + n) % n;
-                const offset = raw === 0 ? 0 : raw === 1 ? 1 : raw === n - 1 ? -1 : 99;
-                const isVisible = offset !== 99;
+              <Calendar className="w-5 h-5 stroke-[2.5]" />
+              Book a Call
+            </motion.button>
 
-                const base =
-                  "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[28px] overflow-hidden shadow-elevated transition-[transform,opacity] duration-500 ease-out will-change-transform";
+            {/* Secondary button */}
+            <motion.button
+              whileHover={{
+                y: -2,
+                backgroundColor: "hsl(var(--muted) / 0.5)",
+              }}
+              onClick={() => {
+                document.getElementById("programs")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="h-[60px] px-8 bg-card border border-border text-foreground font-semibold text-[16px] rounded-[14px] flex items-center justify-center gap-2.5 transition-colors duration-200"
+            >
+              <Play className="w-5 h-5 fill-foreground stroke-foreground" />
+              Explore Programs
+            </motion.button>
+          </motion.div>
 
-                const cls = offset === 0 ? "z-30 opacity-100" : "z-20 opacity-95";
-
-                return (
-                  <div
-                    key={story.displayName}
-                    className={`${base} ${cls}`}
-                    style={{
-                      display: isVisible ? "block" : "none",
-                      width: offset === 0 ? "var(--centerW)" : "var(--sideW)",
-                      height: offset === 0 ? "var(--centerH)" : "var(--sideH)",
-                      transform:
-                        offset === 0
-                          ? "translate(-50%, -50%) translate3d(0, 0, 0) scale(1)"
-                          : offset === -1
-                            ? "translate(-50%, -50%) translate3d(calc(-1 * var(--offsetX)), 0, 0) scale(0.94)"
-                            : "translate(-50%, -50%) translate3d(var(--offsetX), 0, 0) scale(0.94)",
-                    }}
-                  >
-                    <img src={story.image} alt={story.displayName} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-                    <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 text-center">
-                      <p className="font-semibold text-white mb-1 text-base md:text-lg">{story.displayName}</p>
-                      <p className="text-white/80 text-sm mb-3">{story.examLabel} Student</p>
-                      <span className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-xl font-bold text-lg md:text-2xl">
-                        {story.scoreLabel}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap sm:flex-nowrap gap-6 md:gap-10 border-t border-border pt-8"
+          >
+            <StatCounter value="10,000+" label="Students Mentored" icon={Users} />
+            <StatCounter value="92%" label="Success Rate" icon={ShieldCheck} />
+            <StatCounter value="15+" label="Years of Experience" icon={GraduationCap} />
+          </motion.div>
         </div>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 animate-fade-up stagger-6">
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-primary">10,000+</p>
-            <p className="text-sm text-muted-foreground">Students Mentored</p>
+        {/* RIGHT COLUMN: PORTRAIT & FLOATING CARDS */}
+        <div className="relative flex flex-col xl:flex-row items-center justify-center mt-10 md:mt-4 xl:mt-0 w-full overflow-visible order-1 xl:order-2">
+          {/* Portrait Container */}
+          <div className="relative flex justify-center items-center h-[340px] sm:h-[480px] lg:h-[560px] xl:h-[720px] w-full max-w-[360px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-none scale-[0.9] sm:scale-100 origin-center">
+            {/* Portrait Frame Oval Background */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="absolute top-[4%] left-1/4 transform -translate-x-[36%] xl:-translate-x-[30%] w-[240px] h-[340px] md:w-[320px] md:h-[460px] lg:w-[360px] lg:h-[500px] xl:w-[340px] xl:h-[480px] rounded-full z-[1]"
+              style={{
+                background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.1) 0%, hsl(var(--primary) / 0.1) 60%, transparent 100%)'
+              }}
+            />
+
+            {/* Main Hero Portrait Wrapper */}
+            <div className="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[520px] xl:max-w-[640px] z-[2] pointer-events-none transform translate-x-[40px] sm:translate-x-10 lg:translate-x-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-full"
+              >
+                <img src={mentorImage} alt="Elite Quant Mentor" className="w-full h-auto object-contain mx-auto" />
+              </motion.div>
+            </div>
+
+            {/* Bottom fade-out on image */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 xl:h-48 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-10" />
+
+            {/* Floating Card 1: Score Improvement (Left Top) */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ 
+                opacity: 1, 
+                x: 0,
+                y: [0, -8, 0] 
+              }}
+              transition={{
+                x: { duration: 0.5, delay: 0.4 },
+                y: { repeat: Infinity, duration: 4.0, ease: "easeInOut" }
+              }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute top-[8%] -left-4 sm:left-[2%] md:-left-[5%] lg:left-[0%] xl:left-[6%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
+            >
+              <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-600 shrink-0">
+                <TrendingUp className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 stroke-[2.5]" />
+              </div>
+              <div>
+                <h4 className="text-[8px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                  Score Improvement
+                </h4>
+                <p className="text-[10px] sm:text-[13px] xl:text-[14px] font-bold text-foreground mt-0.5 leading-tight">
+                  +120 Avg Increase
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Floating Card 2: 1:1 Personalised (Right Middle) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ 
+                opacity: 1, 
+                x: 0,
+                y: [0, -10, 0] 
+              }}
+              transition={{
+                x: { duration: 0.5, delay: 0.5 },
+                y: { repeat: Infinity, duration: 4.6, ease: "easeInOut", delay: 0.4 }
+              }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute top-[42%] -right-4 sm:right-[2%] md:-right-[5%] lg:right-[0%] xl:right-[6%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
+            >
+              <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <Users className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 stroke-[2.5]" />
+              </div>
+              <div>
+                <h4 className="text-[8px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                  1:1 Personalised
+                </h4>
+                <p className="text-[10px] sm:text-[13px] xl:text-[14px] font-bold text-foreground mt-0.5 leading-tight">
+                  Tailored Mentorship
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Floating Card 3: Proven Result (Left Bottom) */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ 
+                opacity: 1, 
+                x: 0,
+                y: [0, -6, 0] 
+              }}
+              transition={{
+                x: { duration: 0.5, delay: 0.6 },
+                y: { repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 0.2 }
+              }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute bottom-[24%] -left-4 sm:left-[2%] md:-left-[5%] lg:left-[-2%] xl:left-[4%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
+            >
+              <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 stroke-[2.5]" />
+              </div>
+              <div>
+                <h4 className="text-[8px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                  Proven Result
+                </h4>
+                <p className="text-[10px] sm:text-[13px] xl:text-[14px] font-bold text-foreground mt-0.5 leading-tight">
+                  700+ GMAT/GRE
+                </p>
+              </div>
+            </motion.div>
+
+            {/* SOCIAL PROOF OVERLAY CARD - DESKTOP ONLY */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7 }}
+              className="hidden xl:flex absolute bottom-[8%] left-[20%] w-[480px] bg-card rounded-[20px] p-5 shadow-elevated border border-border/80 z-30 flex-row items-center gap-4 text-white"
+            >
+              {/* User Avatars Grid */}
+              <div className="flex -space-x-3.5 shrink-0">
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 1"
+                />
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 2"
+                />
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 3"
+                />
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 4"
+                />
+                <div className="w-10 h-10 rounded-full border-2 border-card bg-primary flex items-center justify-center text-[11px] font-black text-primary-foreground">
+                  +9K
+                </div>
+              </div>
+              <div>
+                <p className="text-[15px] font-bold text-foreground leading-snug">
+                  Join 10,000+ successful learners now.
+                </p>
+              </div>
+            </motion.div>
           </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-primary">96th</p>
-            <p className="text-sm text-muted-foreground">Percentile Achievers</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-primary">8+</p>
-            <p className="text-sm text-muted-foreground">Years Experience</p>
+
+          {/* SOCIAL PROOF BADGE - MOBILE ONLY */}
+          <div className="flex flex-col items-center w-full -mt-8 md:mt-2 px-4 xl:hidden">
+            {/* Social Proof Static Card */}
+            <div className="bg-card rounded-[14px] p-2.5 border border-border/80 shadow-soft flex items-center justify-center gap-3 w-full max-w-[290px]">
+              {/* User Avatars Grid */}
+              <div className="flex -space-x-2 shrink-0">
+                <img
+                  className="w-7 h-7 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 1"
+                />
+                <img
+                  className="w-7 h-7 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 2"
+                />
+                <img
+                  className="w-7 h-7 rounded-full border-2 border-card object-cover"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&fit=crop&auto=format&q=80"
+                  alt="Alumni 3"
+                />
+                <div className="w-7 h-7 rounded-full border-2 border-card bg-primary flex items-center justify-center text-[8px] font-black text-primary-foreground">
+                  +9K
+                </div>
+              </div>
+              <p className="text-[12px] font-bold text-foreground leading-snug">
+                Join 10,000+ successful learners now.
+              </p>
+            </div>
           </div>
         </div>
       </div>
