@@ -10,16 +10,27 @@ export const Hero = () => {
 
   return (
     <section className="pt-0 md:pt-10 min-h-[calc(100vh-92px)] flex flex-col justify-between relative overflow-x-hidden bg-background">
-      {/* Background Radial Glow behind mentor image */}
-      <div
-        className="absolute top-0 right-0 w-full md:w-[70%] h-[100vh] pointer-events-none -z-10"
-        style={{
-          background: `
-            radial-gradient(circle at 68% 38%, rgba(218,230,255,0.8) 0%, rgba(218,230,255,0.3) 45%, rgba(218,230,255,0) 75%),
-            linear-gradient(to bottom, transparent 70%, hsl(var(--background)) 100%)
-          `,
-        }}
-      />
+      {/* Rich colorful background blobs */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        {/* Blue-purple top-right blob */}
+        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-20"
+          style={{ background: 'radial-gradient(circle, #6366f1 0%, #3b82f6 40%, transparent 70%)' }} />
+        {/* Teal bottom-left blob */}
+        <div className="absolute bottom-0 -left-40 w-[500px] h-[500px] rounded-full opacity-15"
+          style={{ background: 'radial-gradient(circle, #14b8a6 0%, #06b6d4 50%, transparent 75%)' }} />
+        {/* Amber mid-left blob */}
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full opacity-10"
+          style={{ background: 'radial-gradient(circle, #f59e0b 0%, #f97316 60%, transparent 80%)' }} />
+        {/* Primary radial glow behind mentor */}
+        <div className="absolute top-0 right-0 w-full md:w-[70%] h-[100vh]"
+          style={{
+            background: `
+              radial-gradient(circle at 68% 38%, rgba(99,102,241,0.18) 0%, rgba(59,130,246,0.12) 40%, rgba(20,184,166,0.06) 70%, transparent 90%),
+              linear-gradient(to bottom, transparent 70%, hsl(var(--background)) 100%)
+            `,
+          }}
+        />
+      </div>
 
       {/* Dot Grid - Top Right */}
       <div className="absolute top-[110px] right-[4%] pointer-events-none -z-10 opacity-30">
@@ -51,31 +62,12 @@ export const Hero = () => {
         {/* LEFT COLUMN: CONTENT */}
         <div className="max-w-[620px] flex flex-col justify-center order-2 xl:order-1">
           {/* Headline */}
-          <h1 className="text-[30px] md:text-[45px] font-extrabold font-display text-foreground leading-[1.1] md:leading-[54px] tracking-tight mb-6">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="block"
-            >
-              Prep doesn't
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="block"
-            >
-              have to be scary.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="block text-primary"
-            >
-              Master GMAT & GRE!
-            </motion.span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-foreground leading-[1.1] tracking-tight mb-6">
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="block">Prep doesn't</motion.span>
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }} className="block">have to be scary.</motion.span>
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }}
+              className="block bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500 bg-clip-text text-transparent"
+            >Master GRE & GMAT!</motion.span>
           </h1>
 
           {/* Subheadline */}
@@ -83,7 +75,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-[14px] md:text-[16px] font-normal text-muted-foreground leading-relaxed md:leading-[26px] max-w-[540px] mb-8"
+            className="text-lg md:text-xl font-normal text-muted-foreground leading-relaxed max-w-[540px] mb-8"
           >
             Build confidence with a logic-first approach that translates directly to test-day speed and accuracy.
           </motion.p>
@@ -97,12 +89,9 @@ export const Hero = () => {
           >
             {/* Primary button */}
             <motion.button
-              whileHover={{
-                y: -2,
-                boxShadow: "0 10px 25px rgba(0, 74, 198, 0.3)",
-              }}
+              whileHover={{ y: -2, boxShadow: "0 12px 30px rgba(99,102,241,0.4)" }}
               onClick={() => setIsBookSessionOpen(true)}
-              className="h-[60px] px-8 bg-primary hover:bg-primary/95 text-primary-foreground font-bold text-[16px] rounded-[14px] flex items-center justify-center gap-2.5 transition-all duration-200"
+              className="h-[60px] px-8 bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500 hover:opacity-95 text-white font-bold text-sm rounded-[14px] flex items-center justify-center gap-2.5 transition-all duration-200 shadow-lg shadow-indigo-500/25"
             >
               <Calendar className="w-5 h-5 stroke-[2.5]" />
               Book a Call
@@ -110,16 +99,11 @@ export const Hero = () => {
 
             {/* Secondary button */}
             <motion.button
-              whileHover={{
-                y: -2,
-                backgroundColor: "hsl(var(--muted) / 0.5)",
-              }}
-              onClick={() => {
-                document.getElementById("programs")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="h-[60px] px-8 bg-card border border-border text-foreground font-semibold text-[16px] rounded-[14px] flex items-center justify-center gap-2.5 transition-colors duration-200"
+              whileHover={{ y: -2, backgroundColor: "hsl(var(--muted) / 0.5)" }}
+              onClick={() => { document.getElementById("programs")?.scrollIntoView({ behavior: "smooth" }); }}
+              className="h-[60px] px-8 bg-white border-2 border-indigo-200 text-indigo-700 font-semibold text-sm rounded-[14px] flex items-center justify-center gap-2.5 transition-colors duration-200 hover:border-indigo-400"
             >
-              <Play className="w-5 h-5 fill-foreground stroke-foreground" />
+              <Play className="w-5 h-5 fill-indigo-600 stroke-indigo-600" />
               Explore Programs
             </motion.button>
           </motion.div>
@@ -129,11 +113,11 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap sm:flex-nowrap gap-6 md:gap-10 border-t border-border pt-8"
+            className="flex flex-wrap sm:flex-nowrap gap-6 md:gap-10 border-t border-indigo-100 pt-8"
           >
-            <StatCounter value="10,000+" label="Students Mentored" icon={Users} />
-            <StatCounter value="92%" label="Success Rate" icon={ShieldCheck} />
-            <StatCounter value="15+" label="Years of Experience" icon={GraduationCap} />
+            <StatCounter value="10,000+" label="Students Mentored" icon={Users} color="blue" />
+            <StatCounter value="92%" label="Success Rate" icon={ShieldCheck} color="emerald" />
+            <StatCounter value="15+" label="Years of Experience" icon={GraduationCap} color="violet" />
           </motion.div>
         </div>
 
@@ -189,7 +173,7 @@ export const Hero = () => {
                 <h4 className="text-[8px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
                   Score Improvement
                 </h4>
-                <p className="text-[10px] sm:text-[13px] xl:text-[14px] font-bold text-foreground mt-0.5 leading-tight">
+                <p className="text-[10px] sm:text-sm xl:text-sm font-bold text-foreground mt-0.5 leading-tight">
                   +120 Avg Increase
                 </p>
               </div>
@@ -217,7 +201,7 @@ export const Hero = () => {
                 <h4 className="text-[8px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
                   1:1 Personalised
                 </h4>
-                <p className="text-[10px] sm:text-[13px] xl:text-[14px] font-bold text-foreground mt-0.5 leading-tight">
+                <p className="text-[10px] sm:text-sm xl:text-sm font-bold text-foreground mt-0.5 leading-tight">
                   Tailored Mentorship
                 </p>
               </div>
@@ -245,7 +229,7 @@ export const Hero = () => {
                 <h4 className="text-[8px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
                   Proven Result
                 </h4>
-                <p className="text-[10px] sm:text-[13px] xl:text-[14px] font-bold text-foreground mt-0.5 leading-tight">
+                <p className="text-[10px] sm:text-sm xl:text-sm font-bold text-foreground mt-0.5 leading-tight">
                   700+ GMAT/GRE
                 </p>
               </div>
@@ -280,12 +264,12 @@ export const Hero = () => {
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&fit=crop&auto=format&q=80"
                   alt="Alumni 4"
                 />
-                <div className="w-10 h-10 rounded-full border-2 border-card bg-primary flex items-center justify-center text-[11px] font-black text-primary-foreground">
+                <div className="w-10 h-10 rounded-full border-2 border-card bg-primary flex items-center justify-center text-xs font-black text-primary-foreground">
                   +9K
                 </div>
               </div>
               <div>
-                <p className="text-[15px] font-bold text-foreground leading-snug">
+                <p className="text-base font-bold text-foreground leading-snug">
                   Join 10,000+ successful learners now.
                 </p>
               </div>
@@ -317,7 +301,7 @@ export const Hero = () => {
                   +9K
                 </div>
               </div>
-              <p className="text-[12px] font-bold text-foreground leading-snug">
+              <p className="text-sm font-bold text-foreground leading-snug">
                 Join 10,000+ successful learners now.
               </p>
             </div>

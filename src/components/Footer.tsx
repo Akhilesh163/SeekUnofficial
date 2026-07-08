@@ -71,17 +71,18 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-logic-navy text-white">
+    <footer className="bg-logic-navy text-white relative">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-teal-500" />
       <div className="container-narrow pt-20 md:pt-28 lg:pt-32 pb-8 md:pb-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6 isolate">
               <BrandLogo variant="onDark" size="lg" />
             </Link>
-            <p className="text-white/70 mb-4 max-w-sm">
+            <p className="text-base text-white/70 mb-4 max-w-sm">
               Led by Aman with 8+ years of experience mentoring 10,000+ students to conquer GMAT & GRE Quant.
             </p>
-            <p className="text-white/70 mb-6 max-w-sm italic">
+            <p className="text-base text-white/70 mb-6 max-w-sm italic">
               "Quant doesn't have To be scary."
             </p>
             <Button

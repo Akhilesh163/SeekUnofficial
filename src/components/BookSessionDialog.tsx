@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { buildMessageWithPhone, useContactFormSubmit } from "@/hooks/useContactFormSubmit";
+import { Calendar, User, Mail, Phone, GraduationCap, ArrowRight } from "lucide-react";
 
 type BookSessionDialogProps = {
   open: boolean;
@@ -18,10 +19,10 @@ export function BookSessionDialog({
   open,
   onOpenChange,
   title = "Book a session",
-  description = "Share your details and what you want to improve. We'll reach out within 24 hours.",
+  description = "Select your target exam and fill in your details to book a consultation with Aman.",
 }: BookSessionDialogProps) {
   const initialState = useMemo(
-    () => ({ name: "", email: "", phone: "", details: "" }),
+    () => ({ name: "", email: "", phone: "", exam: "" }),
     [],
   );
   const [formData, setFormData] = useState(initialState);
@@ -35,6 +36,7 @@ export function BookSessionDialog({
     formData.name.trim().length > 0 &&
     formData.email.trim().length > 0 &&
     formData.phone.trim().length > 0 &&
+    formData.exam !== "" &&
     !isSubmitting;
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -45,7 +47,7 @@ export function BookSessionDialog({
       {
         name: formData.name,
         email: formData.email,
-        message: buildMessageWithPhone(formData.details, formData.phone) || "Book a session request",
+        message: buildMessageWithPhone(`Target Exam: ${formData.exam}`, formData.phone) || "Book a session request",
       },
       () => {
         setFormData(initialState);
@@ -58,16 +60,28 @@ export function BookSessionDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[560px]">
-        <DialogHeader>
-          <DialogTitle className="font-bold">{title}</DialogTitle>
-          <DialogDescription>{description}</DialogDescription>
+      <DialogContent className="sm:max-w-[480px] rounded-2xl sm:rounded-2xl border-primary/15 shadow-2xl p-6 sm:p-8 overflow-hidden">
+        <DialogHeader className="text-left">
+          <div className="flex flex-col items-start pb-2">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4 shadow-sm">
+              <Calendar className="w-6 h-6" />
+            </div>
+            <DialogTitle className="text-2xl font-bold tracking-tight text-foreground bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              {title}
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground mt-2 text-base leading-relaxed">
+              {description}
+            </DialogDescription>
+          </div>
         </DialogHeader>
 
-        <form onSubmit={onSubmit} className="space-y-5">
+        <form onSubmit={onSubmit} className="space-y-6 pt-2">
           <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <Label htmlFor="book-session-name">Name</Label>
+            <div className="space-y-1.5">
+              <Label htmlFor="book-session-name" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                <User className="w-4 h-4 text-muted-foreground/75" />
+                Name
+              </Label>
               <Input
                 id="book-session-name"
                 name="name"
@@ -75,12 +89,15 @@ export function BookSessionDialog({
                 value={formData.name}
                 onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                 required
-                className="mt-1.5"
+                className="h-11 px-3.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60"
               />
             </div>
 
-            <div>
-              <Label htmlFor="book-session-phone">Phone</Label>
+            <div className="space-y-1.5">
+              <Label htmlFor="book-session-phone" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                <Phone className="w-4 h-4 text-muted-foreground/75" />
+                Phone
+              </Label>
               <Input
                 id="book-session-phone"
                 name="phone"
@@ -89,13 +106,16 @@ export function BookSessionDialog({
                 value={formData.phone}
                 onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
                 required
-                className="mt-1.5"
+                className="h-11 px-3.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60"
               />
             </div>
           </div>
 
-          <div>
-            <Label htmlFor="book-session-email">Email</Label>
+          <div className="space-y-1.5">
+            <Label htmlFor="book-session-email" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+              <Mail className="w-4 h-4 text-muted-foreground/75" />
+              Email
+            </Label>
             <Input
               id="book-session-email"
               name="email"
@@ -104,28 +124,71 @@ export function BookSessionDialog({
               value={formData.email}
               onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
               required
-              className="mt-1.5"
+              className="h-11 px-3.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60"
             />
           </div>
 
-          <div>
-            <Label htmlFor="book-session-details">What do you want to work on?</Label>
-            <Textarea
-              id="book-session-details"
-              name="message"
-              placeholder="Exam (GMAT/GRE), your current level/score, target score, and what feels difficult..."
-              value={formData.details}
-              onChange={(e) => setFormData((p) => ({ ...p, details: e.target.value }))}
-              className="mt-1.5 min-h-[120px]"
-            />
+          <div className="space-y-1.5">
+            <Label htmlFor="book-session-exam" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+              <GraduationCap className="w-4 h-4 text-muted-foreground/75" />
+              Select Course
+            </Label>
+            <Select
+              value={formData.exam}
+              onValueChange={(val) => setFormData((p) => ({ ...p, exam: val }))}
+            >
+              <SelectTrigger 
+                id="book-session-exam" 
+                className="h-11 px-3.5 border-border/80 focus:ring-primary/20 focus:border-primary transition-all rounded-lg text-left bg-background"
+              >
+                <SelectValue placeholder="Choose GRE or GMAT" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl shadow-lg border-border/80">
+                <SelectItem value="GMAT" className="py-3 px-3 cursor-pointer rounded-lg focus:bg-primary/5 focus:text-primary transition-colors [&>span:first-child]:hidden">
+                  <div className="flex items-center justify-between w-full gap-4 pr-1">
+                    <div className="flex flex-col gap-0.5">
+                      <span className="font-semibold text-sm">GMAT</span>
+                      <span className="text-xs text-muted-foreground font-normal">Graduate Management Admission Test</span>
+                    </div>
+                    {formData.exam === "GMAT" && <span className="text-primary text-base">✓</span>}
+                  </div>
+                </SelectItem>
+                <SelectItem value="GRE" className="py-3 px-3 cursor-pointer rounded-lg focus:bg-primary/5 focus:text-primary transition-colors [&>span:first-child]:hidden">
+                  <div className="flex items-center justify-between w-full gap-4 pr-1">
+                    <div className="flex flex-col gap-0.5">
+                      <span className="font-semibold text-sm">GRE</span>
+                      <span className="text-xs text-muted-foreground font-normal">Graduate Record Examinations</span>
+                    </div>
+                    {formData.exam === "GRE" && <span className="text-primary text-base">✓</span>}
+                  </div>
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={isSubmitting}>
+          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end pt-4 border-t border-border/40">
+            <Button 
+              type="button" 
+              variant="ghost" 
+              onClick={() => onOpenChange(false)} 
+              disabled={isSubmitting}
+              className="h-11 font-medium hover:bg-muted rounded-xl transition-colors"
+            >
               Cancel
             </Button>
-            <Button type="submit" className="rounded-full px-6 font-medium" disabled={!canSubmit}>
-              {isSubmitting ? "Submitting..." : "Submit"}
+            <Button 
+              type="submit" 
+              className="h-11 rounded-xl px-8 font-semibold bg-gradient-to-r from-primary to-accent hover:opacity-95 text-white shadow-md shadow-primary/10 transition-all flex items-center justify-center gap-2 group" 
+              disabled={!canSubmit}
+            >
+              {isSubmitting ? (
+                "Booking..."
+              ) : (
+                <>
+                  <span>Book Session</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </>
+              )}
             </Button>
           </div>
         </form>

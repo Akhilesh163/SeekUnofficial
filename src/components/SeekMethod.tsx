@@ -23,7 +23,10 @@ import { BookSessionDialog } from "@/components/BookSessionDialog";
 export const SeekMethod = () => {
   const [isBookDemoOpen, setIsBookDemoOpen] = useState(false);
   return (
-    <section className="pt-16 pb-12 px-8 md:px-16 lg:px-24 xl:px-16 bg-background-alt" id="programs">
+    <section className="pt-20 pb-20 px-8 md:px-16 lg:px-24 xl:px-16 bg-gradient-to-b from-blue-50/40 via-indigo-50/20 to-background relative overflow-hidden mesh-blue-indigo" id="programs">
+      {/* Decorative colorful glows */}
+      <div className="absolute top-1/3 right-10 w-96 h-96 rounded-full bg-emerald-400/5 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 left-10 w-80 h-80 rounded-full bg-indigo-400/10 blur-3xl pointer-events-none -z-10" />
       <div className="max-w-[1440px] mx-auto">
         {/* TOP: Badge + Headline + Sub */}
         <div className="text-center max-w-[900px] mx-auto mb-16">
@@ -35,7 +38,7 @@ export const SeekMethod = () => {
             className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-2 mb-6"
           >
             <Zap className="w-3.5 h-3.5 text-primary" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
+            <span className="text-xs font-bold uppercase tracking-[0.14em] text-primary">
               The Seek Your Y Method
             </span>
           </motion.div>
@@ -45,7 +48,7 @@ export const SeekMethod = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-[28px] md:text-[40px] font-bold font-display text-foreground leading-[1.05] tracking-tight mb-5"
+            className="text-3xl md:text-4xl font-bold font-display text-foreground leading-[1.1] tracking-tight mb-5"
           >
             A proven system to make quant{" "}
             <span className="text-primary">simple, structured,</span> and score-driven.
@@ -56,7 +59,7 @@ export const SeekMethod = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.14 }}
-            className="text-[14px] md:text-[16px] text-muted-foreground leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground leading-relaxed"
           >
             We don't teach random tricks. We build a system that helps you{" "}
             <strong className="text-foreground font-semibold">understand, apply,</strong> and{" "}
@@ -65,7 +68,7 @@ export const SeekMethod = () => {
         </div>
 
         {/* FRAMEWORK CARDS */}
-        <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-0 mb-20">
+        <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-0 mb-20 pt-8">
           {[
             {
               num: "01",
@@ -73,6 +76,14 @@ export const SeekMethod = () => {
               icon: Lightbulb,
               desc: "We simplify complex concepts and build strong foundations with clear frameworks.",
               chip: "Concepts that finally make sense",
+              theme: "from-blue-500 to-indigo-500",
+              textTheme: "text-blue-600",
+              glow: "hover:shadow-blue-500/10 hover:border-blue-500/30",
+              iconBg: "bg-blue-50 text-blue-600 border-blue-100",
+              numBg: "bg-blue-600 text-white border-blue-500/20",
+              chipBg: "bg-blue-50 border-blue-200 text-blue-700",
+              chipIcon: "text-blue-600",
+              lineColor: "bg-blue-500",
             },
             {
               num: "02",
@@ -80,6 +91,14 @@ export const SeekMethod = () => {
               icon: Target,
               desc: "We teach smart problem-solving strategies tailored to each question type and pattern.",
               chip: "Approach every question with confidence",
+              theme: "from-indigo-600 to-violet-600",
+              textTheme: "text-indigo-600",
+              glow: "hover:shadow-indigo-500/10 hover:border-indigo-500/30",
+              iconBg: "bg-indigo-50 text-indigo-600 border-indigo-100",
+              numBg: "bg-indigo-600 text-white border-indigo-500/20",
+              chipBg: "bg-indigo-50 border-indigo-200 text-indigo-700",
+              chipIcon: "text-indigo-600",
+              lineColor: "bg-indigo-500",
             },
             {
               num: "03",
@@ -87,6 +106,14 @@ export const SeekMethod = () => {
               icon: LineChart,
               desc: "We help you practice with purpose and build consistency that shows in your scores.",
               chip: "Consistent improvement. Better scores.",
+              theme: "from-emerald-500 to-teal-600",
+              textTheme: "text-emerald-600",
+              glow: "hover:shadow-emerald-500/10 hover:border-emerald-500/30",
+              iconBg: "bg-emerald-50 text-emerald-600 border-emerald-100",
+              numBg: "bg-emerald-600 text-white border-emerald-500/20",
+              chipBg: "bg-emerald-50 border-emerald-200 text-emerald-700",
+              chipIcon: "text-emerald-600",
+              lineColor: "bg-emerald-500",
             },
           ].map((card, i) => (
             <React.Fragment key={card.num}>
@@ -96,31 +123,34 @@ export const SeekMethod = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 whileHover={{ y: -4 }}
-                className="flex-1 relative flex flex-col bg-card border border-border/85 rounded-[24px] px-6 pt-12 pb-6 shadow-soft"
+                className={`flex-1 relative flex flex-col bg-card border border-border/80 rounded-[28px] px-6 pt-16 pb-8 shadow-soft transition-all duration-300 ${card.glow}`}
               >
+                {/* Top accent line */}
+                <div className={`absolute top-0 left-0 right-0 h-1.5 rounded-t-[28px] bg-gradient-to-r ${card.theme}`} />
+
                 {/* Number badge floating above card */}
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <span className="text-[16px] font-extrabold text-primary">{card.num}</span>
+                <div className={`absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center font-black text-base shadow-md border-2 border-white ${card.numBg}`}>
+                  {card.num}
                 </div>
 
                 {/* Icon LEFT + Heading+Text RIGHT */}
                 <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 md:gap-6 flex-1 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-2">
-                    <card.icon className="w-8 h-8 stroke-[1.5]" />
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border mt-1 shadow-sm ${card.iconBg}`}>
+                    <card.icon className="w-7 h-7 stroke-[2]" />
                   </div>
                   <div className="flex flex-col items-center sm:items-start">
-                    <h3 className="text-[18px] font-extrabold text-foreground uppercase tracking-wide leading-tight">
+                    <h3 className={`text-base font-extrabold uppercase tracking-wide leading-tight ${card.textTheme}`}>
                       {card.label}
                     </h3>
-                    <div className="w-8 h-[3px] bg-primary rounded-full mt-1.5 mb-3" />
-                    <p className="text-[13px] md:text-[14px] text-muted-foreground leading-relaxed">{card.desc}</p>
+                    <div className={`w-8 h-[3px] rounded-full mt-2.5 mb-3.5 ${card.lineColor}`} />
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{card.desc}</p>
                   </div>
                 </div>
 
                 {/* Single chip */}
                 <div className="flex justify-center pt-2">
-                  <span className="inline-flex items-center gap-2 bg-primary/5 border border-primary/20 text-[13px] text-primary font-medium px-4 py-2 rounded-xl">
-                    <CheckCircle2 className="w-4 h-4 shrink-0 text-primary" />
+                  <span className={`inline-flex items-center gap-2 border text-sm font-semibold px-4 py-2 rounded-xl shadow-inner ${card.chipBg}`}>
+                    <CheckCircle2 className={`w-4 h-4 shrink-0 ${card.chipIcon}`} />
                     {card.chip}
                   </span>
                 </div>
@@ -161,7 +191,7 @@ export const SeekMethod = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center bg-primary/5 border border-primary/20 text-foreground text-[11px] font-bold uppercase tracking-[0.12em] px-5 py-2.5 rounded-full mb-6">
+            <span className="inline-flex items-center bg-primary/5 border border-primary/20 text-foreground text-xs font-bold uppercase tracking-[0.12em] px-5 py-2.5 rounded-full mb-6">
               COURSES
             </span>
           </motion.div>
@@ -171,7 +201,7 @@ export const SeekMethod = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-[28px] md:text-[40px] lg:text-[45px] font-bold font-display text-foreground leading-[1.1] tracking-tight mb-6"
+            className="text-3xl md:text-4xl lg:text-4xl font-bold font-display text-foreground leading-[1.1] tracking-tight mb-6"
           >
             Choose Your <span className="text-primary">Journey</span>
           </motion.h2>
@@ -181,7 +211,7 @@ export const SeekMethod = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.16 }}
-            className="text-[14px] md:text-[16px] text-muted-foreground leading-relaxed max-w-[620px] mx-auto"
+            className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-[620px] mx-auto"
           >
             Whether you're starting from scratch or fine-tuning for test day, we have the right course for you.
           </motion.p>
@@ -197,7 +227,6 @@ export const SeekMethod = () => {
               logoSub: "QUANT",
               gradient: "from-emerald-500 to-teal-600 shadow-emerald-500/20",
               icon: Target,
-              href: "https://lms.seekyoury.com/learn/Quants-for-GRE",
             },
             {
               title: "GRE Verbal",
@@ -206,7 +235,6 @@ export const SeekMethod = () => {
               logoSub: "VERBAL",
               gradient: "from-teal-500 to-cyan-600 shadow-teal-500/20",
               icon: BookOpen,
-              href: "https://lms.seekyoury.com/learn",
             },
             {
               title: "GMAT Quants",
@@ -215,7 +243,6 @@ export const SeekMethod = () => {
               logoSub: "QUANT",
               gradient: "from-blue-600 to-indigo-600 shadow-blue-500/20",
               icon: Calculator,
-              href: "https://lms.seekyoury.com/learn/Quants-For-GMAT",
             },
             {
               title: "GMAT Verbal",
@@ -224,7 +251,6 @@ export const SeekMethod = () => {
               logoSub: "VERBAL",
               gradient: "from-indigo-600 to-violet-600 shadow-indigo-500/20",
               icon: GraduationCap,
-              href: "https://lms.seekyoury.com/learn",
             },
             {
               title: "Private Tutoring",
@@ -243,7 +269,6 @@ export const SeekMethod = () => {
               logoSub: "CLASSES",
               gradient: "from-rose-500 to-pink-600 shadow-rose-500/20",
               icon: Video,
-              href: "https://lms.seekyoury.com/learn/Quants-For-GMAT",
             },
             {
               title: "Test Series",
@@ -252,7 +277,6 @@ export const SeekMethod = () => {
               logoSub: "SERIES",
               gradient: "from-slate-600 to-slate-800 shadow-slate-500/20",
               icon: FileText,
-              href: "https://lms.seekyoury.com/learn/view-all?show=mock-tests&type=2",
             },
           ].map((item, i) => (
             <motion.div
@@ -265,7 +289,7 @@ export const SeekMethod = () => {
             >
               {/* Logo / Badge container (size w-20 h-20, gradient, shadow) */}
               <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${item.gradient} flex flex-col items-center justify-center shrink-0 shadow-lg text-white group-hover:scale-105 transition-transform duration-300`}>
-                <span className="text-[16px] font-black tracking-wider leading-none">
+                <span className="text-sm font-black tracking-wider leading-none">
                   {item.logoText}
                 </span>
                 <span className="text-[8px] font-bold uppercase tracking-widest opacity-80 mt-1.5">
@@ -277,27 +301,26 @@ export const SeekMethod = () => {
               </div>
 
               <div className="flex-grow flex flex-col items-center">
-                <h4 className="text-[19px] font-bold text-foreground mb-3 transition-colors duration-200 group-hover:text-primary">{item.title}</h4>
-                <p className="text-[13px] text-muted-foreground leading-relaxed max-w-[240px]">
+                <h4 className="text-lg font-bold text-foreground mb-3 transition-colors duration-200 group-hover:text-primary">{item.title}</h4>
+                <p className="text-base text-muted-foreground leading-relaxed max-w-[240px]">
                   {item.desc}
                 </p>
               </div>
               {item.isInternal ? (
                 <Link
-                  to={item.href}
-                  className="mt-auto text-[14px] font-bold text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 group/btn"
+                  to={item.href || "/"}
+                  className="mt-auto text-sm font-bold text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 group/btn"
                 >
                   Explore <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
                 </Link>
               ) : (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto text-[14px] font-bold text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 group/btn"
+                <button
+                  type="button"
+                  onClick={() => setIsBookDemoOpen(true)}
+                  className="mt-auto text-base font-bold text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 group/btn cursor-pointer bg-transparent border-none p-0 outline-none align-baseline font-sans"
                 >
-                  Explore <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </a>
+                  Book Demo <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                </button>
               )}
             </motion.div>
           ))}

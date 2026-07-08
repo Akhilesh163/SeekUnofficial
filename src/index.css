@@ -56,6 +56,10 @@
 }
 
 @layer base {
+  html {
+    font-size: 16px;
+  }
+
   * {
     @apply border-border;
   }
@@ -63,13 +67,32 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Lexend', system-ui, sans-serif;
+    font-size: 1rem;       /* 16px */
+    line-height: 1.65;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
     font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 1.15;
+  }
+
+  /* ───── Standard Typography Scale ───── */
+  /* H1 Hero headline  */
+  h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); }   /* 36–60px */
+  /* H2 Section headings */
+  h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); } /* 28–44px */
+  /* H3 Card / sub-section titles */
+  h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); }   /* 20–28px */
+  /* H4 Labels */
+  h4 { font-size: 1.125rem; }                        /* 18px */
+
+  p {
+    font-size: 1rem;      /* 16px */
+    line-height: 1.75;
   }
 }
+
 
 @layer components {
   .section-padding {
@@ -184,5 +207,19 @@
 
   .animate-marquee {
     animation: marquee 35s linear infinite;
+  }
+
+  .mesh-blue-indigo {
+    background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.03) 50%, transparent);
+  }
+  .mesh-purple-teal {
+    background: radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 60%),
+                linear-gradient(to bottom, transparent, rgba(20, 184, 166, 0.03) 50%, transparent);
+  }
+  .mesh-pink-orange {
+    background: radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.05) 0%, rgba(249, 115, 22, 0.05) 40%, transparent 80%);
   }
 }

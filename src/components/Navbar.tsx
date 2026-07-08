@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { BookSessionDialog } from "@/components/BookSessionDialog";
 import { BrandLogo } from "@/components/BrandLogo";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+  const [isBookSessionOpen, setIsBookSessionOpen] = useState(false);
+
   // Dropdown states for Desktop
   const [isGreDropdownOpen, setIsGreDropdownOpen] = useState(false);
   const [isGmatDropdownOpen, setIsGmatDropdownOpen] = useState(false);
@@ -16,8 +17,6 @@ export const Navbar = () => {
   // Accordion states for Mobile
   const [isMobileGreOpen, setIsMobileGreOpen] = useState(false);
   const [isMobileGmatOpen, setIsMobileGmatOpen] = useState(false);
-
-  const [isBookSessionOpen, setIsBookSessionOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +63,7 @@ export const Navbar = () => {
             onMouseEnter={() => setIsGreDropdownOpen(true)}
             onMouseLeave={() => setIsGreDropdownOpen(false)}
           >
-            <button className="flex items-center gap-1 text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200 outline-none">
+            <button className="flex items-center gap-1 text-base font-medium text-foreground hover:text-primary transition-colors duration-200 outline-none">
               GRE
               <ChevronDown
                 className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -80,40 +79,42 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-44 bg-card border border-border/80 rounded-xl shadow-elevated p-1.5 z-50"
+                  className="absolute top-full left-0 mt-1 w-56 bg-card border border-border/80 rounded-xl shadow-elevated p-1.5 z-50"
                 >
-                  <a
-                    href="https://lms.seekyoury.com/learn/Quants-for-GRE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                  <Link
+                    to="/programs"
+                    onClick={() => handleLinkClick("programs")}
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
-                    GRE Quants
-                  </a>
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                    About GRE
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsGreDropdownOpen(false);
+                      setIsBookSessionOpen(true);
+                    }}
+                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
                   >
-                    GRE Verbal
-                  </a>
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                    GRE Self Paced Course
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsGreDropdownOpen(false);
+                      setIsBookSessionOpen(true);
+                    }}
+                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
                   >
-                    Live Class
-                  </a>
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                    GRE Live Classes
+                  </button>
+                  <Link
+                    to="/tutoring"
+                    onClick={() => handleLinkClick("tutoring")}
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
-                    Self Paced
-                  </a>
+                    GRE Private Tutoring
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -125,7 +126,7 @@ export const Navbar = () => {
             onMouseEnter={() => setIsGmatDropdownOpen(true)}
             onMouseLeave={() => setIsGmatDropdownOpen(false)}
           >
-            <button className="flex items-center gap-1 text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200 outline-none">
+            <button className="flex items-center gap-1 text-base font-medium text-foreground hover:text-primary transition-colors duration-200 outline-none">
               GMAT
               <ChevronDown
                 className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -141,40 +142,42 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-44 bg-card border border-border/80 rounded-xl shadow-elevated p-1.5 z-50"
+                  className="absolute top-full left-0 mt-1 w-56 bg-card border border-border/80 rounded-xl shadow-elevated p-1.5 z-50"
                 >
-                  <a
-                    href="https://lms.seekyoury.com/learn/Quants-For-GMAT"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                  <Link
+                    to="/programs"
+                    onClick={() => handleLinkClick("programs")}
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
-                    GMAT Quants
-                  </a>
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                    About GMAT
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsGmatDropdownOpen(false);
+                      setIsBookSessionOpen(true);
+                    }}
+                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
                   >
-                    GMAT Verbal
-                  </a>
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                    GMAT Self Paced Course
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsGmatDropdownOpen(false);
+                      setIsBookSessionOpen(true);
+                    }}
+                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
                   >
-                    Live Class
-                  </a>
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-[14px] text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
+                    GMAT Live Class
+                  </button>
+                  <Link
+                    to="/tutoring"
+                    onClick={() => handleLinkClick("tutoring")}
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
-                    Self Paced
-                  </a>
+                    GMAT Private Tutoring
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -182,48 +185,30 @@ export const Navbar = () => {
 
           <Link
             to="/tutoring"
-            className="text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200"
+            className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
             onClick={() => handleLinkClick("book-demo")}
           >
             Private Tutoring
           </Link>
 
-          <a
-            href="https://lms.seekyoury.com/learn/view-all?show=mock-tests&type=2"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200"
-          >
-            Test Series
-          </a>
-
           <Link
             to="/contact"
-            className="text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200"
+            className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
           >
             Admissions
           </Link>
 
           <Link
             to="/success-stories"
-            className="text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200"
+            className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
             onClick={() => handleLinkClick("success-stories")}
           >
             Success Stories
           </Link>
 
-          <a
-            href="https://lms.seekyoury.com/learn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200"
-          >
-            Blogs
-          </a>
-
           <Link
             to="/contact"
-            className="text-[15px] font-medium text-foreground hover:text-primary transition-colors duration-200"
+            className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
           >
             Contact Us
           </Link>
@@ -237,7 +222,7 @@ export const Navbar = () => {
               boxShadow: "0 8px 24px rgba(0, 74, 198, 0.25)",
             }}
             onClick={() => setIsBookSessionOpen(true)}
-            className="h-10 px-5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-[14px] rounded-xl transition-all duration-200"
+            className="h-10 px-5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-base rounded-xl transition-all duration-200"
           >
             Book a Session
           </motion.button>
@@ -247,7 +232,7 @@ export const Navbar = () => {
         <div className="flex lg:hidden items-center gap-3">
           <button
             onClick={() => setIsBookSessionOpen(true)}
-            className="h-9 px-3.5 bg-primary hover:bg-primary/95 text-primary-foreground font-semibold text-[13px] rounded-[10px] transition-all duration-200 shrink-0"
+            className="h-9 px-3.5 bg-primary hover:bg-primary/95 text-primary-foreground font-semibold text-sm rounded-[10px] transition-all duration-200 shrink-0"
           >
             Book a Session
           </button>
@@ -302,7 +287,7 @@ export const Navbar = () => {
                   <div>
                     <button
                       onClick={() => setIsMobileGreOpen(!isMobileGreOpen)}
-                      className="flex items-center justify-between w-full text-[16px] font-semibold text-foreground py-1 text-left"
+                      className="flex items-center justify-between w-full text-sm font-semibold text-foreground py-1 text-left"
                     >
                       <span>GRE</span>
                       <ChevronDown
@@ -319,42 +304,40 @@ export const Navbar = () => {
                           exit={{ height: 0, opacity: 0 }}
                           className="overflow-hidden pl-4 flex flex-col gap-2 mt-2 border-l border-border"
                         >
-                          <a
-                            href="https://lms.seekyoury.com/learn/Quants-for-GRE"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                          <Link
+                            to="/programs"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
+                            onClick={() => handleLinkClick("programs")}
                           >
-                            GRE Quants
-                          </a>
-                          <a
-                            href="https://lms.seekyoury.com/learn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            About GRE
+                          </Link>
+                          <button
+                            type="button"
+                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsBookSessionOpen(true);
+                            }}
                           >
-                            GRE Verbal
-                          </a>
-                          <a
-                            href="https://lms.seekyoury.com/learn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            GRE Self Paced Course
+                          </button>
+                          <button
+                            type="button"
+                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsBookSessionOpen(true);
+                            }}
                           >
-                            Live Class
-                          </a>
-                          <a
-                            href="https://lms.seekyoury.com/learn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            GRE Live Classes
+                          </button>
+                          <Link
+                            to="/tutoring"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
+                            onClick={() => handleLinkClick("tutoring")}
                           >
-                            Self Paced
-                          </a>
+                            GRE Private Tutoring
+                          </Link>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -364,7 +347,7 @@ export const Navbar = () => {
                   <div>
                     <button
                       onClick={() => setIsMobileGmatOpen(!isMobileGmatOpen)}
-                      className="flex items-center justify-between w-full text-[16px] font-semibold text-foreground py-1 text-left"
+                      className="flex items-center justify-between w-full text-sm font-semibold text-foreground py-1 text-left"
                     >
                       <span>GMAT</span>
                       <ChevronDown
@@ -381,42 +364,40 @@ export const Navbar = () => {
                           exit={{ height: 0, opacity: 0 }}
                           className="overflow-hidden pl-4 flex flex-col gap-2 mt-2 border-l border-border"
                         >
-                          <a
-                            href="https://lms.seekyoury.com/learn/Quants-For-GMAT"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                          <Link
+                            to="/programs"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
+                            onClick={() => handleLinkClick("programs")}
                           >
-                            GMAT Quants
-                          </a>
-                          <a
-                            href="https://lms.seekyoury.com/learn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            About GMAT
+                          </Link>
+                          <button
+                            type="button"
+                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsBookSessionOpen(true);
+                            }}
                           >
-                            GMAT Verbal
-                          </a>
-                          <a
-                            href="https://lms.seekyoury.com/learn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            GMAT Self Paced Course
+                          </button>
+                          <button
+                            type="button"
+                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsBookSessionOpen(true);
+                            }}
                           >
-                            Live Class
-                          </a>
-                          <a
-                            href="https://lms.seekyoury.com/learn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[14px] text-muted-foreground hover:text-primary py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            GMAT Live Class
+                          </button>
+                          <Link
+                            to="/tutoring"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
+                            onClick={() => handleLinkClick("tutoring")}
                           >
-                            Self Paced
-                          </a>
+                            GMAT Private Tutoring
+                          </Link>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -425,25 +406,15 @@ export const Navbar = () => {
                   <Link
                     to="/tutoring"
                     onClick={() => handleLinkClick("book-demo")}
-                    className="text-[16px] font-semibold text-foreground hover:text-primary py-1"
+                    className="text-sm font-semibold text-foreground hover:text-primary py-1"
                   >
                     Private Tutoring
                   </Link>
 
-                  <a
-                    href="https://lms.seekyoury.com/learn/view-all?show=mock-tests&type=2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[16px] font-semibold text-foreground hover:text-primary py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Test Series
-                  </a>
-
                   <Link
                     to="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[16px] font-semibold text-foreground hover:text-primary py-1"
+                    className="text-sm font-semibold text-foreground hover:text-primary py-1"
                   >
                     Admissions
                   </Link>
@@ -451,25 +422,15 @@ export const Navbar = () => {
                   <Link
                     to="/success-stories"
                     onClick={() => handleLinkClick("success-stories")}
-                    className="text-[16px] font-semibold text-foreground hover:text-primary py-1"
+                    className="text-sm font-semibold text-foreground hover:text-primary py-1"
                   >
                     Success Stories
                   </Link>
 
-                  <a
-                    href="https://lms.seekyoury.com/learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[16px] font-semibold text-foreground hover:text-primary py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Blogs
-                  </a>
-
                   <Link
                     to="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[16px] font-semibold text-foreground hover:text-primary py-1"
+                    className="text-sm font-semibold text-foreground hover:text-primary py-1"
                   >
                     Contact Us
                   </Link>
@@ -483,7 +444,7 @@ export const Navbar = () => {
                     setIsMobileMenuOpen(false);
                     setIsBookSessionOpen(true);
                   }}
-                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-[16px] rounded-xl transition-all duration-200 shadow-lg shadow-primary/20"
+                  className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm rounded-xl transition-all duration-200 shadow-lg shadow-primary/20"
                 >
                   Book a Session
                 </button>

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, Play } from "lucide-react";
+import { CheckCircle, Play, User, Mail, Phone as PhoneIcon, MessageSquare } from "lucide-react";
 import { buildMessageWithPhone, useContactFormSubmit } from "@/hooks/useContactFormSubmit";
 
 const emptyForm = { name: "", email: "", phone: "", message: "" };
@@ -30,42 +30,57 @@ export const BookDemoForm = () => {
   };
 
   return (
-    <section className="section-padding bg-background-alt" id="book-demo">
+    <section className="section-padding bg-gradient-to-b from-background via-blue-50/20 to-background relative overflow-hidden mesh-pink-orange" id="book-demo">
+      {/* Decorative colorful glows */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-orange-400/5 blur-3xl pointer-events-none -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-pink-400/5 blur-3xl pointer-events-none -z-10" />
       <div className="container-narrow">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <span className="pill pill-blue mb-4">BOOK A DEMO</span>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              Start Your <span className="headline-primary">Quant Journey</span> Today
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
+              Start Your <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Quant Journey</span> Today
             </h2>
-            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-[540px]">
               Book a free 30-minute consultation with Aman to discuss your goals,
               understand your current level, and create a personalized study plan.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-4 pt-2">
               {[
-                "Free personalized assessment",
-                "Custom study plan recommendation",
-                "No obligation - just guidance",
-                "Direct access to Aman",
+                { text: "Free personalized assessment", desc: "Understand your starting point with real data" },
+                { text: "Custom study plan recommendation", desc: "A tailored path designed for your target score" },
+                { text: "No obligation - just guidance", desc: "Zero commitment required, purely helpful advice" },
+                { text: "Direct access to Aman", desc: "Learn directly from an expert quant mentor" },
               ].map((benefit) => (
-                <div key={benefit} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-foreground">{benefit}</span>
+                <div key={benefit.text} className="flex items-start gap-4 p-4 bg-card border border-border/60 hover:border-primary/30 rounded-2xl hover:shadow-soft hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5 shadow-sm">
+                    <CheckCircle className="w-5 h-5 stroke-[2]" />
+                  </div>
+                  <div>
+                    <span className="text-base font-bold text-foreground block leading-tight">{benefit.text}</span>
+                    <span className="text-base text-muted-foreground mt-1.5 block leading-snug">{benefit.desc}</span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="glass-card p-8 md:p-10">
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-foreground mb-2">Fill this form to book a free Demo</h3>
+          <div className="glass-card p-8 md:p-10 relative overflow-hidden border border-primary/15 shadow-elevated">
+            {/* Top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-accent" />
+            
+            <div className="mb-8">
+              <h3 className="text-2xl font-extrabold text-foreground mb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Fill the Form</h3>
+              <p className="text-sm text-muted-foreground">Book your free 30-minute consultation with Aman</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <Label htmlFor="demo-name">Name</Label>
+              <div className="space-y-1.5">
+                <Label htmlFor="demo-name" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                  <User className="w-4 h-4 text-muted-foreground/75" />
+                  Name
+                </Label>
                 <Input
                   id="demo-name"
                   name="name"
@@ -73,12 +88,15 @@ export const BookDemoForm = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="mt-1.5"
+                  className="h-11 px-3.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="demo-email">Email</Label>
+              <div className="space-y-1.5">
+                <Label htmlFor="demo-email" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                  <Mail className="w-4 h-4 text-muted-foreground/75" />
+                  Email
+                </Label>
                 <Input
                   id="demo-email"
                   name="email"
@@ -87,12 +105,15 @@ export const BookDemoForm = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
-                  className="mt-1.5"
+                  className="h-11 px-3.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="demo-phone">Phone</Label>
+              <div className="space-y-1.5">
+                <Label htmlFor="demo-phone" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                  <PhoneIcon className="w-4 h-4 text-muted-foreground/75" />
+                  Phone
+                </Label>
                 <Input
                   id="demo-phone"
                   name="phone"
@@ -101,29 +122,37 @@ export const BookDemoForm = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
-                  className="mt-1.5"
+                  className="h-11 px-3.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="demo-message">Anything you like to share (optional)</Label>
+              <div className="space-y-1.5">
+                <Label htmlFor="demo-message" className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                  <MessageSquare className="w-4 h-4 text-muted-foreground/75" />
+                  Anything you like to share (optional)
+                </Label>
                 <Textarea
                   id="demo-message"
                   name="message"
                   placeholder="Tell us about your goals, current score, target score..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="mt-1.5 min-h-[100px]"
+                  className="px-3.5 py-2.5 border-border/80 focus-visible:ring-primary/20 focus-visible:border-primary transition-all rounded-lg placeholder:text-muted-foreground/60 min-h-[100px]"
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full rounded-full gap-2" disabled={isSubmitting}>
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full h-12 rounded-xl font-bold bg-gradient-to-r from-primary to-accent hover:opacity-95 text-white shadow-md shadow-primary/10 transition-all flex items-center justify-center gap-2 group mt-6" 
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? (
                   "Submitting..."
                 ) : (
                   <>
-                    <Play className="w-4 h-4" />
-                    Free Demo
+                    <Play className="w-4 h-4 fill-white stroke-none group-hover:scale-110 transition-transform duration-200" />
+                    <span>Free Demo</span>
                   </>
                 )}
               </Button>

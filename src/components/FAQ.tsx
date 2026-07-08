@@ -35,7 +35,10 @@ export const FAQ = () => {
   const [isBookDemoOpen, setIsBookDemoOpen] = useState(false);
 
   return (
-    <section className="section-padding bg-background" id="faq">
+    <section className="section-padding bg-gradient-to-b from-background via-blue-50/20 to-background relative overflow-hidden mesh-purple-teal" id="faq">
+      {/* Decorative colorful glows */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-blue-400/5 blur-3xl pointer-events-none -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-purple-400/5 blur-3xl pointer-events-none -z-10" />
       <div className="container-narrow">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
@@ -52,24 +55,13 @@ export const FAQ = () => {
                 value={`item-${index}`}
                 className="glass-card px-6 border-none"
               >
-                <AccordionTrigger className="text-left text-base md:text-lg font-medium text-foreground hover:no-underline py-6">
+                <AccordionTrigger className="text-left text-lg md:text-lg font-medium text-foreground hover:no-underline py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                <AccordionContent className="text-base text-muted-foreground pb-6 leading-relaxed">
                   {index === 1 ? (
                     <>
-                      You can begin by clicking on &ldquo;Start Learning Free&rdquo; on our website. Explore the
-                      courses and learning experience on our{" "}
-                      <a
-                        href="https://lms.seekyoury.com/learn"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary font-medium hover:underline"
-                      >
-                        learn page
-                      </a>
-                      , and once you&apos;re ready, you can sign up and start your preparation journey with Seek
-                      Your Y.
+                      You can enroll by booking a free demo session on our website, or you can contact us directly. We will guide you through the enrollment process and get you started on your preparation journey with Seek Your Y.
                     </>
                   ) : (
                     faq.answer
@@ -81,7 +73,7 @@ export const FAQ = () => {
 
           {/* Still have questions CTA */}
           <div className="text-center mt-16 pt-8 border-t border-border/40">
-            <p className="text-muted-foreground mb-4 text-[15px]">
+            <p className="text-muted-foreground mb-4 text-base">
               Still have questions about our methodology or programs?
             </p>
             <Button

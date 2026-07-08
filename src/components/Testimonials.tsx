@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Star, ChevronDown, Play } from "lucide-react";
+import { Star, Play, ChevronLeft, ChevronRight, Trophy, TrendingUp, BarChart2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookSessionDialog } from "@/components/BookSessionDialog";
 
@@ -14,6 +14,10 @@ export const StarPerformers = () => {
       before: 620,
       after: 740,
       delta: "+120",
+      percentage: "+19.35%",
+      sliderVal: 75,
+      starColor: "text-amber-500 fill-amber-500",
+      sliderColor: "bg-blue-600",
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
     },
     {
@@ -24,6 +28,10 @@ export const StarPerformers = () => {
       before: 580,
       after: 710,
       delta: "+130",
+      percentage: "+22.41%",
+      sliderVal: 78,
+      starColor: "text-purple-500 fill-purple-500",
+      sliderColor: "bg-purple-600",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
     },
     {
@@ -34,6 +42,10 @@ export const StarPerformers = () => {
       before: 640,
       after: 760,
       delta: "+120",
+      percentage: "+18.75%",
+      sliderVal: 80,
+      starColor: "text-blue-500 fill-blue-500",
+      sliderColor: "bg-blue-600",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
     },
   ];
@@ -89,8 +101,11 @@ export const StarPerformers = () => {
   };
 
   return (
-    <section className="pt-12 pb-12 bg-background relative overflow-hidden" id="success-stories">
-      <div className="max-w-[1440px] mx-auto">
+    <section className="pt-16 pb-16 bg-gradient-to-b from-blue-50/20 via-indigo-50/10 to-background relative overflow-hidden mesh-blue-indigo" id="success-stories">
+      {/* Decorative colorful glows */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-blue-400/10 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] rounded-full bg-purple-400/10 blur-3xl pointer-events-none -z-10" />
+      <div className="max-w-[1440px] mx-auto relative px-4 sm:px-16">
         {/* Header */}
         <div className="text-center max-w-[860px] mx-auto mb-16 px-8">
           <motion.div
@@ -102,7 +117,7 @@ export const StarPerformers = () => {
           >
             <Star className="w-3.5 h-3.5 text-primary fill-primary" />
             <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
-              Real Results. Star Performers.
+              STAR PERFORMERS
             </span>
           </motion.div>
 
@@ -111,9 +126,9 @@ export const StarPerformers = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-[26px] md:text-[38px] font-bold font-display text-foreground leading-[1.05] tracking-tight mb-5"
+            className="text-3xl md:text-4xl font-bold font-display text-foreground leading-[1.05] tracking-tight mb-5"
           >
-            Star performers. <span className="text-primary">Real transformation.</span>
+            Our Top Achievers
           </motion.h2>
 
           <motion.p
@@ -121,115 +136,139 @@ export const StarPerformers = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.14 }}
-            className="text-[14px] md:text-[16px] text-muted-foreground leading-relaxed"
+            className="text-[15px] md:text-lg text-muted-foreground leading-relaxed"
           >
-            From confusion to confidence, our star performers have achieved exceptional scores with the{" "}
-            <strong className="text-foreground font-semibold">Seek Your Y Method.</strong>
+            Celebrating outstanding performance and continuous improvement
           </motion.p>
         </div>
 
-        {/* 3D VERTICAL LOOPING CAROUSEL WRAPPER */}
-        <div className="relative w-full max-w-[1100px] h-[480px] mx-auto flex items-center justify-center select-none px-4 overflow-x-hidden">
-          {testimonials.map((t, idx) => {
-            const offset = getCardOffset(idx);
-            const isActive = offset === 0;
+        {/* 3D CAROUSEL WRAPPER WITH NAVIGATION CHEVRONS */}
+        <div className="relative w-full max-w-[1150px] h-[480px] mx-auto flex items-center justify-center select-none">
+          {/* Left Arrow Button */}
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 w-11 h-11 bg-white rounded-full border border-border/80 shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors cursor-pointer text-foreground"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
+          </button>
 
-            return (
-              <motion.div
-                key={t.name}
-                style={{
-                  y: "-50%",
-                }}
-                animate={{
-                  x: getPositionX(offset),
-                  scale: isActive ? 1 : 0.82,
-                  opacity: getOpacity(offset),
-                  zIndex: isActive ? 30 : 20,
-                }}
-                transition={{ type: "spring", stiffness: 220, damping: 26 }}
-                className="absolute left-1/2 top-1/2 w-full max-w-[300px] sm:max-w-[330px]"
-              >
-                <div
-                  className={`bg-card rounded-[28px] border overflow-hidden flex flex-col shadow-soft h-[440px] relative transition-all duration-300 group ${
-                    isActive ? "border-primary shadow-elevated" : "border-border/80 pointer-events-none"
-                  }`}
+          {/* Right Arrow Button */}
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 w-11 h-11 bg-white rounded-full border border-border/80 shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors cursor-pointer text-foreground"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+          </button>
+
+          {/* 3D Carousel Cards Container */}
+          <div className="w-full h-full relative overflow-visible flex items-center justify-center">
+            {testimonials.map((t, idx) => {
+              const offset = getCardOffset(idx);
+              const isActive = offset === 0;
+
+              return (
+                <motion.div
+                  key={t.name}
+                  style={{
+                    y: "-50%",
+                  }}
+                  animate={{
+                    x: getPositionX(offset),
+                    scale: isActive ? 1 : 0.82,
+                    opacity: getOpacity(offset),
+                    zIndex: isActive ? 30 : 20,
+                  }}
+                  transition={{ type: "spring", stiffness: 220, damping: 26 }}
+                  className="absolute left-1/2 top-1/2 w-full max-w-[300px] sm:max-w-[330px]"
                 >
-                  {/* Top Header Background (Active Card Only) */}
-                  {isActive && (
-                    <div className="absolute top-0 inset-x-0 h-[100px] bg-primary overflow-hidden">
-                      {/* Decorative background sparkles */}
-                      <div className="absolute top-3 left-8 w-2 h-2 bg-white/20 rounded-full" />
-                      <div className="absolute top-8 left-16 w-1.5 h-1.5 bg-white/15 rounded-full" />
-                      <div className="absolute top-4 right-14 w-3 h-3 bg-white/20 rounded-full" />
-                      <div className="absolute top-8 right-24 w-1.5 h-1.5 bg-white/15 rounded-full" />
-                    </div>
-                  )}
-
-                  {/* School Badge / Tag */}
-                  {isActive ? (
-                    <span className="absolute top-[152px] left-1/2 transform -translate-x-1/2 z-20 text-[10px] text-white font-bold bg-primary border border-primary/20 rounded-full px-3 py-1 shadow-sm uppercase tracking-wider">
-                      {t.schoolShort}
-                    </span>
-                  ) : (
-                    <span className="absolute top-5 right-5 z-20 text-[10px] text-primary font-bold bg-primary/10 border border-primary/20 rounded-full px-3 py-1 shadow-sm uppercase tracking-wider">
-                      {t.schoolShort}
-                    </span>
-                  )}
-
-                  {/* Centered Avatar Image */}
                   <div
-                    className={`absolute left-1/2 transform -translate-x-1/2 rounded-full overflow-hidden z-10 transition-all duration-300 ${
-                      isActive
-                        ? "top-[24px] w-36 h-36 border-4 border-card shadow-md"
-                        : "top-[20px] w-32 h-32 border border-border/80"
+                    onClick={() => {
+                      if (!isActive) setCurrentIndex(idx);
+                    }}
+                    className={`bg-slate-900 text-white rounded-[28px] border overflow-hidden flex flex-col shadow-soft h-[460px] w-full relative transition-all duration-300 group cursor-pointer ${
+                      isActive 
+                        ? "border-blue-600 shadow-[0_0_25px_rgba(37,99,235,0.25)]" 
+                        : "border-border/80 hover:border-white/20"
                     }`}
                   >
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Card Contents */}
-                  <div
-                    className={`flex flex-col justify-between h-full px-6 pb-6 ${
-                      isActive ? "pt-[190px]" : "pt-[165px]"
-                    }`}
-                  >
-                    {/* Name & Quote */}
-                    <div className="text-center flex-1 flex flex-col justify-center">
-                      <h3 className="text-[20px] font-bold text-foreground mb-3">{t.name}</h3>
-                      <p className="text-[13px] text-muted-foreground leading-relaxed italic px-2">
-                        &ldquo;{t.quote}&rdquo;
-                      </p>
+                    {/* Full Bleed Background Image */}
+                    <div className="absolute inset-0 w-full h-full z-0">
+                      <img
+                        src={t.image}
+                        alt={t.name}
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Dark gradient overlay at the bottom */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                     </div>
 
-                    {/* Separator Line */}
-                    <div className="border-t border-border/60 my-4" />
-
-                    {/* Stats Row */}
-                    <div className="grid grid-cols-3 divide-x divide-border/60 text-center items-center">
-                      <div className="flex flex-col items-center">
-                        <span className="text-[8px] sm:text-[9px] font-bold text-muted-foreground uppercase tracking-wider">Before</span>
-                        <span className="text-[15px] sm:text-[16px] font-black text-foreground/80 mt-1">{t.before}</span>
-                      </div>
-                      <div className="flex flex-col items-center px-1">
-                        <span className="text-[8px] sm:text-[9px] font-bold text-muted-foreground uppercase tracking-wider">Improvement</span>
-                        <span className="text-[15px] sm:text-[16px] font-black text-emerald-500 mt-1 flex items-center justify-center gap-0.5">
-                          {t.delta} <span className="text-[12px]">↗</span>
+                    {/* Left Badge (Active only): Gold trophy badge */}
+                    {isActive && (
+                      <div className="absolute top-5 left-5 z-20 flex flex-col items-center select-none text-amber-500">
+                        <Trophy className="w-7 h-7 stroke-[1.5] text-amber-500 fill-amber-500/20" />
+                        <span className="text-[9px] font-black uppercase tracking-widest mt-1">
+                          Top Performer
                         </span>
                       </div>
-                      <div className="flex flex-col items-center">
-                        <span className="text-[8px] sm:text-[9px] font-bold text-muted-foreground uppercase tracking-wider">Final Score</span>
-                        <span className="text-[18px] sm:text-[20px] font-black text-primary mt-1">{t.after}</span>
+                    )}
+
+                    {/* Right Badge (School Badge) */}
+                    <span className="absolute top-5 right-5 z-20 text-[10px] text-white font-bold bg-blue-600/90 border border-blue-500/30 rounded-full px-3 py-1 shadow-sm uppercase tracking-wider">
+                      {t.schoolShort}
+                    </span>
+
+                    {/* Card overlay content - aligned to bottom */}
+                    <div className="absolute bottom-0 inset-x-0 p-6 flex flex-col z-10 pt-24">
+                      {/* Name */}
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold text-white mb-3">{t.name}</h3>
+                      </div>
+
+                      {/* Separator Line */}
+                      <div className="border-t border-white/20 mb-4" />
+
+                      {/* Stats Grid */}
+                      <div className="grid grid-cols-3 divide-x divide-white/10 text-center items-start">
+                        <div className="flex flex-col items-center">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Before</span>
+                          <span className="text-[22px] sm:text-[24px] font-black text-white mt-0.5">{t.before}</span>
+                          {isActive && (
+                            <div className="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mt-2">
+                              <BarChart2 className="w-4.5 h-4.5" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-col items-center px-1">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Improvement</span>
+                          <span className="text-[22px] sm:text-[24px] font-black text-emerald-400 mt-0.5 flex items-center justify-center gap-0.5">
+                            {t.delta} <span className="text-[16px]">↗</span>
+                          </span>
+                          {isActive && (
+                            <div className="h-8 flex items-center justify-center mt-2">
+                              <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">
+                                {t.percentage}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Final Score</span>
+                          <span className="text-[22px] sm:text-[24px] font-black text-blue-400 mt-0.5">{t.after}</span>
+                          {isActive && (
+                            <div className="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mt-2">
+                              <Trophy className="w-4.5 h-4.5" />
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         {/* DOTS INDICATORS */}

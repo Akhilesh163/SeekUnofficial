@@ -63,7 +63,7 @@ export const ProductJourney = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground max-w-3xl mx-auto">
             Choose Your <span className="headline-primary">Journey</span>
           </h2>
-          <p className="text-base text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
             Whether you're starting from scratch or fine-tuning for test day, we have the right course for you.
           </p>
         </div>
@@ -80,11 +80,11 @@ export const ProductJourney = () => {
               </div>
 
               <h3 className="text-2xl font-bold text-foreground mb-3">{course.title}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed flex-grow">{course.desc}</p>
+              <p className="text-base text-muted-foreground mb-6 leading-relaxed flex-grow">{course.desc}</p>
 
               <ul className="space-y-2 mb-6">
                 {course.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-sm text-foreground">
+                  <li key={feature} className="flex items-center gap-2 text-base text-foreground">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {feature}
                   </li>
@@ -92,20 +92,19 @@ export const ProductJourney = () => {
               </ul>
 
               {course.cta === "explore" ? (
-                <a
-                  href={course.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all mt-auto"
+                <button
+                  type="button"
+                  onClick={() => setIsBookDemoOpen(true)}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all mt-auto text-left bg-transparent border-none p-0 cursor-pointer outline-none font-sans"
                 >
-                  Explore Course
+                  Book Demo
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
               ) : (
                 <button
                   type="button"
                   onClick={() => setIsBookDemoOpen(true)}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all mt-auto text-left"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all mt-auto text-left bg-transparent border-none p-0 cursor-pointer outline-none font-sans"
                 >
                   <Play className="w-4 h-4" />
                   Book a free demo

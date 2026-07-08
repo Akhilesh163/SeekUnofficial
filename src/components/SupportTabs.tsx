@@ -118,7 +118,10 @@ export const SupportTabs = () => {
   const activeContent = supportTabs.find((tab) => tab.id === activeTab);
 
   return (
-    <section className="pt-16 pb-12 px-8 md:px-16 lg:px-24 xl:px-16 bg-background" id="tutoring">
+    <section className="pt-20 pb-20 px-8 md:px-16 lg:px-24 xl:px-16 bg-gradient-to-b from-background via-blue-50/15 to-background relative overflow-hidden mesh-purple-teal" id="tutoring">
+      {/* Decorative colorful glows */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-blue-400/5 blur-3xl pointer-events-none -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-purple-400/5 blur-3xl pointer-events-none -z-10" />
       <div className="max-w-[1100px] mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -128,7 +131,7 @@ export const SupportTabs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center bg-primary/5 border border-primary/20 text-foreground text-[11px] font-bold uppercase tracking-[0.12em] px-5 py-2.5 rounded-full mb-6">
+            <span className="inline-flex items-center bg-primary/5 border border-primary/20 text-foreground text-xs font-bold uppercase tracking-[0.12em] px-5 py-2.5 rounded-full mb-6">
               PRIVATE TUTORING
             </span>
           </motion.div>
@@ -138,9 +141,9 @@ export const SupportTabs = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-[28px] md:text-[40px] lg:text-[45px] font-bold font-display text-foreground leading-[1.1] tracking-tight mb-6"
+            className="text-3xl md:text-4xl lg:text-4xl font-bold font-display text-foreground leading-[1.1] tracking-tight mb-6"
           >
-            Personalized 1-on-1 <span className="text-primary">Tutoring</span>
+            Personalized 1-on-1 <span className="text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Tutoring</span>
           </motion.h2>
 
           <motion.p
@@ -148,7 +151,7 @@ export const SupportTabs = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.16 }}
-            className="text-[14px] md:text-[16px] text-muted-foreground leading-relaxed max-w-[620px] mx-auto"
+            className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-[620px] mx-auto"
           >
             Get dedicated support from Aman to tackle your specific challenges and maximize your score.
           </motion.p>
@@ -160,13 +163,13 @@ export const SupportTabs = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2.5 px-5 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 border ${
+              className={`flex items-center gap-2.5 px-6 py-4 rounded-full text-base font-bold transition-all duration-300 border shadow-sm ${
                 activeTab === tab.id
-                  ? "bg-card border-border/80 shadow-soft text-foreground scale-105"
-                  : "bg-primary/5 border-transparent text-muted-foreground hover:text-primary hover:bg-primary/10"
+                  ? "bg-gradient-to-r from-blue-600 via-indigo-500 to-indigo-600 text-white border-transparent scale-105 shadow-md shadow-indigo-500/20"
+                  : "bg-white border-border/85 text-muted-foreground hover:text-primary hover:bg-primary/5"
               }`}
             >
-              <tab.icon className="w-4 h-4 text-primary" />
+              <tab.icon className={`w-4.5 h-4.5 ${activeTab === tab.id ? "text-white" : "text-primary"}`} />
               <span>{tab.label}</span>
             </button>
           ))}
@@ -191,7 +194,7 @@ export const SupportTabs = () => {
                       {activeContent.headingNormal}{" "}
                       <span className="text-primary block">{activeContent.headingAccent}</span>
                     </h3>
-                    <p className="text-[14px] md:text-[15px] text-muted-foreground mb-6 leading-relaxed">
+                    <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
                       {activeContent.content}
                     </p>
 
@@ -206,8 +209,8 @@ export const SupportTabs = () => {
                             <item.icon className="w-5 h-5 stroke-[1.5]" />
                           </div>
                           <div className="flex-grow">
-                            <h4 className="text-[14px] font-bold text-foreground leading-snug">{item.title}</h4>
-                            <p className="text-[12px] text-muted-foreground leading-normal mt-0.5">{item.desc}</p>
+                            <h4 className="text-base font-bold text-foreground leading-snug">{item.title}</h4>
+                            <p className="text-base text-muted-foreground leading-normal mt-0.5">{item.desc}</p>
                           </div>
                         </div>
                       ))}
@@ -217,7 +220,7 @@ export const SupportTabs = () => {
                     <div className="flex flex-wrap items-center gap-6">
                       <Button
                         onClick={() => setIsBookDemoOpen(true)}
-                        className="h-12 px-6 bg-primary hover:bg-primary/95 text-primary-foreground font-bold text-[15px] rounded-[14px] flex items-center justify-center gap-2.5 transition-all duration-200"
+                        className="h-12 px-6 bg-primary hover:bg-primary/95 text-primary-foreground font-bold text-sm rounded-[14px] flex items-center justify-center gap-2.5 transition-all duration-200"
                       >
                         {activeTab === "tutoring" ? (
                           <Calendar className="w-4.5 h-4.5" />
@@ -233,7 +236,7 @@ export const SupportTabs = () => {
                           <img src={avatar2} alt="Student" className="w-8 h-8 rounded-full border border-card object-cover" />
                           <img src={avatar3} alt="Student" className="w-8 h-8 rounded-full border border-card object-cover" />
                         </div>
-                        <div className="text-[11px] text-muted-foreground leading-tight">
+                        <div className="text-xs text-muted-foreground leading-tight">
                           <span className="font-extrabold text-foreground block">4.9/5 ★</span>
                           Trusted by 10K+ students
                         </div>
@@ -265,7 +268,7 @@ export const SupportTabs = () => {
                           
                           {/* 3 Simple Steps */}
                           <div className="w-full max-w-[340px] mb-3">
-                            <h4 className="text-[11px] font-bold text-center text-foreground mb-3">Get your doubts solved in 3 simple steps</h4>
+                            <h4 className="text-xs font-bold text-center text-foreground mb-3">Get your doubts solved in 3 simple steps</h4>
                             <div className="flex justify-between items-start relative px-4">
                               <div className="absolute top-4 left-[15%] right-[15%] border-t border-dashed border-primary/15 z-0" />
                               
@@ -273,24 +276,24 @@ export const SupportTabs = () => {
                                 <div className="w-8 h-8 rounded-full bg-indigo-500/10 text-indigo-600 flex items-center justify-center">
                                   <MessageSquare className="w-4 h-4" />
                                 </div>
-                                <span className="text-[9px] font-bold text-foreground">Ask</span>
-                                <span className="text-[7.5px] text-muted-foreground leading-tight">Type or upload doubt</span>
+                                <span className="text-[6.3px] font-bold text-foreground">Ask</span>
+                                <span className="text-[5.3px] text-muted-foreground leading-tight">Type or upload doubt</span>
                               </div>
 
                               <div className="flex flex-col items-center gap-1 text-center relative z-10 w-[70px]">
                                 <div className="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
                                   <Users className="w-4 h-4" />
                                 </div>
-                                <span className="text-[9px] font-bold text-foreground">Connect</span>
-                                <span className="text-[7.5px] text-muted-foreground leading-tight">Match with expert</span>
+                                <span className="text-[6.3px] font-bold text-foreground">Connect</span>
+                                <span className="text-[5.3px] text-muted-foreground leading-tight">Match with expert</span>
                               </div>
 
                               <div className="flex flex-col items-center gap-1 text-center relative z-10 w-[70px]">
                                 <div className="w-8 h-8 rounded-full bg-blue-500/10 text-blue-600 flex items-center justify-center">
                                   <CheckCircle className="w-4 h-4" />
                                 </div>
-                                <span className="text-[9px] font-bold text-foreground">Understand</span>
-                                <span className="text-[7.5px] text-muted-foreground leading-tight">Receive solution</span>
+                                <span className="text-[6.3px] font-bold text-foreground">Understand</span>
+                                <span className="text-[5.3px] text-muted-foreground leading-tight">Receive solution</span>
                               </div>
                             </div>
                           </div>
@@ -318,10 +321,10 @@ export const SupportTabs = () => {
                               {/* Student Msg */}
                               <div className="self-end bg-primary/10 rounded-2xl rounded-tr-sm p-2 max-w-[85%] text-[10px]">
                                 <p className="text-foreground">Can you explain how to solve this integral?</p>
-                                <div className="mt-1 bg-card/90 border border-border/40 p-1.5 rounded-lg text-center font-mono text-[9px] text-foreground">
+                                <div className="mt-1 bg-card/90 border border-border/40 p-1.5 rounded-lg text-center font-mono text-[6.3px] text-foreground">
                                   ∫ (x² + 1)/(x² - 4) dx
                                 </div>
-                                <span className="text-[7px] text-muted-foreground text-right block mt-0.5">10:32 AM ✓✓</span>
+                                <span className="text-[4.9px] text-muted-foreground text-right block mt-0.5">10:32 AM ✓✓</span>
                               </div>
 
                               {/* Tutor Msg */}
@@ -329,16 +332,16 @@ export const SupportTabs = () => {
                                 <p className="text-foreground">Sure! Let's solve it step by step. We can break it down using partial fractions.</p>
                                 <div className="mt-1.5 bg-card border border-border/70 p-1.5 rounded-lg flex items-center gap-1.5 hover:border-primary/20 transition-colors cursor-pointer">
                                   <FileText className="w-3.5 h-3.5 text-primary" />
-                                  <span className="text-[9px] font-bold text-foreground">Step-by-step Solution.pdf</span>
+                                  <span className="text-[6.3px] font-bold text-foreground">Step-by-step Solution.pdf</span>
                                 </div>
-                                <span className="text-[7px] text-muted-foreground block mt-0.5">10:34 AM</span>
+                                <span className="text-[4.9px] text-muted-foreground block mt-0.5">10:34 AM</span>
                               </div>
                             </div>
 
                             {/* Input Bar */}
                             <div className="border-t border-border/40 pt-2 flex items-center gap-2">
                               <Paperclip className="w-3.5 h-3.5 text-muted-foreground cursor-pointer" />
-                              <div className="flex-grow bg-secondary/30 border border-border/40 rounded-full px-3 py-1 text-[9px] text-muted-foreground">
+                              <div className="flex-grow bg-secondary/30 border border-border/40 rounded-full px-3 py-1 text-[6.3px] text-muted-foreground">
                                 Type your doubt...
                               </div>
                               <div className="w-5.5 h-5.5 rounded-full bg-primary flex items-center justify-center text-white shrink-0 cursor-pointer">
@@ -386,8 +389,8 @@ export const SupportTabs = () => {
                               <badge.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.5]" />
                             </div>
                             <div className="text-left">
-                              <h5 className="text-[9px] sm:text-[10px] xl:text-[12px] font-bold text-foreground leading-none mb-1">{badge.title}</h5>
-                              <span className="text-[7.5px] sm:text-[8.5px] xl:text-[10px] text-muted-foreground leading-none">{badge.desc}</span>
+                              <h5 className="text-sm sm:text-sm xl:text-sm font-bold text-foreground leading-none mb-1">{badge.title}</h5>
+                              <span className="text-xs sm:text-sm xl:text-sm text-muted-foreground leading-none">{badge.desc}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -395,8 +398,8 @@ export const SupportTabs = () => {
                         {/* Progress Card bottom-left */}
                         <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-card border border-border/80 p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-soft text-left z-20 min-w-[140px] sm:min-w-[185px] max-w-[160px] sm:max-w-[220px]">
                           <div className="flex justify-between items-center mb-1.5 sm:mb-2.5">
-                            <span className="text-[9px] sm:text-[11px] font-bold text-foreground">Your Progress</span>
-                            <span className="text-[8px] sm:text-[9px] text-muted-foreground">This Week</span>
+                            <span className="text-sm sm:text-sm font-bold text-foreground">Your Progress</span>
+                            <span className="text-[8.4px] sm:text-sm text-muted-foreground">This Week</span>
                           </div>
                           <div className="flex items-center gap-2 sm:gap-3">
                             <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
@@ -407,11 +410,11 @@ export const SupportTabs = () => {
                                   strokeDashoffset={2 * Math.PI * 16 * (1 - activeContent.progressVal / 100)}
                                 />
                               </svg>
-                              <span className="absolute text-[8.5px] sm:text-[10px] font-black text-foreground">{activeContent.progressVal}%</span>
+                              <span className="absolute text-[8.4px] sm:text-sm font-black text-foreground">{activeContent.progressVal}%</span>
                             </div>
                             <div>
-                              <span className="text-[9px] sm:text-[11px] font-bold text-foreground block leading-tight">{activeContent.progressLabel}</span>
-                              <span className="text-[8px] sm:text-[9px] text-muted-foreground block leading-tight mt-0.5">{activeContent.progressSub}</span>
+                              <span className="text-sm sm:text-sm font-bold text-foreground block leading-tight">{activeContent.progressLabel}</span>
+                              <span className="text-[8.4px] sm:text-sm text-muted-foreground block leading-tight mt-0.5">{activeContent.progressSub}</span>
                             </div>
                           </div>
                         </div>
@@ -424,7 +427,7 @@ export const SupportTabs = () => {
                             <ThumbsUp className="w-3.5 h-3.5" />
                           </div>
                           <div className="text-left leading-tight">
-                            <span className="text-[11px] font-black text-foreground block">98%</span>
+                            <span className="text-xs font-black text-foreground block">98%</span>
                             <span className="text-[8px] text-muted-foreground">Satisfaction</span>
                           </div>
                         </div>
@@ -434,8 +437,8 @@ export const SupportTabs = () => {
                             <Clock className="w-3.5 h-3.5" />
                           </div>
                           <div className="text-left leading-tight">
-                            <span className="text-[9px] text-muted-foreground block">Avg. Response</span>
-                            <span className="text-[11px] font-black text-foreground block">25 sec</span>
+                            <span className="text-[6.3px] text-muted-foreground block">Avg. Response</span>
+                            <span className="text-xs font-black text-foreground block">25 sec</span>
                           </div>
                         </div>
 
@@ -444,7 +447,7 @@ export const SupportTabs = () => {
                             <Users className="w-3.5 h-3.5" />
                           </div>
                           <div className="text-left leading-tight">
-                            <span className="text-[11px] font-black text-foreground block">10K+</span>
+                            <span className="text-xs font-black text-foreground block">10K+</span>
                             <span className="text-[8px] text-muted-foreground">Doubts Solved</span>
                           </div>
                         </div>

@@ -15,10 +15,10 @@ export const AboutMe = () => {
   };
 
   return (
-    <section className="pt-16 pb-12 px-8 md:px-16 lg:px-24 xl:px-16 bg-background relative overflow-hidden" id="about">
+    <section className="pt-20 pb-20 px-8 md:px-16 lg:px-24 xl:px-16 bg-gradient-to-b from-background via-blue-50/20 to-background relative overflow-hidden mesh-blue-indigo" id="about">
       {/* Decorative background blobs */}
-      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-1/4 left-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl -z-10" />
 
       <div className="max-w-[1440px] mx-auto">
         <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-12 lg:gap-16 items-center">
@@ -66,8 +66,8 @@ export const AboutMe = () => {
                   <Users className="w-5 h-5 stroke-[2]" />
                 </div>
                 <div>
-                  <p className="text-[16px] font-black text-foreground leading-none">10,000+</p>
-                  <p className="text-[11px] font-medium text-muted-foreground mt-1">Students Mentored</p>
+                  <p className="text-sm font-black text-foreground leading-none">10,000+</p>
+                  <p className="text-xs font-medium text-muted-foreground mt-1">Students Mentored</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -95,8 +95,8 @@ export const AboutMe = () => {
                   <GraduationCap className="w-5 h-5 stroke-[2]" />
                 </div>
                 <div>
-                  <p className="text-[16px] font-black text-foreground leading-none">8+ Years</p>
-                  <p className="text-[11px] font-medium text-muted-foreground mt-1">Experience</p>
+                  <p className="text-sm font-black text-foreground leading-none">8+ Years</p>
+                  <p className="text-xs font-medium text-muted-foreground mt-1">Experience</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -124,8 +124,8 @@ export const AboutMe = () => {
                   <Award className="w-5 h-5 stroke-[2]" />
                 </div>
                 <div>
-                  <p className="text-[16px] font-black text-foreground leading-none">96th %ile</p>
-                  <p className="text-[11px] font-medium text-muted-foreground mt-1">Percentile Achievers</p>
+                  <p className="text-sm font-black text-foreground leading-none">96th %ile</p>
+                  <p className="text-xs font-medium text-muted-foreground mt-1">Percentile Achievers</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -141,7 +141,7 @@ export const AboutMe = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center self-start gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-6 text-primary"
             >
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em]">
+              <span className="text-xs font-bold uppercase tracking-[0.14em]">
                 Meet Your Mentor
               </span>
             </motion.div>
@@ -152,13 +152,13 @@ export const AboutMe = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-[28px] md:text-[42px] font-bold font-display text-foreground leading-[1.05] tracking-tight mb-8"
+              className="text-3xl md:text-4xl font-bold font-display text-foreground leading-[1.1] tracking-tight mb-8"
             >
-              Hi, I'm <span className="text-primary">Aman</span>
+              Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Aman</span>
             </motion.h2>
 
             {/* Paragraphs */}
-            <div className="space-y-6 text-[15px] sm:text-[16px] text-muted-foreground leading-relaxed mb-10 max-w-[620px]">
+            <div className="space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed mb-10 max-w-[620px]">
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
