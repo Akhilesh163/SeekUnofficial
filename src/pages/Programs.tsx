@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/Navbar";
-import AboutGre from "@/components/AboutGre";
+import AboutGre from "@/components/aboutGre";
 
 const Programs = () => {
   return (
