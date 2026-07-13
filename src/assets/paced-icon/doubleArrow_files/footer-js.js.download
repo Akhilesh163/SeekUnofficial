@@ -1,0 +1,779 @@
+var chennai_city = {
+    "Adyar": "Adyar",
+    "Annanagar": "Annanagar",
+    "Others": "Chennai Marketing"
+};
+var delhi_city = {
+    "Hudson Line": "Hudson Line",
+    "Hauz Khas - Adhchini": "Adhchini",
+    "New Friends Colony": "New Friends Colony",
+    "Raja Garden": "Raja Garden",
+    "Dwarka" : "Del Dwarka",
+    "Others": "Delhi- Others"
+}
+var hyderabad_city = {
+    "Begumpet": "Begumpet",
+    "Madhapur": "Madhapur",
+    "Tarnaka": "Tarnaka",
+    "Kukatpally": "Kukatpally",
+    "Others": "Hyderabad Marketing"
+};
+var mumbai_city = {
+    "Dadar": "Dadar",
+    "Andheri": "Andheri",
+    "Borivali": "Borivali",
+    "South Bombay": "Churchgate",
+    "Others": "Mumbai Marketing"
+};
+var gurgaon_city = {
+    "Sector 14 Gurgaon": "Sector 14 Gurgaon",
+    "Golf Course Gurgaon": "Golf Course Gurgaon"
+}
+var outside_india = {
+    "Kathmandu": "Kathmandu",
+    "Others": "Others"   
+}
+var pune_city = {
+    "Hinjawadi": "Hinjawadi",
+    "Pune Fergusson College Road": "Pune Fergusson College Road",
+    "Kharadi" : "Pune- Kharadi",
+    "Others": "Pune Fergusson College Road"
+}
+var bangalore_city = {
+    "Jayanagar": "Jayanagar",
+    "Bellandur": "Bellandur",
+    "Indira Nagar": "Indira Nagar",
+    "Whitefield": "Whitefield",
+    "Others": "Bangalore Marketing"
+};
+var kolkata_city = {
+    "Southern Avenue": "Southern Avenue",
+    "Salt Lake": "Salt Lake"
+};
+var navi_mumbai_city = {
+    "Vashi": "Vashi",
+    "Nerul": "Nerul"
+};
+var thane_mumbai_city = {
+    "Thane": "Thane",
+    "Ghodbunder": "Ghodbunder",
+    "Others": "Navi Mumbai- Marketing"
+};
+
+
+$('#citycheckother').on('change', function() {
+    var city_val = $("#citycheckother option:selected").text();
+    console.log(city_val);
+    if (city_val == "Chennai") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(chennai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Delhi") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(delhi_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Hyderabad") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(hyderabad_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Kolkata") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(kolkata_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Mumbai") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(mumbai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Pune") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(pune_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');        
+    } else if (city_val == "Gurgaon") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(gurgaon_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Others") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<input placeholder="Your City/Location" class="form-control selectpres1" name="field_other_centers" required>');
+    }
+    else if(city_val == "Outside India") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(outside_india, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');        
+    }
+    else if(city_val == "Bangalore") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(bangalore_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } 
+    else if(city_val == "Vashi" || city_val == "Navi Mumbai") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(navi_mumbai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    }
+    else if(city_val == "Thane") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(thane_mumbai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } 
+    else {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "none");
+        $('.dom-newother').before().append('<input type="hidden" value="' + city_val + '" class="form-control selectpres1" name="field_nearest_centre" required>');
+    }
+});
+$('#citycheck1').on('change', function() {
+    var city_val = $("#citycheck1 option:selected").text();
+    if (city_val == "Chennai") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(chennai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Delhi") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(delhi_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Hyderabad") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(hyderabad_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Kolkata") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(kolkata_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Mumbai") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(mumbai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Pune") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(pune_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Gurgaon") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(gurgaon_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');
+    } else if (city_val == "Others") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<input placeholder="Your City/Location" class="form-control selectpres1" name="field_other_centers" required>');
+    }
+    else if(city_val == "Outside India") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(outside_india, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');        
+    } 
+    else if(city_val == "Bangalore") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(bangalore_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>'); 
+    }
+    else if(city_val == "Vashi" || city_val == "Navi Mumbai") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(navi_mumbai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');    
+    }
+    else if(city_val == "Thane") {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "block");
+        $('.dom-new1').before().append('<select class="form-control selectpres1" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(thane_mumbai_city, function(i, p) {
+            $('.selectpres1').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres1').append('</select>');    
+    }
+    else {
+        $('.selectpres1').remove();
+        $(".nearbyyounew1").css("display", "none");
+        $('.dom-new1').before().append('<input type="hidden" value="' + city_val + '" class="form-control selectpres1" name="field_nearest_centre" required>');
+    }
+});
+$('#citycheck2').on('change', function() {
+    var city_val = $("#citycheck2 option:selected").text();
+    if (city_val == "Chennai") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(chennai_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Delhi") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(delhi_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Hyderabad") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(hyderabad_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Kolkata") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(kolkata_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Mumbai") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(mumbai_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Pune") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(pune_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Gurgaon") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(gurgaon_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } else if (city_val == "Others") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<input placeholder="Your City/Location" class="form-control selectpres2" name="field_other_centers" required>');
+    }
+    else if(city_val == "Outside India") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(outside_india, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');        
+    }
+    else if(city_val == "Bangalore") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(bangalore_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    } 
+    else if(city_val == "Vashi" || city_val == "Navi Mumbai") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(navi_mumbai_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    }
+    else if(city_val == "Thane") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<select class="form-control selectpres2" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(thane_mumbai_city, function(i, p) {
+            $('.selectpres2').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres2').append('</select>');
+    }
+    else {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "none");
+        $('.dom-new2').before().append('<input type="hidden" value="' + city_val + '" class="form-control selectpres2" name="field_nearest_centre" required>');
+    }
+});
+$('#citycheck3').on('change', function() {
+    var city_val = $("#citycheck3 option:selected").text();
+    if (city_val == "Chennai") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(chennai_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Delhi") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(delhi_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Hyderabad") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(hyderabad_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Kolkata") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(kolkata_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Mumbai") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(mumbai_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Pune") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(pune_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Gurgaon") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(gurgaon_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } else if (city_val == "Others") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<input placeholder="Your City/Location" class="form-control selectpres3" name="field_other_centers" required>');
+    }
+    else if(city_val == "Outside India") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(outside_india, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    }
+    else if(city_val == "Bangalore") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(bangalore_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    } 
+    else if(city_val == "Vashi" || city_val == "Navi Mumbai") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(navi_mumbai_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    }
+    else if(city_val == "Thane") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<select class="form-control selectpres3" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(thane_mumbai_city, function(i, p) {
+            $('.selectpres3').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres3').append('</select>');
+    }
+    else {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "none");
+        $('.dom-new3').before().append('<input type="hidden" value="' + city_val + '" class="form-control selectpres3" name="field_nearest_centre" required>');
+    }
+});
+$('#citycheck4').on('change', function() {
+    var city_val = $("#citycheck4 option:selected").text();
+    if (city_val == "Chennai") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(chennai_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Delhi") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(delhi_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Hyderabad") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(hyderabad_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Kolkata") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(kolkata_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Mumbai") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(mumbai_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Pune") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(pune_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Gurgaon") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(gurgaon_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } else if (city_val == "Others") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<input placeholder="Your City/Location" class="form-control selectpres4" name="field_other_centers" required>');
+    }
+    else if(city_val == "Outside India") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(outside_india, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    }
+    else if(city_val == "Bangalore") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(bangalore_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } 
+    else if(city_val == "Vashi" || city_val == "Navi Mumbai") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(navi_mumbai_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    }
+    else if(city_val == "Thane") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<select class="form-control selectpres4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(thane_mumbai_city, function(i, p) {
+            $('.selectpres4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpres4').append('</select>');
+    } 
+    else {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "none");
+        $('.dom-new4').before().append('<input type="hidden" value="' + city_val + '" class="form-control selectpres4" name="field_nearest_centre" required>');
+    }
+});
+$('#citychecks4').on('change', function() {
+    var city_val = $("#citychecks4 option:selected").text();
+    if (city_val == "Chennai") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(chennai_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Delhi") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(delhi_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Hyderabad") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(hyderabad_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Kolkata") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(kolkata_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Mumbai") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(mumbai_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Pune") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(pune_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Gurgaon") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(gurgaon_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    } else if (city_val == "Others") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<input placeholder="Your City/Location" class="form-control selectpress4" name="field_other_centers" required>');
+    }
+    else if(city_val == "Outside India") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(outside_india, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    }
+    else if(city_val == "Bangalore") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(bangalore_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    }
+    else if(city_val == "Vashi" || city_val == "Navi Mumbai") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(navi_mumbai_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    }
+    else if(city_val == "Thane") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<select class="form-control selectpress4" name="field_nearest_centre" required><option value="" disabled="" selected="">Nearest Center</option>');
+        $.each(thane_mumbai_city, function(i, p) {
+            $('.selectpress4').append($('<option class="bld"></option>').val(p).html(i))
+        })
+        $('.selectpress4').append('</select>');
+    }
+    else {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "none");
+        $('.dom-news4').before().append('<input type="hidden" value="' + city_val + '" class="form-control selectpress4" name="field_nearest_centre" required>');
+    }
+});
+
+$("#mx_Interested_Product2").change(function(event) {
+    var valueofproduct = $("select#mx_Interested_Product2 option:selected").text().replace('Interested in?','');
+    if(valueofproduct == "MBA/MIM") {
+        $("#lookingfor12").html(`<input type="hidden" name="mx_Looking_For" value="MBA/MIM" />`);
+    } else if(valueofproduct == "MS/PhD") {
+        $("#lookingfor12").html(`<input type="hidden" name="mx_Looking_For" value="MS/PhD" />`);
+
+    } else if(valueofproduct == "UG") {
+        $("#lookingfor12").html(`<input type="hidden" name="mx_Looking_For" value="UG" />`);
+        
+    } else {
+        $("#lookingfor12").html(``);
+    }
+});
+
+$("#mx_Interested_Product1").change(function(event) {
+    var valueofproduct = $("select#mx_Interested_Product1 option:selected").text().replace('Interested in?','');
+    if(valueofproduct == "MBA/MIM") {
+        $("#lookingfor11").html(`<input type="hidden" name="mx_Looking_For" value="MBA/MIM" />`);
+    } else if(valueofproduct == "MS/PhD") {
+        $("#lookingfor11").html(`<input type="hidden" name="mx_Looking_For" value="MS/PhD" />`);
+
+    } else if(valueofproduct == "UG") {
+        $("#lookingfor11").html(`<input type="hidden" name="mx_Looking_For" value="UG" />`);
+        
+    } else {
+        $("#lookingfor11").html(``);
+    }
+});
+
+$("#mx_Interested_Productall").change(function(event) {
+    var valueofproduct = $("select#mx_Interested_Productall option:selected").text().replace('Interested in?','');
+    if(valueofproduct == "MBA/MIM") {
+        $("#lookingforall").html(`<input type="hidden" name="mx_Looking_For" value="MBA/MIM" />`);
+    } else if(valueofproduct == "MS/PhD") {
+        $("#lookingforall").html(`<input type="hidden" name="mx_Looking_For" value="MS/PhD" />`);
+
+    } else if(valueofproduct == "UG") {
+        $("#lookingforall").html(`<input type="hidden" name="mx_Looking_For" value="UG" />`);
+        
+    } else {
+        $("#lookingforall").html(``);
+    }
+});
+$(document).on('change', '.selectpres1', function () {
+    let slval = $(".selectpres1 option:selected").val();
+    if (slval == "Others") {
+        $('.selectpres1').remove();
+        $(".nearbyyounewother").css("display", "block");
+        $('.dom-newother').before().append('<input placeholder="Your Country" class="form-control selectpres1" name="field_other_centers" required>');
+    } 
+});
+$(document).on('change', '.selectpres2', function () {
+    let slval = $(".selectpres2 option:selected").val();
+    if (slval == "Others") {
+        $('.selectpres2').remove();
+        $(".nearbyyounew2").css("display", "block");
+        $('.dom-new2').before().append('<input placeholder="Your Country" class="form-control selectpres2" name="field_other_centers" required>');
+    } 
+});
+$(document).on('change', '.selectpres3', function () {
+    let slval = $(".selectpres3 option:selected").val();
+    if (slval == "Others") {
+        $('.selectpres3').remove();
+        $(".nearbyyounew3").css("display", "block");
+        $('.dom-new3').before().append('<input placeholder="Your Country" class="form-control selectpres3" name="field_other_centers" required>');
+    } 
+});
+$(document).on('change', '.selectpres4', function () {
+    let slval = $(".selectpres4 option:selected").val();
+    if (slval == "Others") {
+        $('.selectpres4').remove();
+        $(".nearbyyounew4").css("display", "block");
+        $('.dom-new4').before().append('<input placeholder="Your Country" class="form-control selectpres4" name="field_other_centers" required>');
+    } 
+});
+$(document).on('change', '.selectpress4', function () {
+    let slval = $(".selectpress4 option:selected").val();
+    if (slval == "Others") {
+        $('.selectpress4').remove();
+        $(".nearbyyounews4").css("display", "block");
+        $('.dom-news4').before().append('<input placeholder="Your Country" class="form-control selectpress4" name="field_other_centers" required>');
+    } 
+});

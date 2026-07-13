@@ -1,0 +1,23 @@
+$(document).on("click", ".toggle-text-button", function() {
+
+
+  if ($(this).text() == "read more") {
+
+    $(this).text("read less");
+    $("#toggle-text-" + $(this).attr("toggle-text")).slideDown();
+  } else {
+    $(this).text("read more");
+    // Use a jquery selector using the `.attr()` of the link
+    $("#toggle-text-" + $(this).attr("toggle-text")).slideUp();
+  
+  }
+
+});
+$(document).ready(function () {
+    $(".content_to_show").hide();
+    $(".show_hide_text").on("click", function () {
+        var txt = $(".content_to_show").is(':visible') ? 'Read More' : 'Read Less';
+        $(".show_hide_text").text(txt);
+        $(this).next('.content_to_show').slideToggle(200);
+    });
+});

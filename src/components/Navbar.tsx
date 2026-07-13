@@ -83,34 +83,36 @@ export const Navbar = () => {
                 >
                   <Link
                     to="/programs"
-                    onClick={() => handleLinkClick("programs")}
+                    onClick={() => {
+                      setIsGreDropdownOpen(false);
+                    }}
                     className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
                     About GRE
                   </Link>
-                  <button
-                    type="button"
+                  <Link
+                    to="/self-paced"
                     onClick={() => {
                       setIsGreDropdownOpen(false);
-                      setIsBookSessionOpen(true);
                     }}
-                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
                     GRE Self Paced Course
-                  </button>
-                  <button
-                    type="button"
+                  </Link>
+                  <Link
+                    to="/gre-live"
                     onClick={() => {
                       setIsGreDropdownOpen(false);
-                      setIsBookSessionOpen(true);
                     }}
-                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
                     GRE Live Classes
-                  </button>
+                  </Link>
                   <Link
-                    to="/tutoring"
-                    onClick={() => handleLinkClick("tutoring")}
+                    to="/gmat-private-tutoring"
+                    onClick={() => {
+                      setIsGreDropdownOpen(false);
+                    }}
                     className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
                     GRE Private Tutoring
@@ -144,33 +146,33 @@ export const Navbar = () => {
                   transition={{ duration: 0.15 }}
                   className="absolute top-full left-0 mt-1 w-56 bg-card border border-border/80 rounded-xl shadow-elevated p-1.5 z-50"
                 >
+                          <Link
+                            to="/about-gmat"
+                            onClick={() => {
+                              setIsGmatDropdownOpen(false);
+                            }}
+                            className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
+                          >
+                            About GMAT
+                          </Link>
                   <Link
-                    to="/programs"
-                    onClick={() => handleLinkClick("programs")}
+                    to="/gmat-self-paced"
+                    onClick={() => {
+                      setIsGmatDropdownOpen(false);
+                    }}
                     className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
-                    About GMAT
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsGmatDropdownOpen(false);
-                      setIsBookSessionOpen(true);
-                    }}
-                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
-                  >
                     GMAT Self Paced Course
-                  </button>
-                  <button
-                    type="button"
+                  </Link>
+                  <Link
+                    to="/gmat-live"
                     onClick={() => {
                       setIsGmatDropdownOpen(false);
-                      setIsBookSessionOpen(true);
                     }}
-                    className="w-full text-left block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 bg-transparent border-none cursor-pointer"
+                    className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
                     GMAT Live Class
-                  </button>
+                  </Link>
                   <Link
                     to="/tutoring"
                     onClick={() => handleLinkClick("tutoring")}
@@ -307,34 +309,40 @@ export const Navbar = () => {
                           <Link
                             to="/programs"
                             className="text-sm text-muted-foreground hover:text-primary py-1"
-                            onClick={() => handleLinkClick("programs")}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsMobileGreOpen(false);
+                            }}
                           >
                             About GRE
                           </Link>
-                          <button
-                            type="button"
-                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                          <Link
+                            to="/self-paced"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
                             onClick={() => {
                               setIsMobileMenuOpen(false);
-                              setIsBookSessionOpen(true);
+                              setIsMobileGreOpen(false);
                             }}
                           >
                             GRE Self Paced Course
-                          </button>
-                          <button
-                            type="button"
-                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                          </Link>
+                          <Link
+                            to="/gre-live"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
                             onClick={() => {
                               setIsMobileMenuOpen(false);
-                              setIsBookSessionOpen(true);
+                              setIsMobileGreOpen(false);
                             }}
                           >
                             GRE Live Classes
-                          </button>
+                          </Link>
                           <Link
-                            to="/tutoring"
+                            to="/gmat-private-tutoring"
                             className="text-sm text-muted-foreground hover:text-primary py-1"
-                            onClick={() => handleLinkClick("tutoring")}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsMobileGreOpen(false);
+                            }}
                           >
                             GRE Private Tutoring
                           </Link>
@@ -365,36 +373,42 @@ export const Navbar = () => {
                           className="overflow-hidden pl-4 flex flex-col gap-2 mt-2 border-l border-border"
                         >
                           <Link
-                            to="/programs"
+                            to="/about-gmat"
                             className="text-sm text-muted-foreground hover:text-primary py-1"
-                            onClick={() => handleLinkClick("programs")}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsMobileGmatOpen(false);
+                            }}
                           >
                             About GMAT
                           </Link>
-                          <button
-                            type="button"
-                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                          <Link
+                            to="/gmat-self-paced"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
                             onClick={() => {
                               setIsMobileMenuOpen(false);
-                              setIsBookSessionOpen(true);
+                              setIsMobileGmatOpen(false);
                             }}
                           >
                             GMAT Self Paced Course
-                          </button>
-                          <button
-                            type="button"
-                            className="w-full text-left text-sm text-muted-foreground hover:text-primary py-1 bg-transparent border-none cursor-pointer"
+                          </Link>
+                          <Link
+                            to="/gmat-live"
+                            className="text-sm text-muted-foreground hover:text-primary py-1"
                             onClick={() => {
                               setIsMobileMenuOpen(false);
-                              setIsBookSessionOpen(true);
+                              setIsMobileGmatOpen(false);
                             }}
                           >
                             GMAT Live Class
-                          </button>
+                          </Link>
                           <Link
-                            to="/tutoring"
+                            to="/gmat-private-tutoring"
                             className="text-sm text-muted-foreground hover:text-primary py-1"
-                            onClick={() => handleLinkClick("tutoring")}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsMobileGmatOpen(false);
+                            }}
                           >
                             GMAT Private Tutoring
                           </Link>

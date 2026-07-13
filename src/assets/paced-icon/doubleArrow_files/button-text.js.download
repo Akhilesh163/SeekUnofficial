@@ -1,0 +1,241 @@
+$(document).on('click', 'button', function () {
+    var buttonTextSelect = $(this).html();
+    buttonTextSelect = buttonTextSelect.replace(/<img[^>]*>/g, '');
+    var buttontext = '';
+    $(".buttontextchange").val(buttonTextSelect);
+
+    if(buttonTextSelect == "Start Now") {
+        $(".main-title-jam").html("Start your journey with India's Leading Institute");
+    }
+    if(buttonTextSelect == "Best Country for MBA") { $(".main-title-jam").html("Sign up to help an expert guide you into choosing the right country for MBA based on your requirements & eligibility"); }
+    if(buttonTextSelect == "Best Country for MS") { $(".main-title-jam").html("Sign up to help an expert guide you into choosing the right country for MBA based on your requirements & eligibility"); }
+    if(buttonTextSelect == "Begin your prep") {
+        $(".main-title-jam").html("Sign up to access quality practice questions!");
+    } 
+    if(buttonTextSelect == "Book a Demo") {
+        $(".main-title-jam").html("Take a demo class to learn why Jamboree has the highest average student scores in the industry!");
+    }
+    if(buttonTextSelect == "Book a doubt session") {
+        $(".main-title-jam").html("Sign up for a one-on-one meeting with the faculty for personalised attention and concept clarity!");
+    }
+    if(buttonTextSelect == "Book a FREE mock interview") {
+        $(".main-title-jam").html("You have a better shot of acing the actual interview after a mock interview");
+    }
+    if(buttonTextSelect == "Book a session" || buttonTextSelect == "Book a session now!") {
+        $(".main-title-jam").html("Get personalised input on university shortlisting and prepping a solid college application for FREE!");
+    }
+    if(buttonTextSelect == "Book a Web-Meeting") { 
+	$(".main-title-jam").html("Sign up to schedule a one-on-one web meeting with our expert"); 
+    }
+    if(buttonTextSelect == "Build your Study Plan" || buttonTextSelect == "Join the Club") {
+        $(".main-title-jam").html("Sign up to get your customised Study Plan designed by our expert!");
+    }
+    if(buttonTextSelect == "Get Profile Evaluated") {
+        $(".main-title-jam").html("Sign up to get insights on where you stand in the admissions pool and tips to better your profile!");
+    }
+    if(buttonTextSelect == "Take a dignostic test") {
+        $(".main-title-jam").html("Sign up to find out exactly how exam-ready you are!");
+    }
+    if(buttonTextSelect == "Take a mock test" || buttonTextSelect == "Take a Practice Test" || buttonTextSelect == "Take a Practice Test!" || buttonTextSelect == "Take a PracticeTest!") {
+        $(".main-title-jam").html("Sign up to take the closest thing to the actual exam!");
+    }
+    if(buttonTextSelect == "Talk to a Counsellor" || buttonTextSelect == "Talk to the counsellor"  || buttonTextSelect == "Talk to our counsellor!") {
+        $(".main-title-jam").html("Signup to get personalised guidance from an expert!");
+    }
+    if(buttonTextSelect == "Track Performance" || buttonTextSelect == "Track your performance" || buttonTextSelect == "Try the portal" || buttonTextSelect == "Try the Portal") {
+        $(".main-title-jam").html("Sign up for a free trial of Jamboree's smart learning portal");
+    }
+    if(buttonTextSelect == "Full length practice test") {
+        $(".main-title-jam").html("Sign up to take the closest thing there is to the actual exam!");
+    } 
+    if(buttonTextSelect == "Funding for Masters") {
+        $(".main-title-jam").html("Sign up to know your sustainable funding options");
+    }
+    if(buttonTextSelect == "Get University Shortlist") {
+        $(".main-title-jam").html("Tell us about your dream university and we'll tell you how to get there!");
+    }
+    if(buttonTextSelect == "Get your doubts cleared") {
+        $(".main-title-jam").html("Sign up for one-on-one meetings with the faculty for personalised attention and concept clarity!");
+    }
+    if(buttonTextSelect == "GMAT Quiz") {
+        $(".main-title-jam").html("Sign up for a fun way to know exactly how GMAT-ready you are!");
+    }
+    if(buttonTextSelect == "GRE Quiz") {
+        $(".main-title-jam").html("Sign up for a fun way to know exactly how GRE-ready you are!");
+    }
+    if(buttonTextSelect == "IELTS Test Structure") {
+        $(".main-title-jam").html("Sign up to shoot all your questions on the IELTS test structure!");
+    }
+    if(buttonTextSelect == "Evaluate your profile") {
+        $(".main-title-jam").html("Sign up to get insights on where you stand in the admissions pool and tips to better your profile!");
+    } 
+    if(buttonTextSelect == "Take GMAT Quiz") {
+        $("#with-outproduct").val("GMAT");
+        $("main-title-jam").html("Sign up to start the quiz now!");
+    }
+    if(buttonTextSelect == "Take GRE Quiz") {
+        $("#with-outproduct").val("GRE");
+        $("main-title-jam").html("Sign up to start the quiz now!");
+    }
+    if(buttonTextSelect == "Take SAT Quiz") {
+        $("#with-outproduct").val("SAT");
+        $("main-title-jam").html("Sign up to start the quiz now!");
+    }
+    if(buttonTextSelect == "Take IELTS Quiz") {
+        $("#with-outproduct").val("IELTS");
+        $("main-title-jam").html("Sign up to start the quiz now!");
+    }
+    if(buttonTextSelect == "Take TOEFL Quiz") {
+        $("#with-outproduct").val("TOEFL");
+        $("main-title-jam").html("Sign up to start the quiz now!");
+    }
+    if(buttonTextSelect.includes("Syllabus")) {
+        $(".main-title-jam").html("Sign up to know everything you need to know about the exam!");
+    } 
+    if(buttonTextSelect.includes("Study Plan")) {
+        $(".main-title-jam").html("Sign up to get your customised Study Plan designed by our expert!");
+    }
+    if(buttonTextSelect.includes("Videos")) {
+        $(".main-title-jam").html("Sign up to access pre-recorded videos, practice quizzes, and more!");
+    }
+    if(buttonTextSelect == "Predict GMAT Score") {
+        $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual exam!");
+    }
+    if(buttonTextSelect == "Predict GRE Score") {
+        $(".main-title-jam").html("GRE Full Length Mock test");
+    }
+    if(buttonTextSelect == "Predict SAT Score") {
+        $(".main-title-jam").html("SAT Full Length Mock test");
+    }
+    if(buttonTextSelect == "Predict your score") {
+        $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual exam!");
+    }
+    if(buttonTextSelect == "ROI of Masters Degree") {
+        $(".main-title-jam").html("Sign up to understand the Returns Of Doing Masters Abroad");
+    }
+    if(buttonTextSelect == "MBA Vs MIM") {
+        $(".main-title-jam").html("Sign up to help an expert guide you into choosing the right program for you!");
+    }
+    if(buttonTextSelect == "Watch GMAT Videos") { $(".main-title-jam").html("Sign up to get free access to concept videos from our top GMAT faculty"); }
+    if(buttonTextSelect == "Watch GRE Videos") { $(".main-title-jam").html("Sign up to get free access to concept videos from our top GRE faculty"); }
+    if(buttonTextSelect == "Watch IELTS Videos") { $(".main-title-jam").html("Sign up to access pre-recorded videos, practice quizzes, and more!."); }
+    if(buttonTextSelect == "Watch SAT Videos") { $(".main-title-jam").html("Sign up to get free access to concept videos from our top SAT faculty"); }
+
+    if(buttonTextSelect =="Predict Your Score") { $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Predict your score") { $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="MBA Vs MIM") { $(".main-title-jam").html("Can't decide? Talk to an expert and get personalised guidance"); }
+    if(buttonTextSelect =="Best Country for MBA") { $(".main-title-jam").html("Hear from an expert about which country checks all your boxes!"); }
+    if(buttonTextSelect =="Funding for MBA") { $(".main-title-jam").html("Sign up to learn all your sustainable funding options"); }
+    if(buttonTextSelect =="Book a Mock Interview") { $(".main-title-jam").html("You have a better shot of acing the actual interview after a mock interview"); }
+    if(buttonTextSelect =="Begin your prep") { $(".main-title-jam").html("Sign up to access quality practice questions!"); }
+    if(buttonTextSelect =="Best Country for MS") { $(".main-title-jam").html("Sign up to help an expert guide you into choosing the right country for MBA based on your requirements & eligibility"); }
+    if(buttonTextSelect =="Book a Demo" || buttonTextSelect =="Book A Demo Class") { $(".main-title-jam").html("Take a demo class to learn why Jamboree has the highest average student scores in the industry!"); }
+    if(buttonTextSelect =="Book a doubt session") { $(".main-title-jam").html("Sign up for a one-on-one meeting with the faculty for personalised attention and concept clarity!"); }
+    if(buttonTextSelect =="Book a FREE mock interview") { $(".main-title-jam").html("You have a better shot of acing the actual interview after a mock interview"); }
+    if(buttonTextSelect =="Book a Session") { $(".main-title-jam").html("Get personalised input on university shortlisting and prepping a solid college application for FREE!"); }
+    if(buttonTextSelect =="Book a Web-Meeting") { $(".main-title-jam").html("Sign up to schedule a one-on-one web meeting with our expert"); }
+    if(buttonTextSelect =="Build Your Study Plan") { $(".main-title-jam").html("Sign up to get your customised Study Plan designed by our expert!"); }
+    if(buttonTextSelect =="Download GMAT Study Plan") { $(".main-title-jam").html("Sign up to get your customised Study Plan from our expert!"); }
+    if(buttonTextSelect =="Download GMAT Syllabus") { $(".main-title-jam").html("Sign up to know everything you need to know about the exam!"); }
+    if(buttonTextSelect =="Download GRE Study Plan") { $(".main-title-jam").html("Sign up to get your customised Study Plan designed by our expert!"); }
+    if(buttonTextSelect =="Download GRE Syllabus") { $(".main-title-jam").html("Sign up to know everything you need to know about the exam!"); }
+    if(buttonTextSelect =="Download IELTS Syllabus") { $(".main-title-jam").html("Sign up to know everything you need to know about the exam!"); }
+    if(buttonTextSelect =="Download SAT Study Plan") { $(".main-title-jam").html("Sign up to get your customised Study Plan designed by our expert!"); }
+    if(buttonTextSelect =="Download SAT Syllabus") { $(".main-title-jam").html("Sign up to know everything you need to know about the exam!"); }
+    if(buttonTextSelect =="Download Study Plan") { $(".main-title-jam").html("Sign up to get your customised Study Plan designed by our expert!"); }
+    if(buttonTextSelect =="Evaluate your Profile") { $(".main-title-jam").html("Sign up to get insights on where you stand in the admissions pool and tips to better your profile!"); }
+    if(buttonTextSelect =="Explore GMAT Videos") { $(".main-title-jam").html("Sign up to access pre-recorded videos, practice quizzes, and more!."); }
+    if(buttonTextSelect =="Explore GRE Videos") { $(".main-title-jam").html("Sign up to access pre-recorded videos, practice quizzes, and more!."); }
+    if(buttonTextSelect =="Explore SAT Videos") { $(".main-title-jam").html("Sign up to access pre-recorded videos, practice quizzes, and more!."); }
+    if(buttonTextSelect =="Full Length Practice Test") { $(".main-title-jam").html("Sign up to take the closest thing there is to the actual exam!"); }
+    if(buttonTextSelect =="Funding for Masters") { $(".main-title-jam").html("Sign up to know your sustainable funding options"); }
+    if(buttonTextSelect =="Get Profile Evaluated") { $(".main-title-jam").html("Sign up to get insights on where you stand in the admissions pool and tips to better your profile!"); }
+    if(buttonTextSelect =="Get University Shortlist") { $(".main-title-jam").html("Tell us about your dream university and we'll tell you how to get there!"); }
+    if(buttonTextSelect =="Get Your Doubts Cleared") { $(".main-title-jam").html("Sign up for one-on-one meetings with the faculty for personalised attention and concept clarity!"); }
+    if(buttonTextSelect =="GMAT Quiz") { $(".main-title-jam").html("Sign up for a fun way to know exactly how GMAT-ready you are!"); }
+    if(buttonTextSelect =="GRE Quiz") { $(".main-title-jam").html("Sign up for a fun way to know exactly how GRE-ready you are!"); }
+    if(buttonTextSelect =="IELTS Test Structure") { $(".main-title-jam").html("Sign up to shoot all your questions on the IELTS test structure!"); }
+    if(buttonTextSelect =="Predict GMAT Score") { $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Predict GRE Score") { $(".main-title-jam").html("GRE Full Length Mock test"); }
+    if(buttonTextSelect =="Predict IELTS Score") { $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual IELTS exam!"); }
+    if(buttonTextSelect =="Predict SAT Score") { $(".main-title-jam").html("SAT Full Length Mock test"); }
+    if(buttonTextSelect =="Predict TOEFL Score") { $(".main-title-jam").html("Take the adaptive Diagnostic Test - the closest thing to the actual TOEFL exam!"); }
+    if(buttonTextSelect =="ROI of Masters Degree") { $(".main-title-jam").html("Sign up to understand the Returns Of Doing Masters Abroad"); }
+    if(buttonTextSelect =="SAT Quiz") { $(".main-title-jam").html("Sign up for a fun way to know exactly how SAT-ready you are!"); }
+    if(buttonTextSelect =="START NOW") { $(".main-title-jam").html("Start your journey with India's Leading Institute"); }
+    if(buttonTextSelect =="Take a diagnostic test" || buttonTextSelect =="Take a Diagnostic Test") { $(".main-title-jam").html("Sign up to find out exactly how exam-ready you are!"); }
+    if(buttonTextSelect =="Take a mock test" || buttonTextSelect =="Take the Test") { $(".main-title-jam").html("Sign up to take the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Take a Practice Test") { $(".main-title-jam").html("Sign up to take the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Take a Practice Test!") { $(".main-title-jam").html("Sign up to take the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Take a PracticeTest!") { $(".main-title-jam").html("Sign up to take the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Take GMAT Quiz") { $(".main-title-jam").html("Sign up to start the quiz now!"); }
+    if(buttonTextSelect =="Take GRE Quiz") { $(".main-title-jam").html("Sign up to start the quiz now!"); }
+    if(buttonTextSelect =="Take IELTS Quiz") { $(".main-title-jam").html("Sign up to start the quiz now!"); }
+    if(buttonTextSelect =="Take SAT Quiz") { $(".main-title-jam").html("Sign up to start the quiz now!"); }
+    if(buttonTextSelect =="Take TOEFL Quiz") { $(".main-title-jam").html("Sign up to start the quiz now!"); }
+    if(buttonTextSelect =="Talk to a Counsellor") { $(".main-title-jam").html("Signup to get personalised guidance from an expert!"); }
+    if(buttonTextSelect =="Talk to the Counsellor") { $(".main-title-jam").html("Signup to get personalised guidance from an expert!"); }
+    if(buttonTextSelect =="Track Performance") { $(".main-title-jam").html("Sign up for a free trial of Jamboree's smart learning portal!"); }
+    if(buttonTextSelect =="Track Your Performance") { $(".main-title-jam").html("Sign up for a free trial of Jamboree's smart learning portal!"); }
+    if(buttonTextSelect =="Try the portal") { $(".main-title-jam").html("Sign up for a free trial of Jamboree's smart learning portal!"); }
+    if(buttonTextSelect =="Watch GMAT Videos") { $(".main-title-jam").html("Sign up to get free access to concept videos from our top GMAT faculty"); }
+    if(buttonTextSelect =="Watch GRE Videos") { $(".main-title-jam").html("Sign up to get free access to concept videos from our top GRE faculty"); }
+    if(buttonTextSelect =="Watch IELTS Videos") { $(".main-title-jam").html("Sign up to access pre-recorded videos, practice quizzes, and more!"); }
+    if(buttonTextSelect =="Watch SAT Videos") { $(".main-title-jam").html("Sign up to get free access to concept videos from our top SAT faculty"); }
+    if(buttonTextSelect =="Start Your Application" || buttonTextSelect == "Get a University Shortlist") { $(".main-title-jam").html("Let us save you a dozen oops moments, talk to a counsellor to start your application the right way!"); }
+    if(buttonTextSelect =="Take a Demo Class") { $(".main-title-jam").html("Take a FREE demo class with the institute that has the highest average student score in the industry!"); }
+    if(buttonTextSelect =="Know More") { $(".main-title-jam").html("Signup to get personalised guidance from an expert!"); }
+    if(buttonTextSelect =="REQUEST A CALLBACK!" || buttonTextSelect =="Get a Callback") { $(".main-title-jam").html("Let 30+ years of test prep and study-abroad excellence guide you on your journey"); }
+    if(buttonTextSelect =="BOOK A WEB MEETING") { $(".main-title-jam").html("Sign up for personalised guidance from our admission expert for FREE!"); }
+    if(buttonTextSelect =="Book a Call" || buttonTextSelect ==" BOOK A CALL"  || buttonTextSelect ==" Book a call" || buttonTextSelect == "BOOK A CALL") { $(".main-title-jam").html("Sign up to schedule a one-on-one call with our expert"); }
+    if(buttonTextSelect =="Book a Test") { $(".main-title-jam").html("Sign up for personalised guidance based on psychometric tests and analysis!"); }
+    if(buttonTextSelect =="Call with Mentor") { $(".main-title-jam").html("If you don’t already have a profile that stands out in the top colleges of the world, We will build you one!"); }
+    if(buttonTextSelect =="Take a Mock Test") { $(".main-title-jam").html("Sign up to take the closest thing to the actual exam!"); }
+    if(buttonTextSelect =="Talk to a Counsellor Now") { $(".main-title-jam").html("Book a call with a counsellor"); }
+    if(buttonTextSelect =="BOOK YOUR SEAT!") { $(".main-title-jam").html("Sign up for FREE Demo Class!"); }
+    if(buttonTextSelect =="Enroll Now") { $(".main-title-jam").html("Signup to get personalised guidance from an expert!"); }
+    if(buttonTextSelect =="Start Trial") { $(".main-title-jam").html("Sign up for a FREE Trial!"); }
+    if(buttonTextSelect =="BOOK YOUR SEAT!") { $(".main-title-jam").html("Fill the form below and book your seat now!"); }
+    if(buttonTextSelect == "Speak to an Expert") {
+        $(".main-title-jam").html(`Test prep or study abroad?<br><span class="formsubtitle">We’ll guide you.</span>`);
+    }
+    
+
+});
+$(document).on('click', 'a', function () {
+    var buttonTextSelect1 = $(this).html();
+    buttonTextSelect1 = buttonTextSelect1.replace(/<img[^>]*>/g, '');
+    var buttontext = '';
+    if(buttonTextSelect1 == "") {
+        buttonTextSelect1 = "BOOK A CALL";
+        $(".buttontextchange").val(buttonTextSelect1);
+    } else {
+        $(".buttontextchange").val(buttonTextSelect1);
+    }
+    if(buttonTextSelect1 =="Start Your Application") { $(".main-title-jam").html("Let us save you a dozen oops moments, talk to a counsellor to start your application the right way!"); }
+    if(buttonTextSelect1 =="Book a Call" || buttonTextSelect1 ==" BOOK A CALL"  || buttonTextSelect1 ==" Book a call" || buttonTextSelect1 == "BOOK A CALL") { 
+        $(".main-title-jam").html("Let 30+ years of test prep and study-abroad excellence guide you on your journey"); 
+    }
+    if(buttonTextSelect1 == "Student Login") {
+        $("#enroll-btn-online #exampleModalLabelfre").html("Log in to the Student Learning Portal for Mock Tests and Free Resources.");
+        $("#enroll-btn-online #form-submit-button1").val("Submit");	
+        $("#enroll-btn-online input[name='medium']").val("portal");
+		$("#enroll-btn-online input[name='campaign']").val("student login");
+    }
+    if(buttonTextSelect1 == "Free Demo") {
+        $("#enroll-btn-online #exampleModalLabelfre").html("Enroll for a FREE Demo Class");
+        $("#enroll-btn-online #form-submit-button1").val("Free Demo");	
+        $("#enroll-btn-online input[name='medium']").val("topbar");
+		$("#enroll-btn-online input[name='campaign']").val("Free Demo");
+    }
+
+});
+
+$("#digitalbanner1").click(function(){
+    $(".buttontextchange").val("REGISTER NOW");
+    $(".main-title-jam").html("Sign up to be among the first ones to register for Digital SAT");
+});
+$("#digitalbanner2").click(function(){
+    $(".buttontextchange").val("REGISTER NOW");
+    $(".main-title-jam").html("Sign up to be among the first ones to register for Digital SAT");
+});

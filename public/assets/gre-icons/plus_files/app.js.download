@@ -1,0 +1,19 @@
+$(document).ready(function () {
+
+    if (window.matchMedia("only screen and (min-width: 576px)").matches) {
+        $('.owl-nav').removeClass('disabled');
+        $('.owl-dots').addClass('disabled');
+        $('.owl-nav').on('click', function () {
+            $('.owl-nav').removeClass('disabled');
+            $('.owl-dots').addClass('disabled');
+        })
+    }
+
+    $('#tabsRow>.tab').on('click', function () {
+        $('#tabsRow>.tab').removeClass('active');
+        $(this).addClass('active');
+        $('.tab_content').removeClass('active');
+        $($(this).data('target')).addClass('active');
+    })
+
+});
