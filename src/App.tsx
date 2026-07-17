@@ -12,10 +12,12 @@ import GmatLivePage from "./pages/GmatLive";
 import GmatSelfPacedPage from "./pages/GmatSelfPaced";
 import GmatPrivateTutPage from "./pages/GmatPrivateTut";
 import AboutGmatPage from "./pages/AboutGmat";
+import Admission from "@/components/admission";
 import NotFound from "./pages/NotFound";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import RefundPolicy from "./pages/RefundPolicy";
 import ContactUs from "./pages/ContactUs";
+import SuccessStoriesPage from "./pages/SuccessStories";
 import { FormSubmitFrame } from "@/components/FormSubmitFrame";
 
 const queryClient = new QueryClient();
@@ -37,8 +39,9 @@ const App = () => (
           <Route path="/gmat-live" element={<GmatLivePage />} />
           <Route path="/gmat-private-tutoring" element={<GmatPrivateTutPage />} />
           <Route path="/tutoring" element={<GrePrivateTutPage />} />
+          <Route path="/admissions" element={<Admission />} />
           <Route path="/book-demo" element={<Index />} />
-          <Route path="/success-stories" element={<Index />} />
+          <Route path="/success-stories" element={<SuccessStoriesPage />} />
           <Route path="/about" element={<Index />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />

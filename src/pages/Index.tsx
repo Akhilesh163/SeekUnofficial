@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SeekMethod } from "@/components/SeekMethod";
-import { StarPerformers } from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import { AboutMe } from "@/components/AboutMe";
 import { SupportTabs } from "@/components/SupportTabs";
 import { BookDemoForm } from "@/components/BookDemoForm";
@@ -21,8 +21,8 @@ const Index = () => {
         {/* HERO SECTION */}
         <Hero />
 
-        {/* STAR PERFORMERS */}
-        <StarPerformers />
+        {/* TESTIMONIALS */}
+        <Testimonials />
 
         {/* TRUST HEADER */}
         <section className="pt-16 pb-4 px-8 md:px-16 lg:px-24 xl:px-16 text-center bg-gradient-to-b from-background via-blue-50/20 to-indigo-50/30 mesh-blue-indigo">

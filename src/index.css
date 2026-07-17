@@ -58,6 +58,18 @@
 @layer base {
   html {
     font-size: 16px;
+    max-width: 100%;
+    overflow-x: hidden;
+    touch-action: pan-y;
+    scroll-padding-top: 84px;
+  }
+
+  section[id] {
+    scroll-margin-top: 84px;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 
   * {
@@ -69,6 +81,18 @@
     font-family: 'Lexend', system-ui, sans-serif;
     font-size: 1rem;       /* 16px */
     line-height: 1.65;
+    overflow-x: hidden;
+    min-width: 0;
+  }
+
+  img,
+  video,
+  figure,
+  svg,
+  iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -76,7 +100,6 @@
     font-family: 'Manrope', system-ui, sans-serif;
     line-height: 1.15;
   }
-
   /* ───── Standard Typography Scale ───── */
   /* H1 Hero headline  */
   h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); }   /* 36–60px */
@@ -162,6 +185,22 @@
 
   .animate-slide-in {
     animation: slideIn 0.5s ease-out forwards;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   @keyframes fadeUp {

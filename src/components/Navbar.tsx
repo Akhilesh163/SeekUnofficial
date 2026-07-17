@@ -26,6 +26,13 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const handleLinkClick = (hashId?: string) => {
     setIsMobileMenuOpen(false);
     if (hashId) {
@@ -43,13 +50,13 @@ export const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-300 ${
         isScrolled
-          ? "h-[72px] bg-background/90 backdrop-blur-[14px] border-b border-border/50 shadow-soft"
-          : "h-[72px] bg-transparent border-b border-border/20"
-      }`}
+          ? "h-[72px] bg-white/95 backdrop-blur-xl border-b border-border/50 shadow-soft"
+          : "h-[72px] bg-white/90 backdrop-blur-xl border-b border-border/20 shadow-soft"
+      }`} 
     >
-      <div className="max-w-[1440px] mx-auto h-full px-4 md:px-8 xl:px-12 flex items-center justify-between mt-2 pb-4">
+      <div className="max-w-[1440px] mx-auto h-full px-4 md:px-8 xl:px-12 flex items-center justify-between py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 select-none cursor-pointer">
           <BrandLogo />
@@ -174,8 +181,10 @@ export const Navbar = () => {
                     GMAT Live Class
                   </Link>
                   <Link
-                    to="/tutoring"
-                    onClick={() => handleLinkClick("tutoring")}
+                    to="/gmat-private-tutoring"
+                    onClick={() => {
+                      setIsGmatDropdownOpen(false);
+                    }}
                     className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200"
                   >
                     GMAT Private Tutoring
@@ -194,7 +203,7 @@ export const Navbar = () => {
           </Link>
 
           <Link
-            to="/contact"
+            to="/admissions"
             className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
           >
             Admissions
@@ -239,9 +248,11 @@ export const Navbar = () => {
             Book a Session
           </button>
           <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="text-foreground focus:outline-none"
+            type="button"
+            onClick={() => setIsMobileMenuOpen((s) => !s)}
+            className="text-foreground bg-white/95 border border-border/80 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 rounded-full p-2 shadow-sm"
             aria-label="Toggle Menu"
+            aria-expanded={isMobileMenuOpen}
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -258,7 +269,7 @@ export const Navbar = () => {
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black z-50 lg:hidden"
+              className="fixed inset-0 bg-black z-[90] lg:hidden"
             />
             {/* Panel */}
             <motion.div
@@ -266,7 +277,7 @@ export const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-[260px] bg-background z-50 shadow-elevated p-6 flex flex-col justify-between overflow-y-auto lg:hidden"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-[90vw] sm:max-w-[340px] bg-white/98 backdrop-blur-xl z-[95] shadow-elevated p-6 flex flex-col justify-between overflow-y-auto lg:hidden"
             >
               <div>
                 {/* Header */}
@@ -419,14 +430,14 @@ export const Navbar = () => {
 
                   <Link
                     to="/tutoring"
-                    onClick={() => handleLinkClick("book-demo")}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className="text-sm font-semibold text-foreground hover:text-primary py-1"
                   >
                     Private Tutoring
                   </Link>
 
                   <Link
-                    to="/contact"
+                    to="/admissions"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-sm font-semibold text-foreground hover:text-primary py-1"
                   >

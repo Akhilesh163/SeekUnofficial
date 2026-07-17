@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -18,6 +18,63 @@ import SabhyataPhoto from "@/assets/student_pics/Sabhyata.jpeg";
 const AboutGre = () => {
   const [activeMode, setActiveMode] = useState("classroom");
   const [activeGreFocus, setActiveGreFocus] = useState("concepts");
+  const [activeReviewIndex, setActiveReviewIndex] = useState(0);
+  const [isReviewPaused, setIsReviewPaused] = useState(false);
+  const reviewListRef = useRef<HTMLDivElement | null>(null);
+  const reviewCardsRef = useRef<HTMLDivElement[]>([]);
+
+  const studentReviews = [
+    {
+      name: "Nishtha",
+      title: "GRE teacher",
+      image: ManyaPhoto,
+      rating: 5,
+      text: "Nishtha ma'am is excellent at explaining concepts in a simple and easy to understand way. She is patient, supportive, and always encourages me to do my best.",
+      footer: "Sandeep, 1 week ago",
+    },
+    {
+      name: "Dhruv",
+      title: "GRE teacher",
+      image: PraffulPhoto,
+      rating: 5,
+      text: "Hello Dhruv, thank you for the excellent teaching and support you've given to our 10 years old son Thomas. Your clear explanations and friendly approach have made math enjoyable for him.",
+      footer: "Fabio, 2 months ago",
+    },
+    {
+      name: "Pratyush",
+      title: "GRE teacher",
+      image: ArjunPhoto,
+      rating: 5,
+      text: "Pratyush has been an excellent calculus tutor for my son. He explains complex concepts in a clear, patient, and easy-to-understand manner, which has greatly improved my son's confidence.",
+      footer: "Devesh, 2 weeks ago",
+    },
+    {
+      name: "Dhruv",
+      title: "GRE teacher",
+      image: BalagopalPhoto,
+      rating: 5,
+      text: "Handling a 5 year old homeschooler with ease. Dhruv is an amazing teacher. I sincerely appreciate his patience with my daughter and the fun learning vibe.",
+      footer: "Sreethy, 3 months ago",
+    },
+  ];
+
+  useEffect(() => {
+    if (isReviewPaused || studentReviews.length <= 1) return;
+
+    const timeout = window.setTimeout(() => {
+      setActiveReviewIndex((prev) => (prev + 1) % studentReviews.length);
+    }, 4500);
+
+    return () => window.clearTimeout(timeout);
+  }, [activeReviewIndex, isReviewPaused, studentReviews.length]);
+
+  useEffect(() => {
+    reviewCardsRef.current[activeReviewIndex]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [activeReviewIndex]);
 
   const results = [
     {
@@ -76,41 +133,6 @@ const AboutGre = () => {
       title: "Personalized Attention",
       description: "Dedicated doubt-solving and individualized study planning.",
       iconPath: "/assets/gre-icons/qa.svg",
-    },
-  ];
-
-  const studentReviews = [
-    {
-      name: "Nishtha",
-      title: "GRE teacher",
-      image: ManyaPhoto,
-      rating: 5,
-      text: "Nishtha ma'am is excellent at explaining concepts in a simple and easy to understand way. She is patient, supportive, and always encourages me to do my best.",
-      footer: "Sandeep, 1 week ago",
-    },
-    {
-      name: "Dhruv",
-      title: "GRE teacher",
-      image: PraffulPhoto,
-      rating: 5,
-      text: "Hello Dhruv, thank you for the excellent teaching and support you've given to our 10 years old son Thomas. Your clear explanations and friendly approach have made math enjoyable for him.",
-      footer: "Fabio, 2 months ago",
-    },
-    {
-      name: "Pratyush",
-      title: "GRE teacher",
-      image: ArjunPhoto,
-      rating: 5,
-      text: "Pratyush has been an excellent calculus tutor for my son. He explains complex concepts in a clear, patient, and easy-to-understand manner, which has greatly improved my son's confidence.",
-      footer: "Devesh, 2 weeks ago",
-    },
-    {
-      name: "Dhruv",
-      title: "GRE teacher",
-      image: BalagopalPhoto,
-      rating: 5,
-      text: "Handling a 5 year old homeschooler with ease. Dhruv is an amazing teacher. I sincerely appreciate his patience with my daughter and the fun learning vibe.",
-      footer: "Sreethy, 3 months ago",
     },
   ];
 
@@ -287,6 +309,15 @@ const AboutGre = () => {
   ];
 
   const activeFocus = greFocusAreas.find((item) => item.id === activeGreFocus) ?? greFocusAreas[0];
+  reviewCardsRef.current = [];
+
+  const handlePrevReview = () => {
+    setActiveReviewIndex((prev) => (prev - 1 + studentReviews.length) % studentReviews.length);
+  };
+
+  const handleNextReview = () => {
+    setActiveReviewIndex((prev) => (prev + 1) % studentReviews.length);
+  };
 
   return (
     <div className="bg-slate-50 text-slate-950">
@@ -682,30 +713,87 @@ const AboutGre = () => {
               </p>
             </div>
 
-              <div className="grid gap-6 sm:grid-cols-2">
-                {studentReviews.map((review) => (
-                  <div key={`${review.name}-${review.footer}`} className="rounded-[32px] border border-slate-200 bg-slate-50 p-6 shadow-soft">
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={review.image}
-                        alt={review.name}
-                        className="h-16 w-16 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="text-lg font-semibold text-slate-950">{review.name}</p>
-                        <p className="text-sm text-slate-600">{review.title}</p>
-                        <div className="mt-2 flex items-center gap-1 text-amber-400">
-                          {Array.from({ length: review.rating }).map((_, index) => (
-                            <span key={index}>★</span>
-                          ))}
+            <div className="relative mt-6 sm:mt-8">
+              <button
+                type="button"
+                onClick={handlePrevReview}
+                className="absolute left-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-soft transition hover:bg-slate-100 sm:flex"
+                aria-label="Previous review"
+              >
+                ‹
+              </button>
+
+              <div
+                ref={reviewListRef}
+                className="overflow-x-auto overflow-y-visible pt-4 pb-4 scrollbar-none scroll-smooth px-6 sm:px-8"
+                onMouseEnter={() => setIsReviewPaused(true)}
+                onMouseLeave={() => setIsReviewPaused(false)}
+                onTouchStart={() => setIsReviewPaused(true)}
+                onTouchEnd={() => setIsReviewPaused(false)}
+              >
+                <div className="flex gap-4 snap-x snap-mandatory items-start justify-start pl-6 pr-48 sm:pl-8">
+                  {studentReviews.map((review, index) => {
+                    const isActive = index === activeReviewIndex;
+                    return (
+                      <div
+                        key={`${review.name}-${review.footer}`}
+                        ref={(el) => {
+                          if (el) reviewCardsRef.current[index] = el;
+                        }}
+                        className={`min-w-[64vw] max-w-[280px] sm:min-w-[34%] lg:min-w-[28%] snap-start rounded-[32px] border border-slate-200 bg-slate-50 p-4 pb-6 shadow-soft transition duration-300 ${
+                          isActive
+                            ? "scale-105 ring-2 ring-emerald-200 shadow-xl opacity-100"
+                            : "opacity-50 hover:opacity-80 scale-95"
+                        } first:ml-2 sm:first:ml-4 last:mr-28`}
+                      >
+                        <div className="flex items-center gap-4">
+                          <img
+                            src={review.image}
+                            alt={review.name}
+                            className="h-14 w-14 rounded-full object-cover"
+                          />
+                          <div>
+                            <p className="text-base sm:text-lg font-semibold text-slate-950">{review.name}</p>
+                            <p className="text-xs sm:text-sm text-slate-600">{review.title}</p>
+                            <div className="mt-2 flex items-center gap-1 text-amber-400">
+                              {Array.from({ length: review.rating }).map((_, starIndex) => (
+                                <span key={starIndex}>★</span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
+                        <p className="mt-5 text-sm sm:text-sm leading-6 sm:leading-7 text-slate-700">{review.text}</p>
+                        <p className="mt-6 text-xs sm:text-sm font-semibold text-slate-900">{review.footer}</p>
                       </div>
-                    </div>
-                    <p className="mt-5 text-sm leading-7 text-slate-700">{review.text}</p>
-                    <p className="mt-6 text-sm font-semibold text-slate-900">{review.footer}</p>
-                  </div>
-                ))}
+                    );
+                  })}
+                  <div className="shrink-0 w-[24vw] sm:w-[12rem] lg:w-[16rem]" />
+                </div>
               </div>
+
+              <button
+                type="button"
+                onClick={handleNextReview}
+                className="absolute right-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-soft transition hover:bg-slate-100 sm:flex"
+                aria-label="Next review"
+              >
+                ›
+              </button>
+            </div>
+
+            <div className="mt-6 flex justify-center gap-2">
+              {studentReviews.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setActiveReviewIndex(index)}
+                  className={`h-2.5 w-2.5 rounded-full transition ${
+                    index === activeReviewIndex ? "bg-emerald-600" : "bg-slate-300"
+                  }`}
+                  aria-label={`Go to review ${index + 1}`}
+                />
+              ))}
+            </div>
 
               <div className="mt-6">
                 <div className="mx-auto max-w-[1200px]">

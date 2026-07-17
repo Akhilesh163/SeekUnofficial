@@ -1,312 +1,150 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Star, Play, ChevronLeft, ChevronRight, Trophy, TrendingUp, BarChart2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { BookSessionDialog } from "@/components/BookSessionDialog";
+import React, { useState } from "react";
 
-export const StarPerformers = () => {
-  const testimonials = [
-    {
-      name: "Arjun M.",
-      school: "Admitted to INSEAD",
-      schoolShort: "INSEAD",
-      quote: "Quant was my weak section. Structured practice changed everything.",
-      before: 620,
-      after: 740,
-      delta: "+120",
-      percentage: "+19.35%",
-      sliderVal: 75,
-      starColor: "text-amber-500 fill-amber-500",
-      sliderColor: "bg-blue-600",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
-    },
-    {
-      name: "Sneha R.",
-      school: "Admitted to ISB",
-      schoolShort: "ISB",
-      quote: "The frameworks are gold. I improved my score and confidence together.",
-      before: 580,
-      after: 710,
-      delta: "+130",
-      percentage: "+22.41%",
-      sliderVal: 78,
-      starColor: "text-purple-500 fill-purple-500",
-      sliderColor: "bg-purple-600",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-    },
-    {
-      name: "Karan S.",
-      school: "Admitted to Kellogg",
-      schoolShort: "Kellogg",
-      quote: "Every concept clicked. The feedback loop made the biggest difference.",
-      before: 640,
-      after: 760,
-      delta: "+120",
-      percentage: "+18.75%",
-      sliderVal: 80,
-      starColor: "text-blue-500 fill-blue-500",
-      sliderColor: "bg-blue-600",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-    },
-  ];
+const testimonials = [
+  {
+    name: "Annant Mehta",
+    role: "GRE 320 → MS, Texas A&M University, USA",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "The tailored approach and insightful strategies provided by the team were absolutely crucial. I achieved 170 in Quant and 150 in Verbal — and I owe a lot of that to the focused preparation structure at Aao Seekhe. I highly recommend this coaching to anyone serious about graduate school.",
+  },
+  {
+    name: "Vishnu Singh",
+    role: "GMAT 730 → Paris School of Business",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "Working closely with Amit Kumar as my Verbal Faculty was instrumental in achieving a remarkable GMAT score. His expertise and insightful strategies were invaluable throughout my preparation journey. I highly recommend his guidance.",
+  },
+  {
+    name: "Saransh Walia",
+    role: "GRE 329 → Alberta University of Arts",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "Thanks to Amit Kumar's exceptional guidance as my GRE Verbal Faculty, I achieved 329. From day one, his approachable demeanor and genuine interest in my progress created an environment where I actually wanted to study harder.",
+  },
+  {
+    name: "Devshri Sharma",
+    role: "GMAT 720 → INSEAD",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "Studying under the guidance of Amit Kumar was an invaluable experience. I scored 720, surpassing my own expectations, thanks to his effective teaching methods and insightful strategies.",
+  },
+  {
+    name: "Sneha Reddy",
+    role: "IELTS 8.5 Band",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "The personalized attention I received during my IELTS preparation was unparalleled. The faculty's deep understanding of exam patterns and their ability to tailor lessons to my specific weaknesses in Writing and Speaking were the difference-maker.",
+  },
+  {
+    name: "Arjun Mehta",
+    role: "IELTS 8.0 Band",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "Achieving an 8.0 band in IELTS felt like a distant dream until I joined Aao Seekhe. The intensive training sessions and focus on nuanced vocabulary for the Writing section made all the difference.",
+  },
+  {
+    name: "Rahul Verma",
+    role: "IELTS 8.0 Band (from 6.5)",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "The mock test series for IELTS at Aao Seekhe was a game-changer. It perfectly simulated the pressure of the actual exam. The faculty's feedback on my Speaking module was specific and actionable — I jumped from 6.5 to 8.0.",
+  },
+  {
+    name: "Keshav Goyal",
+    role: "SAT → Top US Undergraduate",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "I completed my entire SAT syllabus in just 20 days under Mr. Pradeep's guidance. The clarity and depth of instruction were exactly what I needed to excel.",
+  },
+  {
+    name: "Mehakjot Kaur Massoun",
+    role: "SAT → Top-50 US College",
+    image: "/assets/gre-asset/girl.webp",
+    quote: "As someone who knew nothing about the process of going abroad — and never thought it was a possibility for me — getting into a top-50 US college felt impossible. Aao Seekhe changed that, step by step.",
+  },
+];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isBookDemoOpen, setIsBookDemoOpen] = useState(false);
+export default function Testimonials(): JSX.Element {
+  const [activeIndex, setActiveIndex] = useState(5);
 
-  // Monitor viewport size for mobile scaling
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // Automatic scrolling loop (every 5 seconds)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
-
-  const getCardOffset = (index: number) => {
-    let offset = index - currentIndex;
-    // Circular offset wrapping for 3 items
-    if (offset < -1) offset += 3;
-    if (offset > 1) offset -= 3;
-    return offset;
-  };
-
-  const getPositionX = (offset: number) => {
-    if (isMobile) {
-      if (offset === -1) return "-150%";
-      if (offset === 1) return "150%";
-      return "-50%";
-    } else {
-      if (offset === -1) return "-145%";
-      if (offset === 1) return "45%";
-      return "-50%";
-    }
-  };
-
-  const getOpacity = (offset: number) => {
-    if (isMobile) {
-      return offset === 0 ? 1 : 0;
-    } else {
-      return offset === 0 ? 1 : 0.35;
-    }
-  };
+  const prev = () => setActiveIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
+  const next = () => setActiveIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
 
   return (
-    <section className="pt-16 pb-16 bg-gradient-to-b from-blue-50/20 via-indigo-50/10 to-background relative overflow-hidden mesh-blue-indigo" id="success-stories">
-      {/* Decorative colorful glows */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-blue-400/10 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] rounded-full bg-purple-400/10 blur-3xl pointer-events-none -z-10" />
-      <div className="max-w-[1440px] mx-auto relative px-4 sm:px-16">
-        {/* Header */}
-        <div className="text-center max-w-[860px] mx-auto mb-16 px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-2 mb-6"
-          >
-            <Star className="w-3.5 h-3.5 text-primary fill-primary" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
-              STAR PERFORMERS
-            </span>
-          </motion.div>
+    <section id="testimonials" className="relative min-h-[600px] flex items-center justify-center overflow-hidden py-14 bg-gradient-to-b from-violet-50/50 via-white to-violet-50/50">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
+        <div className="absolute w-64 h-64 md:w-96 md:h-96 bg-violet-400/20 blur-[100px] rounded-full top-1/2 left-1/4 transform -translate-y-1/2 animate-pulse" />
+        <div className="absolute w-64 h-64 md:w-96 md:h-96 bg-fuchsia-400/20 blur-[100px] rounded-full top-1/2 right-1/4 transform -translate-y-1/2 animate-pulse" style={{ animationDelay: "2s" }} />
+      </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-3xl md:text-4xl font-bold font-display text-foreground leading-[1.05] tracking-tight mb-5"
-          >
-            Our Top Achievers
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.14 }}
-            className="text-[15px] md:text-lg text-muted-foreground leading-relaxed"
-          >
-            Celebrating outstanding performance and continuous improvement
-          </motion.p>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 flex flex-col items-center">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 text-violet-600 font-bold tracking-widest text-xs md:text-sm mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote w-4 h-4 md:w-5 md:h-5" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+            <span className="uppercase tracking-[0.2em]">TESTIMONIALS</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 tracking-tight leading-tight">
+            Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">Success Stories</span>
+          </h2>
         </div>
 
-        {/* 3D CAROUSEL WRAPPER WITH NAVIGATION CHEVRONS */}
-        <div className="relative w-full max-w-[1150px] h-[480px] mx-auto flex items-center justify-center select-none">
-          {/* Left Arrow Button */}
-          <button
-            onClick={() => setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 w-11 h-11 bg-white rounded-full border border-border/80 shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors cursor-pointer text-foreground"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
-          </button>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={() => setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 w-11 h-11 bg-white rounded-full border border-border/80 shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors cursor-pointer text-foreground"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-5 h-5 stroke-[2.5]" />
-          </button>
-
-          {/* 3D Carousel Cards Container */}
-          <div className="w-full h-full relative overflow-visible flex items-center justify-center">
-            {testimonials.map((t, idx) => {
-              const offset = getCardOffset(idx);
-              const isActive = offset === 0;
-
-              return (
-                <motion.div
-                  key={t.name}
-                  style={{
-                    y: "-50%",
-                  }}
-                  animate={{
-                    x: getPositionX(offset),
-                    scale: isActive ? 1 : 0.82,
-                    opacity: getOpacity(offset),
-                    zIndex: isActive ? 30 : 20,
-                  }}
-                  transition={{ type: "spring", stiffness: 220, damping: 26 }}
-                  className="absolute left-1/2 top-1/2 w-full max-w-[300px] sm:max-w-[330px]"
-                >
-                  <div
-                    onClick={() => {
-                      if (!isActive) setCurrentIndex(idx);
-                    }}
-                    className={`bg-slate-900 text-white rounded-[28px] border overflow-hidden flex flex-col shadow-soft h-[460px] w-full relative transition-all duration-300 group cursor-pointer ${
-                      isActive 
-                        ? "border-blue-600 shadow-[0_0_25px_rgba(37,99,235,0.25)]" 
-                        : "border-border/80 hover:border-white/20"
-                    }`}
-                  >
-                    {/* Full Bleed Background Image */}
-                    <div className="absolute inset-0 w-full h-full z-0">
-                      <img
-                        src={t.image}
-                        alt={t.name}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      />
-                      {/* Dark gradient overlay at the bottom */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                    </div>
-
-                    {/* Left Badge (Active only): Gold trophy badge */}
-                    {isActive && (
-                      <div className="absolute top-5 left-5 z-20 flex flex-col items-center select-none text-amber-500">
-                        <Trophy className="w-7 h-7 stroke-[1.5] text-amber-500 fill-amber-500/20" />
-                        <span className="text-[9px] font-black uppercase tracking-widest mt-1">
-                          Top Performer
-                        </span>
+        <div className="w-full relative group">
+          <div className="overflow-hidden w-full cursor-grab active:cursor-grabbing">
+            <div className="flex touch-pan-y transition-transform duration-500" style={{ transform: `translate3d(${-activeIndex * 100}%, 0, 0)` }}>
+              {testimonials.map((person, index) => (
+                <div key={person.name} className="flex-[0_0_100%] min-w-0 flex items-center justify-center px-4">
+                  <div className="w-full max-w-sm md:max-w-md lg:max-w-xl mx-auto backdrop-blur-xl bg-white/70 border border-white/50 rounded-3xl p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:bg-white/90 hover:scale-[1.02] hover:border-violet-200 hover:shadow-[0_15px_40px_rgb(139,92,246,0.15)] transition-all duration-500 ease-out relative group/card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-quote absolute top-8 right-8 w-12 h-12 text-violet-500/10 group-hover/card:text-violet-500/20 transition-colors duration-500" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+                    <div className="flex items-center gap-5 mb-8">
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-violet-100 p-0.5 bg-white">
+                        <img src={person.image} alt={person.name} className="w-full h-full rounded-full object-cover" />
                       </div>
-                    )}
-
-                    {/* Right Badge (School Badge) */}
-                    <span className="absolute top-5 right-5 z-20 text-[10px] text-white font-bold bg-blue-600/90 border border-blue-500/30 rounded-full px-3 py-1 shadow-sm uppercase tracking-wider">
-                      {t.schoolShort}
-                    </span>
-
-                    {/* Card overlay content - aligned to bottom */}
-                    <div className="absolute bottom-0 inset-x-0 p-6 flex flex-col z-10 pt-24">
-                      {/* Name */}
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold text-white mb-3">{t.name}</h3>
-                      </div>
-
-                      {/* Separator Line */}
-                      <div className="border-t border-white/20 mb-4" />
-
-                      {/* Stats Grid */}
-                      <div className="grid grid-cols-3 divide-x divide-white/10 text-center items-start">
-                        <div className="flex flex-col items-center">
-                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Before</span>
-                          <span className="text-[22px] sm:text-[24px] font-black text-white mt-0.5">{t.before}</span>
-                          {isActive && (
-                            <div className="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mt-2">
-                              <BarChart2 className="w-4.5 h-4.5" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex flex-col items-center px-1">
-                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Improvement</span>
-                          <span className="text-[22px] sm:text-[24px] font-black text-emerald-400 mt-0.5 flex items-center justify-center gap-0.5">
-                            {t.delta} <span className="text-[16px]">↗</span>
-                          </span>
-                          {isActive && (
-                            <div className="h-8 flex items-center justify-center mt-2">
-                              <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">
-                                {t.percentage}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">Final Score</span>
-                          <span className="text-[22px] sm:text-[24px] font-black text-blue-400 mt-0.5">{t.after}</span>
-                          {isActive && (
-                            <div className="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mt-2">
-                              <Trophy className="w-4.5 h-4.5" />
-                            </div>
-                          )}
+                      <div className="flex flex-col">
+                        <h4 className="font-bold text-gray-900 text-lg tracking-wide">{person.name}</h4>
+                        <p className="text-violet-600 text-sm font-medium tracking-wider">{person.role}</p>
+                        <div className="flex gap-1 mt-1 text-yellow-500">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <svg key={i} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-star w-3.5 h-3.5 fill-current" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                          ))}
                         </div>
                       </div>
                     </div>
+                    <p className="text-gray-700 italic text-base md:text-lg leading-relaxed md:leading-loose font-light relative z-10">{person.quote}</p>
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            className="hidden md:flex absolute top-1/2 -left-4 xl:-left-12 -translate-y-1/2 w-12 h-12 items-center justify-center rounded-full bg-white/80 border border-violet-100 text-violet-600 backdrop-blur-sm opacity-0 group-hover:opacity-100 hover:bg-violet-600 hover:border-violet-500 hover:text-white hover:scale-110 shadow-sm transition-all duration-300 z-10"
+            aria-label="Previous testimonial"
+            onClick={prev}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-left w-6 h-6" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+          </button>
+
+          <button
+            className="hidden md:flex absolute top-1/2 -right-4 xl:-right-12 -translate-y-1/2 w-12 h-12 items-center justify-center rounded-full bg-white/80 border border-violet-100 text-violet-600 backdrop-blur-sm opacity-0 group-hover:opacity-100 hover:bg-violet-600 hover:border-violet-500 hover:text-white hover:scale-110 shadow-sm transition-all duration-300 z-10"
+            aria-label="Next testimonial"
+            onClick={next}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right w-6 h-6" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+
+          <div className="flex justify-center gap-3 mt-10">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`h-2 rounded-full transition-all duration-500 ease-out ${
+                  index === activeIndex ? "w-8 bg-violet-600" : "w-2 bg-violet-200 hover:bg-violet-300"
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+                onClick={() => setActiveIndex(index)}
+              />
+            ))}
           </div>
         </div>
 
-        {/* DOTS INDICATORS */}
-        <div className="flex justify-center gap-2 mt-8">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === currentIndex
-                  ? "bg-primary w-6"
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2.5"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* BOOK FREE DEMO BUTTON */}
-        <div className="flex justify-center mt-10">
-          <Button
-            size="lg"
-            className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground gap-2 shadow-soft hover-lift"
-            onClick={() => setIsBookDemoOpen(true)}
-          >
-            <Play className="w-4 h-4 fill-current" />
-            Book Free Demo
-          </Button>
-        </div>
-
-        {/* BOOK DEMO DIALOG */}
-        <BookSessionDialog
-          open={isBookDemoOpen}
-          onOpenChange={setIsBookDemoOpen}
-          title="Book a free demo"
-          description="Share your details and we'll schedule a free 30-minute consultation with Aman."
-        />
+        <a className="mt-10 inline-flex items-center gap-2 px-8 py-3.5 bg-violet-600 text-white font-semibold rounded-full hover:bg-violet-700 transition-all shadow-lg shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/30 hover:-translate-y-0.5 text-sm group" href="/testimonials">
+          View All Testimonials
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
       </div>
     </section>
   );
-};
+}
+

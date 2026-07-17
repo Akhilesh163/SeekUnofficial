@@ -9,7 +9,7 @@ export const Hero = () => {
   const [isBookSessionOpen, setIsBookSessionOpen] = useState(false);
 
   return (
-    <section className="pt-0 md:pt-10 min-h-[calc(100vh-92px)] flex flex-col justify-between relative overflow-x-hidden bg-background">
+    <section className="pt-[84px] md:pt-10 min-h-[calc(100vh-84px)] flex flex-col justify-between relative overflow-x-hidden bg-background">
       {/* Rich colorful background blobs */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
         {/* Blue-purple top-right blob */}
@@ -33,7 +33,7 @@ export const Hero = () => {
       </div>
 
       {/* Dot Grid - Top Right */}
-      <div className="absolute top-[110px] right-[4%] pointer-events-none -z-10 opacity-30">
+      <div className="hidden md:block absolute top-[110px] right-[4%] pointer-events-none -z-10 opacity-30">
         <svg width="130" height="130" viewBox="0 0 130 130">
           {Array.from({ length: 5 }).map((_, row) =>
             Array.from({ length: 5 }).map((_, col) => (
@@ -50,7 +50,7 @@ export const Hero = () => {
       </div>
 
       {/* Arc Lines - Right Edge */}
-      <div className="absolute top-[8%] right-0 pointer-events-none -z-10 opacity-20">
+      <div className="hidden md:block absolute top-[8%] right-0 pointer-events-none -z-10 opacity-20">
         <svg width="220" height="600" viewBox="0 0 220 600" fill="none">
           <path d="M 200 0 Q 80 300 200 600" stroke="hsl(var(--primary))" strokeWidth="1.2" />
           <path d="M 165 0 Q 45 300 165 600" stroke="hsl(var(--primary))" strokeWidth="1.2" />
@@ -58,7 +58,7 @@ export const Hero = () => {
         </svg>
       </div>
 
-      <div className="max-w-[1440px] mx-auto w-full px-8 md:px-16 lg:px-24 xl:px-16 grid grid-cols-1 xl:grid-cols-[1fr_1.3fr] gap-12 xl:gap-6 pt-2 xl:pt-10 pb-16 items-center">
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 grid grid-cols-1 xl:grid-cols-[1fr_1.3fr] gap-10 xl:gap-6 pt-2 xl:pt-10 pb-16 items-center">
         {/* LEFT COLUMN: CONTENT */}
         <div className="max-w-[620px] flex flex-col justify-center order-2 xl:order-1">
           {/* Headline */}
@@ -124,7 +124,7 @@ export const Hero = () => {
         {/* RIGHT COLUMN: PORTRAIT & FLOATING CARDS */}
         <div className="relative flex flex-col xl:flex-row items-center justify-center mt-10 md:mt-4 xl:mt-0 w-full overflow-visible order-1 xl:order-2">
           {/* Portrait Container */}
-          <div className="relative flex justify-center items-center h-[340px] sm:h-[480px] lg:h-[560px] xl:h-[720px] w-full max-w-[360px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-none scale-[0.9] sm:scale-100 origin-center">
+          <div className="relative flex justify-center items-center h-[340px] sm:h-[480px] lg:h-[560px] xl:h-[720px] w-full max-w-[360px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-none scale-[0.9] sm:scale-100 origin-center overflow-hidden xl:overflow-visible">
             {/* Portrait Frame Oval Background */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -137,7 +137,7 @@ export const Hero = () => {
             />
 
             {/* Main Hero Portrait Wrapper */}
-            <div className="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[520px] xl:max-w-[640px] z-[2] pointer-events-none transform translate-x-[40px] sm:translate-x-10 lg:translate-x-10">
+            <div className="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[520px] xl:max-w-[640px] z-[2] pointer-events-none transform translate-x-0 sm:translate-x-10 lg:translate-x-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -164,7 +164,7 @@ export const Hero = () => {
                 y: { repeat: Infinity, duration: 4.0, ease: "easeInOut" }
               }}
               whileHover={{ scale: 1.05 }}
-              className="absolute top-[8%] -left-4 sm:left-[2%] md:-left-[5%] lg:left-[0%] xl:left-[6%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
+              className="hidden md:flex absolute top-[8%] -left-4 sm:left-[2%] md:-left-[5%] lg:left-[0%] xl:left-[6%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
             >
               <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-600 shrink-0">
                 <TrendingUp className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 stroke-[2.5]" />
@@ -220,7 +220,7 @@ export const Hero = () => {
                 y: { repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 0.2 }
               }}
               whileHover={{ scale: 1.05 }}
-              className="absolute bottom-[24%] -left-4 sm:left-[2%] md:-left-[5%] lg:left-[-2%] xl:left-[4%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
+              className="hidden md:flex absolute bottom-[24%] -left-4 sm:left-[2%] md:-left-[5%] lg:left-[-2%] xl:left-[4%] z-20 bg-card rounded-[12px] sm:rounded-[15px] p-2 sm:p-3 shadow-soft border border-border/80 flex items-center gap-1.5 sm:gap-2.5 w-[145px] sm:w-[190px] xl:w-[220px] cursor-pointer"
             >
               <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                 <ShieldCheck className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 stroke-[2.5]" />

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BookOpen, Zap, Activity, Gift, ChevronDown } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import analyticsIcon from "@/assets/paced-icon/analytics.webp";
 import booksIcon from "@/assets/paced-icon/books.webp";
 import qaIcon from "@/assets/paced-icon/qa.webp";
@@ -17,6 +18,7 @@ const AboutGmat: React.FC = () => {
   const [activeGmatFocus, setActiveGmatFocus] = useState("learn");
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
 
   const faqs = [
     {
@@ -203,6 +205,18 @@ const AboutGmat: React.FC = () => {
       footer: "Sreethy, 3 months ago",
     },
   ];
+
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      carouselApi.scrollNext();
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [carouselApi]);
 
   const features = [
     { key: "quant", title: "Quantitative Reasoning", details: ["Problem solving practice", "Topic-wise drills and tests"], icon: <BookOpen className="h-6 w-6" /> },
@@ -569,30 +583,47 @@ const AboutGmat: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              {studentReviews.map((review) => (
-                <div key={`${review.name}-${review.footer}`} className="rounded-[32px] border border-slate-200 bg-slate-50 p-6 shadow-soft">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={review.image}
-                      alt={review.name}
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <p className="text-lg font-semibold text-slate-950">{review.name}</p>
-                      <p className="text-sm text-slate-600">{review.title}</p>
-                      <div className="mt-2 flex items-center gap-1 text-amber-400">
-                        {Array.from({ length: review.rating }).map((_, index) => (
-                          <span key={index}>★</span>
-                        ))}
+            <Carousel
+              opts={{
+                containScroll: "trimSnaps",
+                slidesToScroll: 1,
+                loop: true,
+                align: "start",
+                speed: 10,
+              }}
+              setApi={setCarouselApi}
+              className="relative"
+            >
+              <CarouselContent className="flex gap-4">
+                {studentReviews.map((review) => (
+                  <CarouselItem
+                    key={`${review.name}-${review.footer}`}
+                    className="min-w-full sm:basis-[calc(50%-1rem)] lg:basis-[calc(33.333%-1rem)]"
+                  >
+                    <div className="rounded-[32px] border border-slate-200 bg-slate-50 p-6 shadow-soft min-h-full">
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={review.image}
+                          alt={review.name}
+                          className="h-16 w-16 rounded-full object-cover"
+                        />
+                        <div>
+                          <p className="text-lg font-semibold text-slate-950">{review.name}</p>
+                          <p className="text-sm text-slate-600">{review.title}</p>
+                          <div className="mt-2 flex items-center gap-1 text-amber-400">
+                            {Array.from({ length: review.rating }).map((_, index) => (
+                              <span key={index}>★</span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
+                      <p className="mt-5 text-sm leading-7 text-slate-700">{review.text}</p>
+                      <p className="mt-6 text-sm font-semibold text-slate-900">{review.footer}</p>
                     </div>
-                  </div>
-                  <p className="mt-5 text-sm leading-7 text-slate-700">{review.text}</p>
-                  <p className="mt-6 text-sm font-semibold text-slate-900">{review.footer}</p>
-                </div>
-              ))}
-            </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </section>
 
           <section className="mt-6 px-6">
