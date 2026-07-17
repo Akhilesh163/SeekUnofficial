@@ -5,7 +5,7 @@ const testimonials = [
     name: "Annant Mehta",
     role: "GRE 320 → MS, Texas A&M University, USA",
     image: "/assets/gre-asset/girl.webp",
-    quote: "The tailored approach and insightful strategies provided by the team were absolutely crucial. I achieved 170 in Quant and 150 in Verbal — and I owe a lot of that to the focused preparation structure at Aao Seekhe. I highly recommend this coaching to anyone serious about graduate school.",
+    quote: "The tailored approach and insightful strategies provided by the team were absolutely crucial. I achieved 170 in Quant and 150 in Verbal — and I owe a lot of that to the focused preparation structure at Seek Your Y. I highly recommend this coaching to anyone serious about graduate school.",
   },
   {
     name: "Vishnu Singh",
@@ -35,13 +35,13 @@ const testimonials = [
     name: "Arjun Mehta",
     role: "IELTS 8.0 Band",
     image: "/assets/gre-asset/girl.webp",
-    quote: "Achieving an 8.0 band in IELTS felt like a distant dream until I joined Aao Seekhe. The intensive training sessions and focus on nuanced vocabulary for the Writing section made all the difference.",
+    quote: "Achieving an 8.0 band in IELTS felt like a distant dream until I joined Seek Your Y. The intensive training sessions and focus on nuanced vocabulary for the Writing section made all the difference.",
   },
   {
     name: "Rahul Verma",
     role: "IELTS 8.0 Band (from 6.5)",
     image: "/assets/gre-asset/girl.webp",
-    quote: "The mock test series for IELTS at Aao Seekhe was a game-changer. It perfectly simulated the pressure of the actual exam. The faculty's feedback on my Speaking module was specific and actionable — I jumped from 6.5 to 8.0.",
+    quote: "The mock test series for IELTS at Seek Your Y was a game-changer. It perfectly simulated the pressure of the actual exam. The faculty's feedback on my Speaking module was specific and actionable — I jumped from 6.5 to 8.0.",
   },
   {
     name: "Keshav Goyal",
@@ -53,7 +53,7 @@ const testimonials = [
     name: "Mehakjot Kaur Massoun",
     role: "SAT → Top-50 US College",
     image: "/assets/gre-asset/girl.webp",
-    quote: "As someone who knew nothing about the process of going abroad — and never thought it was a possibility for me — getting into a top-50 US college felt impossible. Aao Seekhe changed that, step by step.",
+    quote: "As someone who knew nothing about the process of going abroad — and never thought it was a possibility for me — getting into a top-50 US college felt impossible. Seek Your Y changed that, step by step.",
   },
 ];
 

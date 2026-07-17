@@ -70,7 +70,7 @@ const ContactUs = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin w-6 h-6 text-[#1a2b4c] group-hover:text-white transition-colors duration-300" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
               </div>
               <h3 className="font-semibold">Office Address</h3>
-              <p className="mt-3 text-sm text-muted-foreground">Aao Seekhe, UGF 24, Arcadium One, Vrindavan Yojana Sector 16, Lucknow</p>
+              <p className="mt-3 text-sm text-muted-foreground">Seek Your Y, UGF 24, Arcadium One, Vrindavan Yojana Sector 16, Lucknow</p>
             </div>
 
             <div className="rounded-[20px] bg-white p-8 shadow-soft text-center border border-slate-100">

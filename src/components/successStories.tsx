@@ -16,7 +16,7 @@ const SuccessStories: React.FC = () => {
             <div className="mt-3 w-40 h-2 bg-gradient-to-r from-[#0052CC] to-[#F43F5E] rounded-full shadow-sm" />
 
             <p className="mt-6 text-lg text-muted-foreground max-w-lg pl-6 border-l-4 border-[#0052CC]/20">
-              Aao Seekhe was founded with a clear and ambitious vision: that world-class education guidance should be accessible to all, not just a privileged few. We combine rigorous academic coaching with genuine mentorship to help students reach their goals.
+              Seek Your Y was founded with a clear and ambitious vision: that world-class education guidance should be accessible to all, not just a privileged few. We combine rigorous academic coaching with genuine mentorship to help students reach their goals.
             </p>
 
             <div className="mt-8 flex items-center gap-6">
@@ -132,7 +132,7 @@ const SuccessStories: React.FC = () => {
               <ExpertsCarousel />
             </div>
 
-      {/* Why Choose Aao Seekhe */}
+      {/* Why Choose Seek Your Y */}
       <section className="bg-[#f7f8fb]">
         <div className="mx-auto max-w-[1200px] px-6 pb-20">
           <div className="mx-auto max-w-3xl text-center">
