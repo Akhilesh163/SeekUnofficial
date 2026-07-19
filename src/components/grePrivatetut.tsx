@@ -59,29 +59,26 @@ const GrePrivateTut: React.FC = () => {
   return (
     <div className="bg-background text-foreground">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-background via-blue-50/20 to-indigo-50/30 py-20 md:py-28">
-        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-blue-300/5 blur-3xl pointer-events-none -z-10" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-indigo-300/5 blur-3xl pointer-events-none -z-10" />
-        
+      <section className="pt-[100px] pb-16 bg-background">
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_420px] gap-12 items-start">
             <div className="pt-6">
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-blue-100/80 border border-blue-200/60">
-                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                <span className="text-sm font-bold text-blue-700 uppercase tracking-wide">GRE® Private Tutoring</span>
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/60 text-sky-600">
+                <span className="w-2 h-2 rounded-full bg-sky-600"></span>
+                <span className="text-sm font-bold uppercase tracking-wide">GRE® Private Tutoring</span>
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-slate-900 mb-6 tracking-tight">
-                GRE Exam <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Preparation</span> From Your Home
+              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-foreground mb-6 tracking-tight">
+                GRE Exam <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400">Preparation</span> From Your Home
               </h1>
               
-              <p className="text-xl text-slate-600 mb-8 max-w-2xl">Get expert GRE coaching with a private mentor, personalized study plan, and 1-on-1 guidance to crush your target score.</p>
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Get expert GRE coaching with a private mentor, personalized study plan, and 1-on-1 guidance to crush your target score.</p>
 
               <div className="flex flex-wrap gap-4">
-                <button className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <button className="inline-flex items-center gap-3 rounded-full bg-emerald-500 px-8 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl transition-all duration-200">
                   Take a Free Class
                 </button>
-                <button className="inline-flex items-center gap-3 rounded-xl border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-900 hover:bg-slate-50 hover:border-slate-400 transition-all duration-300">
+                <button className="inline-flex items-center gap-3 rounded-full border border-border bg-card px-8 py-4 text-base font-semibold text-foreground hover:bg-card/95 transition-all duration-200">
                   Call Us
                 </button>
               </div>
@@ -89,27 +86,78 @@ const GrePrivateTut: React.FC = () => {
 
             {/* Top Scorers Card */}
             <div className="relative">
-              <div className="glass-card rounded-3xl bg-gradient-to-br from-blue-50 via-indigo-50/50 to-white border border-blue-200/60 p-6 shadow-xl overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-t-3xl"></div>
-                
-                <div className="pt-2">
-                  <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide mb-6">Top Scorers</h3>
-                  <div className="space-y-4">
-                    {topScorers.map((s) => (
-                      <div key={s.name} className="flex items-center justify-between gap-4 rounded-2xl bg-white/80 border border-slate-200/50 p-4 hover:bg-white transition-all duration-200">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex-shrink-0" />
-                          <div className="min-w-0">
-                            <div className="font-semibold text-slate-900 text-sm">{s.name}</div>
-                            <div className="text-xs text-slate-500 truncate">{s.school}</div>
-                          </div>
-                        </div>
-                        <div className="rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 px-3 py-2 text-right flex-shrink-0">
-                          <div className="text-xs text-blue-100 font-semibold">GRE</div>
-                          <div className="text-lg font-bold text-white">{s.score}</div>
+              <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft">
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.24em] text-slate-500">GRE Top Scorers</p>
+                    <p className="mt-2 text-sm text-slate-600">Recent achievers from our GRE cohort</p>
+                  </div>
+                  <div className="rounded-3xl bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">2025</div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="rounded-3xl p-4 bg-sky-50">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 font-semibold">D</div>
+                        <div>
+                          <p className="font-semibold text-foreground">Dhruv Puri</p>
+                          <p className="text-sm text-muted-foreground">MIT</p>
                         </div>
                       </div>
-                    ))}
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">328</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-sky-50">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 font-semibold">A</div>
+                        <div>
+                          <p className="font-semibold text-foreground">Anunya Sharma</p>
+                          <p className="text-sm text-muted-foreground">IGDTUW</p>
+                        </div>
+                      </div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">325</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-sky-50">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 font-semibold">P</div>
+                        <div>
+                          <p className="font-semibold text-foreground">Pooja Saluja</p>
+                          <p className="text-sm text-muted-foreground">SRI VENKATESWARA COLLEGE, DHAULA KUAN, UNIVERSITY OF DELHI</p>
+                        </div>
+                      </div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">325</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-sky-50">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 font-semibold">S</div>
+                        <div>
+                          <p className="font-semibold text-foreground">Sanika Tiwarekar</p>
+                          <p className="text-sm text-muted-foreground">SARDAR PATEL INSTITUTE</p>
+                        </div>
+                      </div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">322</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,15 +216,15 @@ const GrePrivateTut: React.FC = () => {
       </section>
 
       {/* WHY CHOOSE - CARDS */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-              Why Choose Seekyoury for <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">GRE Private Tutoring</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
+              Why Choose Seekyoury for <span className="bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 bg-clip-text text-transparent">GRE Private Tutoring</span>
             </h2>
             
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Experience personalized GRE preparation backed by 30+ years of expertise
             </p>
           </div>
@@ -186,11 +234,11 @@ const GrePrivateTut: React.FC = () => {
             {cards.map((card) => (
               <div
                 key={card.title}
-                className="group rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50/40 border border-blue-100/60 p-10 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-2"
+                className="group rounded-3xl bg-card border border-border p-10 shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Icon Container */}
                 <div className="mb-8">
-                  <div className="inline-flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                  <div className="inline-flex h-24 w-24 items-center justify-center rounded-2xl bg-sky-50 shadow-sm transition-transform duration-300 group-hover:scale-105">
                     <img
                       src={card.icon}
                       alt={card.title}
@@ -201,12 +249,12 @@ const GrePrivateTut: React.FC = () => {
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
+                <h3 className="text-xl font-bold text-foreground mb-3 leading-tight">
                   {card.title}
                 </h3>
                 
-                <p className="text-base text-slate-600 leading-relaxed">
-                  {card.description || card.title}
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {card.title}
                 </p>
               </div>
             ))}
@@ -214,7 +262,7 @@ const GrePrivateTut: React.FC = () => {
 
           {/* CTA Button */}
           <div className="mt-16 text-center">
-            <button className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+            <button className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-500 px-8 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
               Talk to a GRE Expert
             </button>
           </div>
@@ -225,126 +273,125 @@ const GrePrivateTut: React.FC = () => {
       <section className="py-16 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.14em] text-blue-600 mb-2">PRICING</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Packages</h2>
-            <div className="mx-auto w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-sky-600 mb-2">PRICING</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4">Packages</h2>
+            <div className="mx-auto w-32 h-1 bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 rounded-full"></div>
           </div>
 
           <div className="mt-16 grid gap-8 lg:grid-cols-3 md:grid-cols-2">
             {/* Booster Card */}
-            <div className="relative rounded-3xl border border-slate-200/60 bg-gradient-to-br from-white via-slate-50/30 to-white p-8 shadow-sm hover:shadow-xl hover:border-blue-400 transition-all duration-300 hover:-translate-y-1 group">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Booster</h3>
+            <div className="relative rounded-3xl border border-border bg-card p-8 shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 group">
+              <h3 className="text-2xl font-extrabold text-foreground mb-4">Booster</h3>
               <div className="mb-2">
-                <span className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">₹24,999</span>
+                <span className="text-5xl font-extrabold text-foreground">₹24,999</span>
               </div>
-              <p className="text-sm text-slate-600 mb-6">8 sessions • single section • ~₹3,125/session</p>
+              <p className="text-sm text-muted-foreground mb-6">8 sessions • single section • ~₹3,125/session</p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">8 × 60-min 1-on-1 sessions</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">Custom drills & homework</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">WhatsApp doubt support</span>
                 </div>
               </div>
 
-              <button className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 px-6 py-3 text-white font-bold hover:shadow-lg shadow-md hover:scale-105 transform transition-all duration-300">
+              <button className="w-full rounded-2xl bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-500 px-6 py-3 text-white font-bold hover:shadow-lg shadow-md hover:scale-105 transform transition-all duration-300">
                 Get Started
               </button>
             </div>
 
             {/* Complete Card (Recommended) */}
-            <div className="relative rounded-3xl border border-blue-500/40 bg-gradient-to-br from-white via-blue-50/30 to-white p-8 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group lg:scale-105">
+            <div className="relative rounded-3xl border border-border bg-card p-8 shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 group lg:scale-105">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="inline-flex px-4 py-1 rounded-full bg-black text-white text-xs font-bold">Recommended</span>
+                <span className="inline-flex px-4 py-1 rounded-full bg-foreground text-primary-foreground text-xs font-bold">Recommended</span>
               </div>
-              
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4 mt-2">Complete</h3>
+              <h3 className="text-2xl font-extrabold text-foreground mb-4 mt-2">Complete</h3>
               <div className="mb-2">
-                <span className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">₹44,999</span>
+                <span className="text-5xl font-extrabold text-foreground">₹44,999</span>
               </div>
-              <p className="text-sm text-slate-600 mb-6">16 sessions • full GRE • ~₹2,812/session</p>
+              <p className="text-sm text-muted-foreground mb-6">16 sessions • full GRE • ~₹2,812/session</p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">16 × 60-min 1-on-1 sessions</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">Self-paced course + 30-test series</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">Mock reviews after every test</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">Priority doubt support</span>
                 </div>
               </div>
 
-              <button className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 px-6 py-3 text-white font-bold hover:shadow-lg shadow-md hover:scale-105 transform transition-all duration-300">
+              <button className="w-full rounded-2xl bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-500 px-6 py-3 text-white font-bold hover:shadow-lg shadow-md hover:scale-105 transform transition-all duration-300">
                 Get Started
               </button>
             </div>
 
             {/* Elite Card */}
-            <div className="relative rounded-3xl border border-slate-200/60 bg-gradient-to-br from-white via-slate-50/30 to-white p-8 shadow-sm hover:shadow-xl hover:border-blue-400 transition-all duration-300 hover:-translate-y-1 group">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Elite 330+</h3>
+            <div className="relative rounded-3xl border border-border bg-card p-8 shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 group">
+              <h3 className="text-2xl font-extrabold text-foreground mb-4">Elite 330+</h3>
               <div className="mb-2">
-                <span className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">₹69,999</span>
+                <span className="text-5xl font-extrabold text-foreground">₹69,999</span>
               </div>
-              <p className="text-sm text-slate-600 mb-6">24 sessions • directly with Aman</p>
+              <p className="text-sm text-muted-foreground mb-6">24 sessions • directly with Aman</p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">24 sessions with Aman himself</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">Everything in Complete</span>
                 </div>
                 <div className="flex gap-3">
-                  <svg className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-slate-700 font-medium">MBA/MS admissions strategy session</span>
                 </div>
               </div>
 
-              <button className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 px-6 py-3 text-white font-bold hover:shadow-lg shadow-md hover:scale-105 transform transition-all duration-300">
+              <button className="w-full rounded-2xl bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-500 px-6 py-3 text-white font-bold hover:shadow-lg shadow-md hover:scale-105 transform transition-all duration-300">
                 Get Started
               </button>
             </div>
           </div>
 
-          <div className="mt-12 rounded-2xl bg-blue-50 border border-blue-200 p-6 max-w-4xl mx-auto">
+          <div className="mt-12 rounded-2xl bg-sky-50 border border-sky-200 p-6 max-w-4xl mx-auto">
             <p className="text-slate-700">
               <span className="font-bold text-slate-900">How we compare:</span> private GRE tutoring in India typically runs ₹2,500–4,000 per hour (and US firms like Manhattan Prep or Princeton Review charge $200–300/hr). Our Complete package works out to ~₹2,812/session — with course, mocks and mentoring included free.
             </p>
@@ -353,25 +400,25 @@ const GrePrivateTut: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-background via-blue-50/20 to-background py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-background via-sky-50/30 to-background py-20">
         {/* Decorative glows */}
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-blue-400/5 blur-3xl pointer-events-none -z-10" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-indigo-400/5 blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-sky-400/5 blur-3xl pointer-events-none -z-10" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-emerald-400/5 blur-3xl pointer-events-none -z-10" />
         
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
-              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-blue-100/80 border border-blue-200/60">
-                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                <span className="text-sm font-bold text-blue-700 uppercase tracking-wide">Ready to Transform Your GRE Prep?</span>
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-sky-100/80 border border-sky-200/60">
+                <span className="w-2 h-2 rounded-full bg-sky-600"></span>
+                <span className="text-sm font-bold text-sky-700 uppercase tracking-wide">Ready to Transform Your GRE Prep?</span>
               </div>
               
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
-                Find Your <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Y</span> Today
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
+                Find Your <span className="bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 bg-clip-text text-transparent">Y</span> Today
               </h2>
               
-              <p className="text-lg text-slate-700 mb-8 leading-relaxed max-w-lg">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg">
                 Get personalized GRE tutoring with a 1-on-1 strategy session. We'll assess your current level, understand your goals, and create a roadmap to your target score.
               </p>
 
@@ -382,20 +429,20 @@ const GrePrivateTut: React.FC = () => {
                   { title: "No commitment required", desc: "Pure guidance, zero obligations" },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 mt-0.5 flex-shrink-0">
-                      <svg className="h-4 w-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-sky-100 mt-0.5 flex-shrink-0">
+                      <svg className="h-4 w-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <div className="font-bold text-slate-900">{item.title}</div>
-                      <div className="text-sm text-slate-600">{item.desc}</div>
+                      <div className="font-bold text-foreground">{item.title}</div>
+                      <div className="text-sm text-muted-foreground">{item.desc}</div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <button className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+              <button className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-500 px-8 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -406,17 +453,17 @@ const GrePrivateTut: React.FC = () => {
             {/* Right Visual Card */}
             <div className="relative">
               {/* Gradient card background */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-50 via-indigo-50/50 to-white border border-blue-200/60 shadow-xl"></div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-sky-50 via-emerald-50/60 to-white border border-sky-200/60 shadow-xl"></div>
               
               {/* Accent line at top */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 rounded-t-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700"></div>
+              <div className="absolute top-0 left-0 right-0 h-1.5 rounded-t-3xl bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-500"></div>
 
               <div className="relative p-10 lg:p-12">
                 <div className="space-y-8">
                   {/* Stat cards */}
                   <div className="bg-white rounded-2xl p-6 border border-slate-200/50 shadow-sm">
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">92%</span>
+                      <span className="text-4xl font-extrabold bg-gradient-to-r from-sky-500 to-emerald-500 bg-clip-text text-transparent">92%</span>
                       <span className="text-slate-600 font-semibold">Success</span>
                     </div>
                     <p className="text-sm text-slate-600">Students achieve their target scores with personalized tutoring</p>
@@ -424,7 +471,7 @@ const GrePrivateTut: React.FC = () => {
 
                   <div className="bg-white rounded-2xl p-6 border border-slate-200/50 shadow-sm">
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">+120</span>
+                      <span className="text-4xl font-extrabold bg-gradient-to-r from-sky-500 to-emerald-500 bg-clip-text text-transparent">+120</span>
                       <span className="text-slate-600 font-semibold">Avg. Gain</span>
                     </div>
                     <p className="text-sm text-slate-600">Average score improvement with our complete program</p>
@@ -432,7 +479,7 @@ const GrePrivateTut: React.FC = () => {
 
                   <div className="bg-white rounded-2xl p-6 border border-slate-200/50 shadow-sm">
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">15+</span>
+                      <span className="text-4xl font-extrabold bg-gradient-to-r from-sky-500 to-emerald-500 bg-clip-text text-transparent">15+</span>
                       <span className="text-slate-600 font-semibold">Years</span>
                     </div>
                     <p className="text-sm text-slate-600">Expert faculty with proven track record since 1993</p>

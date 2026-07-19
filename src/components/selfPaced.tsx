@@ -167,23 +167,79 @@ const SelfPaced = () => {
 
             {/* Top scorers card */}
             <div className="relative">
-              <div className="rounded-2xl bg-card p-4 shadow-lg border border-border">
-                <div className="rounded-xl bg-primary/95 p-4 text-primary-foreground">
-                  {topScorers.map((s) => (
-                    <div key={s.name} className="mb-4 flex items-center justify-between gap-4 rounded-lg bg-primary p-3">
+              <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft">
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.24em] text-slate-500">GRE Top Scorers</p>
+                    <p className="mt-2 text-sm text-slate-600">Recent achievers from our GRE cohort</p>
+                  </div>
+                  <div className="rounded-3xl bg-[#EAF3FF] px-4 py-2 text-sm font-semibold text-[#0052CC]">2025</div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="rounded-3xl p-4 bg-[#F8FAFF]">
+                    <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-white/20" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0052CC]/10 text-[#0052CC] font-semibold">M</div>
                         <div>
-                          <div className="font-semibold">{s.name}</div>
-                          <div className="text-xs">{s.school}</div>
+                          <p className="font-semibold text-slate-950">Manya Sharma</p>
+                          <p className="text-sm text-slate-600">Punjab College</p>
                         </div>
                       </div>
-                      <div className="ml-2 rounded-md bg-foreground px-4 py-2 text-right text-primary-foreground">
-                        <div className="text-xs opacity-70">GRE</div>
-                        <div className="text-xl font-bold">{s.score}</div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">324</p>
                       </div>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-[#EFF6FF]">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-centered gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0052CC]/10 text-[#0052CC] font-semibold">A</div>
+                        <div>
+                          <p className="font-semibold text-slate-950">Anant Govil</p>
+                          <p className="text-sm text-slate-600">DTU - Delhi Technological University</p>
+                        </div>
+                      </div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">323</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-[#F8FAFF]">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0052CC]/10 text-[#0052CC] font-semibold">S</div>
+                        <div>
+                          <p className="font-semibold text-slate-950">Shaurya Srivastava</p>
+                          <p className="text-sm text-slate-600">NIIT University</p>
+                        </div>
+                      </div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">322</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-[#EFF6FF]">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0052CC]/10 text-[#0052CC] font-semibold">E</div>
+                        <div>
+                          <p className="font-semibold text-slate-950">Eshan Singh</p>
+                          <p className="text-sm text-slate-600">DYPiemr</p>
+                        </div>
+                      </div>
+                      <div className="rounded-3xl bg-slate-950 px-4 py-3 text-right text-white shadow-sm">
+                        <p className="text-[0.65rem] uppercase tracking-[0.24em] text-slate-300">GRE</p>
+                        <p className="mt-1 text-2xl font-bold leading-none">321</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

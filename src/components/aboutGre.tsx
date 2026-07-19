@@ -708,22 +708,8 @@ const AboutGre = () => {
             </div>
           </section>
 
-          <div className="mt-16">
-            <h2 className="text-3xl font-semibold text-slate-950 text-center">Why Choose Seekyoury for GRE Test Prep?</h2>
-          </div>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.title} className="rounded-[32px] border border-slate-200 bg-white p-7 shadow-soft">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-3xl bg-[#EEF2FF]">
-                  <img src={feature.iconPath} alt={feature.title} className="h-8 w-8 object-contain" />
-                </div> 
-
-                <h3 className="text-lg font-semibold text-slate-950">{feature.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+        
+        
 
           {/* CTA Section */}
           <section className="bg-slate-50 py-20 px-6 -mx-6 lg:-mx-8">

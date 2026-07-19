@@ -151,33 +151,52 @@ const GmatSelfPaced: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="rounded-3xl border border-border bg-card p-5 shadow-lg">
-                <div className="space-y-4 rounded-3xl bg-primary p-5 text-primary-foreground shadow-inner">
-                  <div className="flex items-center justify-between gap-4 rounded-2xl bg-primary p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="h-12 w-12 rounded-full bg-card/20" />
+              <div className="rounded-[32px] border border-border bg-card p-6 shadow-soft">
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Top GMAT Results</p>
+                    <p className="mt-2 text-sm text-muted-foreground">Recent achievers from our coaching batch</p>
+                  </div>
+                  <div className="rounded-3xl bg-primary/5 px-4 py-2 text-sm font-semibold text-primary shadow-sm">2025</div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="rounded-3xl p-4 bg-background">
+                    <div className="flex items-center justify-between gap-4">
                       <div>
-                        <div className="font-semibold">Jinay Nandu</div>
-                        <div className="text-xs opacity-80">GMAT 715</div>
+                        <p className="font-semibold text-foreground">Jinay Nandu</p>
+                        <p className="text-sm text-muted-foreground">GMAT Achiever</p>
                       </div>
-                    </div>
-                    <div className="rounded-2xl bg-foreground px-4 py-3 text-right text-primary-foreground">
-                      <div className="text-xs opacity-70">GMAT</div>
-                      <div className="text-xl font-bold">715</div>
+                      <div className="rounded-3xl bg-primary px-4 py-2 text-right text-primary-foreground">
+                        <p className="text-xs uppercase text-primary-foreground/70">Score</p>
+                        <p className="text-xl font-bold">720</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4 rounded-2xl bg-primary p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="h-12 w-12 rounded-full bg-card/20" />
+                  <div className="rounded-3xl p-4 bg-background">
+                    <div className="flex items-center justify-between gap-4">
                       <div>
-                        <div className="font-semibold">Sid Makharia</div>
-                        <div className="text-xs opacity-80">GMAT 715</div>
+                        <p className="font-semibold text-foreground">Sid Makharia</p>
+                        <p className="text-sm text-muted-foreground">GMAT Achiever</p>
+                      </div>
+                      <div className="rounded-3xl bg-primary px-4 py-2 text-right text-primary-foreground">
+                        <p className="text-xs uppercase text-primary-foreground/70">Score</p>
+                        <p className="text-xl font-bold">715</p>
                       </div>
                     </div>
-                    <div className="rounded-2xl bg-foreground px-4 py-3 text-right text-primary-foreground">
-                      <div className="text-xs opacity-70">GMAT</div>
-                      <div className="text-xl font-bold">715</div>
+                  </div>
+
+                  <div className="rounded-3xl p-4 bg-background">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="font-semibold text-foreground">Riya Joshi</p>
+                        <p className="text-sm text-muted-foreground">GMAT Achiever</p>
+                      </div>
+                      <div className="rounded-3xl bg-primary px-4 py-2 text-right text-primary-foreground">
+                        <p className="text-xs uppercase text-primary-foreground/70">Score</p>
+                        <p className="text-xl font-bold">710</p>
+                      </div>
                     </div>
                   </div>
                 </div>

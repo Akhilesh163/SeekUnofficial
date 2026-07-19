@@ -218,15 +218,18 @@ const AboutGmat: React.FC = () => {
   return (
     <div className="bg-background text-foreground">
       <section className="overflow-hidden bg-background py-20">
-        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-br from-primary/10 via-white to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-br from-blue-600/20 via-indigo-500/10 to-transparent" />
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] items-center">
             <div className="space-y-6">
-              <div className="inline-flex rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-primary shadow-sm">
+              <div className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-primary shadow-sm">
                 GMAT PREP
               </div>
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-[4.5rem]">
-                Achieve GMAT momentum with coaching built for scores.
+                Achieve GMAT momentum with
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500">
+                  coaching built for scores.
+                </span>
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
                 Learn faster, practice smarter, and get the exact GMAT strategy you need for your target business school.
@@ -236,7 +239,7 @@ const AboutGmat: React.FC = () => {
                   Book a Free Class
                   <ArrowRight className="h-4 w-4" />
                 </button>
-                <button className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card px-7 py-3 text-sm font-semibold text-primary transition hover:bg-primary/5">
+                <button className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3 text-sm font-semibold text-primary transition hover:border-primary/60 hover:bg-primary/10">
                   Talk to an Expert
                 </button>
               </div>
@@ -250,7 +253,7 @@ const AboutGmat: React.FC = () => {
                     <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Top GMAT Results</p>
                     <p className="mt-2 text-sm text-muted-foreground">Recent achievers from our coaching batch</p>
                   </div>
-                  <div className="rounded-3xl bg-primary/5 px-4 py-2 text-sm font-semibold text-primary shadow-sm">
+                  <div className="rounded-3xl bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft">
                     2025
                   </div>
                 </div>
@@ -260,7 +263,7 @@ const AboutGmat: React.FC = () => {
                     { name: "Sid Makharia", score: "715" },
                     { name: "Riya Joshi", score: "710" },
                   ].map((item) => (
-                    <div key={item.name} className="rounded-3xl p-4 bg-background">
+                    <div key={item.name} className="rounded-3xl p-4 bg-card">
                       <div className="flex items-center justify-between gap-4">
                         <div>
                           <p className="font-semibold text-foreground">{item.name}</p>
@@ -301,7 +304,7 @@ const AboutGmat: React.FC = () => {
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-sm">
                     <thead>
-                      <tr className="bg-primary text-primary-foreground">
+                      <tr className="bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500 text-primary-foreground">
                         <th className="px-6 py-4">Section</th>
                         <th className="px-6 py-4">Questions</th>
                         <th className="px-6 py-4">Time</th>
@@ -392,7 +395,7 @@ const AboutGmat: React.FC = () => {
                   onClick={() => setActiveMode(mode.id)}
                   className={`group flex h-full flex-col overflow-hidden rounded-[28px] border p-6 text-left transition duration-300 ${
                     activeMode === mode.id
-                      ? "border-primary bg-primary/5 shadow-md"
+                      ? "border-primary bg-primary/10 shadow-soft"
                       : "border-border bg-card hover:border-primary/70 hover:bg-background hover:shadow-sm"
                   }`}
                 >
@@ -407,7 +410,7 @@ const AboutGmat: React.FC = () => {
                   <h3 className="mt-6 text-lg font-semibold text-foreground">{mode.title}</h3>
                   <p className="mt-4 text-sm leading-6 text-muted-foreground">{mode.description}</p>
                   <div className="mt-auto pt-6">
-                    <span className="inline-flex rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground transition group-hover:bg-primary/10">
+                    <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-primary transition group-hover:bg-primary/20">
                       Learn More
                     </span>
                   </div>
@@ -453,20 +456,24 @@ const AboutGmat: React.FC = () => {
 
  
  
-      <section className="mt-16 px-6 pb-20">
+      <section className="bg-slate-50 py-20 px-6">
         <div className="mx-auto max-w-[1200px]">
-          <div className="rounded-[36px] border border-border bg-gradient-to-r from-blue-900 via-indigo-900 to-violet-900 p-12 text-white shadow-soft sm:p-16">
+          <div className="rounded-[36px] border border-border p-12 text-white shadow-soft sm:p-16" style={{ backgroundImage: "var(--gradient-primary)" }}>
             <div className="text-center space-y-6">
-              <div className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-primary">
-                Ready to find your Y?
+              <div className="flex justify-center">
+                <div className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold text-primary-foreground backdrop-blur">
+                  Your success journey starts here
+                </div>
               </div>
-              <h2 className="text-4xl font-bold sm:text-5xl">Turn your GMAT practice into a high score plan</h2>
-              <p className="mx-auto max-w-2xl text-lg leading-8 text-white/80">
-                Book a free demo and strategy call. We'll evaluate your current skills, chart a path to your target score, and keep you focused on the right topics.
+              <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">Ready to find your Y?</h2>
+              <p className="mx-auto max-w-2xl text-lg leading-8 text-primary-foreground">
+                Book a free demo session and a 1-on-1 strategy call. We'll map your target score, timeline and study plan — no strings attached.
               </p>
-              <button className="inline-flex rounded-full bg-card px-8 py-3 text-base font-semibold text-foreground shadow-lg shadow-white/20 transition hover:bg-muted">
-                Book a Free Demo
-              </button>
+              <div className="pt-6">
+                <button className="inline-flex rounded-full bg-card px-8 py-3 text-base font-semibold text-primary shadow-lg shadow-white/20 transition hover:shadow-xl hover:bg-card/95">
+                  Book a Free Demo
+                </button>
+              </div>
             </div>
           </div>
         </div>

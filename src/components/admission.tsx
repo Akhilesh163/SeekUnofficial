@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import CourseGre from "/assets/gre-asset/course_gre_.webp";
 import CourseGmat from "/assets/gre-asset/course_gmat.webp";
 import CourseSat from "/assets/gre-asset/course_sat.webp";
@@ -16,12 +17,12 @@ const Admission: React.FC = () => {
         <section className="pt-[100px] pb-16">
         <div className="max-w-[1200px] mx-auto px-4">
           <div className="text-center">
-            <div className="inline-block px-4 py-1 rounded-full bg-white/60 text-sm text-sky-600 mb-6">
+            <div className="inline-block px-4 py-1 rounded-full bg-white/60 text-sm text-primary mb-6">
               Global Admissions & Profile Building
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
               Your Blueprint to a
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500">
                 World-Class University
               </span>
             </h2>
@@ -61,7 +62,7 @@ const Admission: React.FC = () => {
         <div className="max-w-[1200px] mx-auto px-4">
           <div className="text-center mb-8">
             <div className="inline-block px-4 py-1 rounded-full bg-white/60 text-sm text-sky-600 mb-4">Test Prep</div>
-            <h3 className="text-3xl md:text-4xl font-extrabold">Ace Your <span className="text-sky-500">Entrance Exams</span></h3>
+            <h3 className="text-3xl md:text-4xl font-extrabold">Ace Your <span className="text-primary">Entrance Exams</span></h3>
             <p className="max-w-2xl mx-auto text-muted-foreground mt-4">Expert-led coaching with proven strategies for every major standardized test. Personalized guidance to maximize your scores.</p>
           </div>
 
@@ -132,40 +133,105 @@ const Admission: React.FC = () => {
           <h3 className="text-4xl font-extrabold mb-4">Not Sure Which Path Is Right For You?</h3>
           <p className="max-w-2xl mx-auto text-white/90 mb-8">Our expert counselors will evaluate your profile and recommend the perfect program — absolutely free.</p>
           <div className="flex items-center justify-center gap-6">
-            <button className="bg-white text-sky-700 px-6 py-3 rounded-xl font-semibold">Get Free Profile Evaluation</button>
+            <button className="bg-white text-primary px-6 py-3 rounded-xl font-semibold">Get Free Profile Evaluation</button>
             <button className="bg-white/20 border border-white/30 text-white px-6 py-3 rounded-xl">Talk to an Expert</button>
           </div>
         </div>
       </section>
 
       {/* PROFILE EVALUATION SECTION */}
-      <section className="py-20">
-        <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-card rounded-2xl p-8 shadow-soft">
-          <div>
-            <img src={CourseSat} alt="profile-eval" className="w-full rounded-xl object-cover h-[420px]" />
-          </div>
-          <div>
-            <div className="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-600 mb-4">★ FREE SERVICE</div>
-            <h3 className="text-3xl md:text-4xl font-extrabold mb-4">Free Profile <span className="text-amber-500">Evaluation</span></h3>
-            <p className="text-muted-foreground mb-6">Get a comprehensive assessment of your academic background, achievements, skills, and potential. Our experts identify your strengths and recommend the perfect programs to maximize your admission chances.</p>
+     
+     
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              {[
-                'Academic Performance',
-                'Test Scores',
-                'Work & Internships',
-                'Research & Publications',
-                'Personal Statement',
-                'Extracurriculars',
-              ].map((t) => (
-                <div key={t} className="border border-amber-100 rounded-lg p-4 text-sm">
-                  <div className="font-semibold">{t}</div>
-                  <div className="text-muted-foreground text-xs mt-1">Relevant details and review</div>
-                </div>
-              ))}
+      {/* PRICING PACKAGES */}
+      <section className="py-12">
+        <div className="max-w-[1200px] mx-auto px-4 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/90 mb-3">Pricing</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4">Packages</h2>
+          <p className="max-w-2xl mx-auto text-muted-foreground text-lg leading-relaxed">
+            Market rate for quality 4-school consulting is ₹1.5–2 lakhs; premium firms charge ₹3–5 lakhs.
+            We price below market — and far below it if you prep with us.
+          </p>
+        </div>
+
+        <div className="max-w-[1200px] mx-auto px-4 mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="overflow-hidden rounded-[32px] border border-border/80 bg-card shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div className="h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500" />
+            <div className="p-6 flex h-full flex-col justify-between">
+              <div>
+                <h3 className="text-2xl font-semibold text-foreground">Profile + Shortlist</h3>
+                <p className="mt-3 text-sm text-muted-foreground">Evaluation & school strategy</p>
+                <div className="mt-6 text-[2.4rem] font-extrabold text-blue-600">₹19,999</div>
+                <p className="mt-3 text-sm text-muted-foreground">Profile evaluation report</p>
+              </div>
+
+              <div className="mt-6 space-y-3 text-sm text-foreground">
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Profile evaluation report</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Shortlist of 8–10 schools</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Application timeline plan</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Fully adjustable against a bigger package</div>
+              </div>
+
+              <button className="mt-10 w-full rounded-full bg-blue-600 px-6 py-4 text-sm font-semibold text-white transition hover:bg-blue-700">
+                Book a Call
+              </button>
             </div>
+          </div>
 
-            <button className="bg-amber-500 text-white px-6 py-3 rounded-xl shadow-md">Get Your Free Evaluation →</button>
+          <div className="relative overflow-hidden rounded-[32px] border border-blue-600/30 bg-card shadow-soft shadow-blue-500/10 ring-1 ring-blue-600/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500" />
+            <div className="p-6 pt-12 flex h-full flex-col justify-between">
+              <div className="inline-flex items-center rounded-full bg-slate-950 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white shadow-lg">4 schools · end-to-end</div>
+
+              <div className="mt-6">
+                <h3 className="text-2xl font-semibold text-foreground">4-School Package</h3>
+                <p className="mt-3 text-sm text-muted-foreground">vs ₹1.5–2L market • ₹3L+ at premium firms</p>
+                <div className="mt-6 text-[2.4rem] font-extrabold text-blue-600">₹1,49,999</div>
+              </div>
+
+              <div className="mt-6 space-y-3 text-sm text-foreground">
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Everything in Profile + Shortlist</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Essays & SOP for 4 schools</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> LOR strategy & review</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Unlimited mock interviews</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Scholarship & waitlist strategy</div>
+              </div>
+
+              <button className="mt-10 w-full rounded-full bg-blue-600 px-6 py-4 text-sm font-semibold text-white transition hover:bg-blue-700">
+                Book a Call
+              </button>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[32px] border border-border/80 bg-card shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div className="h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-violet-500" />
+            <div className="p-6 flex h-full flex-col justify-between">
+              <div>
+                <h3 className="text-2xl font-semibold text-foreground">Prep Student Combo</h3>
+                <p className="mt-3 text-sm text-muted-foreground">4 schools • exclusively for enrolled students</p>
+                <div className="mt-6 text-[2.4rem] font-extrabold text-blue-600">₹99,999</div>
+              </div>
+
+              <div className="mt-6 space-y-3 text-sm text-foreground">
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Full 4-School Package...</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> ...at 33% off, because we already know your journey</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Add 2 extra schools for ₹19,999 each</div>
+                <div className="flex items-start gap-3"><span className="mt-1 text-blue-600">✓</span> Available with any course, batch or tutoring plan</div>
+              </div>
+
+              <button className="mt-8 w-full rounded-full bg-blue-600 px-6 py-4 text-sm font-semibold text-white transition hover:bg-blue-700">
+                Get the Combo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-[1200px] mx-auto px-4 mt-6">
+          <div className="rounded-[28px] border border-blue-200/60 bg-blue-50/80 p-6 md:p-8 text-left">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-900 mb-4">Why the combo is unbeatable:</p>
+            <p className="text-base leading-8 text-slate-700">
+              A typical Indian applicant pays ₹30,000+ for prep and ₹1.5–2 lakhs for a 4-school consultant — separately, with two teams that never talk to each other. With us, the mentor who watched you earn your score helps tell your story: course + consulting from ~₹1.15 lakhs total.
+            </p>
           </div>
         </div>
       </section>
@@ -174,14 +240,14 @@ const Admission: React.FC = () => {
       <section className="py-16">
         <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-card rounded-2xl p-10 shadow-soft">
-            <div className="inline-block px-3 py-1 rounded-full bg-sky-50 text-sky-600 mb-4">For Students</div>
+            <div className="inline-block px-3 py-1 rounded-full bg-sky-50 text-primary mb-4">For Students</div>
             <h4 className="text-2xl font-extrabold mb-3">Book a Free Counselling Session</h4>
             <p className="text-muted-foreground mb-6">Talk to our admissions experts, evaluate your profile, and map your road to your dream university — at zero cost.</p>
             <button className="bg-sky-600 text-white px-6 py-3 rounded-lg">Book Now →</button>
           </div>
 
           <div className="bg-card rounded-2xl p-10 shadow-soft">
-            <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 mb-4">For Institutions</div>
+            <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-primary mb-4">For Institutions</div>
             <h4 className="text-2xl font-extrabold mb-3">Request a Collaboration Proposal</h4>
             <p className="text-muted-foreground mb-6">Tell us about your institution and your students' goals — we will design a bespoke employability program that fits your needs.</p>
             <button className="bg-emerald-700 text-white px-6 py-3 rounded-lg">Get in Touch →</button>
@@ -189,6 +255,7 @@ const Admission: React.FC = () => {
         </div>
       </section>
       </main>
+      <Footer />
     </div>
   );
 };
